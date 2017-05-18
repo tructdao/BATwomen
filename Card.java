@@ -1,3 +1,6 @@
-public interface Card {
-    public String getColor ;
+public class Card {
+    public String getColor(){
+	return "";
+    }
+	    
 }

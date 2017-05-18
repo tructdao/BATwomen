@@ -1,11 +1,22 @@
 public class NumberCard extends Card {
-    int number ;
-    String color ;
+    int _number ;
+    String _color ;
 
     public NumberCard() {
+	_number=0;
+	_color= "";
     }
 
+    public NumberCard(int n, String c){
+	_number=n;
+	_color=c;
+    }	
+
     public String getColor() {
-	return color ;
+	return _color ;
+    }
+
+    public int getNumber(){
+	return _number;
     }
 }
