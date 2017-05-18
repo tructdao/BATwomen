@@ -1,0 +1,15 @@
+Team BatWomen
+Bayan Berri, Alison Lee, Truc Dao
+
+5/20 (Get Basics Down):
+	- Include methods in the main class that asks players for their names.
+	- Create linked list of players
+	- Create RQueue for a deck.
+	  - 2 of each number in each color(1-9, R,G,Y,B).
+	  - 1 zero of each color.
+	  - 2 of each action card for each color (+2, reverse, skip)
+	  - 4 of each type of wild card( +4, choose color)
+	- Have the deal method working.
+	- Set up basic discard pile
+
+
