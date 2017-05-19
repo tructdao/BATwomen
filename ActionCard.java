@@ -24,6 +24,14 @@ public class ActionCard extends Card {
     }
     
     public void reverse(){
+		/* i think swapping while moving towards middle would be faster bc that is n/2 times like:
+			[1] 2 3 4 [5]  : swap nums in boxes
+			5 [2] 3 [4] 1  and so on until you reach middle
+		*/
+		for( n = 0 ; n < _players.size() - 1 ; n ++ ) {
+			_players.add( 0, _players.remove( n + 1 )) ;
+		}
+		
     }
     
     public void skip(){

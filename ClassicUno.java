@@ -4,6 +4,7 @@ import cs1.Keyboard;
 import DLL.*;
 import RQueue.*;
 import Stack.*;
+
 public class ClassicUno{
     public static RQueue<Card> _deck;
     private LList<Player> _players;
@@ -34,6 +35,9 @@ public class ClassicUno{
     public int numPlayers(){
 	System.out.println("How many players will be playing this round of UNO");
 	int num= Keyboard.readInt();
+	while( num <= 1 || num >= 54 ) { // idk i put 54 but what should the max # of players be?
+		num = Keyboard.readInt() ;
+	}
 	return num;
     }//ends numPlayers
     
