@@ -1,9 +1,6 @@
 import java.io.*;
 import java.util.*;
 import cs1.Keyboard;
-import DLL.*;
-import RQueue.*;
-import Stack.*;
 public class Player{
 
     int _gamesWon;
