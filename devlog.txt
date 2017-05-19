@@ -51,7 +51,7 @@ Bayan ::
       - Added a main class for classicUno (will start the game)
       	- worked on getting classicUno and Player to compile (not running yet)
 	- some basic debugging. 
-Alison :: 
+Alison :: Added devlog, cards classes, and worked on reverse method. 
 Truc ::
      - Created the classes we planned out on UML diagrams in our project proposal
      
