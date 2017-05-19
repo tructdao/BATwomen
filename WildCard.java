@@ -7,9 +7,7 @@ public class WildCard extends ActionCard {
     public String Ability() {
     }
 
-    public String getColor() {	
+    public String getAbility() {	
     }
 
-    public void setColor() {
-    }
 }

@@ -37,18 +37,26 @@ public class ClassicUno{
 
     public int numPlayers(){
 	System.out.println("How many players will be playing this round of UNO");
-	int num= Keyboard.readInt();
-	while( num <= 1 || num >= 12 ) { // idk i put 54 but what should the max # of players be?
-		num = Keyboard.readInt() ;
+	int num;
+	while(true){
+	    num = Keyboard.readInt() ;    
+	    if( num >= 2 || num <= 12 ) { 
+		return num;
+	    }
+	    else if( num<2){
+		System.out.println("You need more players!");
+	    }
+	    else if(num>12){
+		System.out.println("Too many players!");
+	    }
 	}
-	return num;
     }//ends numPlayers
     
     public String sortRank(){
 	return "";
     }//ends sortRank()
     
-    public ArrayList<Card> deal(){
+    public ArrayList<Card> deal(int indexOfPlayer){
 	return new ArrayList<Card>();
     }//ends deal()
     
@@ -56,6 +64,4 @@ public class ClassicUno{
 	return false;
     }//ends match
 
-    public static void main(String[] args){
-    }//ends main
 }//ends class

@@ -45,8 +45,35 @@ public class Player{
 	return _gamesPlayed;
     }
     
-    //--------------------------- ^^ Accessors ^^ -----------------------
+ //--------------------------- ^^ Accessors ^^ -----------------------
+     int _gamesWon;
+    int _gamesPlayed;
+    int _score;
+    boolean _won;
+    ArrayList<Card> _hand;
+    String _name;
 
+ //--------------------------- vv Mutators vv -----------------------
+    public void setGamesWon(int gamesWon){
+	_gamesWon=gamesWon;
+    }
+    public void setGamesPlayed(int gamesPlayed){
+	_gamesPlayed=gamesPlayed;
+    }
+    public void setScore(int score){
+	_score=score;
+    }
+    public void setWin(boolean won){
+	_won=won;
+    }
+    public void setHand(Card card){
+	_hand.add(card);
+    }
+    public void setName(String name){
+	_name=name;
+    }
+	
+ //--------------------------- ^^ Mutators ^^ -----------------------
     public ArrayList<Card> drawCard(){
 	_hand.add(ClassicUno._deck.dequeue());
 	return _hand;
