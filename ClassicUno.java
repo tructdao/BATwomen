@@ -6,13 +6,13 @@ import RQueue.*;
 import Stack.*;
 public class ClassicUno{
     public static RQueue<Card> _deck;
-    private LLNode<Player> _players;
-    private Stack<Card> _discard;
+    private LList<Player> _players;
+    private LLStack<Card> _discard;
 
     public ClassicUno(){
 	_deck= new RQueue<Card>();
-	_players= new LLNode<Player>();
-	_discard= new Stack<Card>();
+	_players= new LList<Player>();
+	_discard= new LLStack<Card>();
     }//ends constructor
 
     
@@ -21,6 +21,7 @@ public class ClassicUno{
     }//ends newGame
     
     public String chooseVersion(){
+	return "";
     }//ends chooseVersion
 
     
