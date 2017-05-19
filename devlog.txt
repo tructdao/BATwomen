@@ -18,7 +18,7 @@ UNRESOLVED ISSUES
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+javac *.java is extremely useful because it tells you which errors to fix at an early stage. 
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -47,9 +47,10 @@ ______   ______   __   __   __       ______   _______
 --------------------------------------------------------------
 Bayan ::
       - Added the cs1 packag.
-      -Added DLL, RQueue, and Stack from the library to our team repo.
+      -Added DLL, RQueue,BST and Stack from the library to our team repo.(and others)
       - Added a main class for classicUno (will start the game)
       	- worked on getting classicUno and Player to compile (not running yet)
+	- some basic debugging. 
 Alison :: 
 Truc ::
      - Created the classes we planned out on UML diagrams in our project proposal
