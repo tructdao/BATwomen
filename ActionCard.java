@@ -29,8 +29,8 @@ public class ActionCard extends Card {
 			5 [2] 3 [4] 1  and so on until you reach middle
 		   how we reverse it doesnt rlly matter though
 		*/
-		for( int n = 0 ; n < _players.size() - 1 ; n ++ ) {
-			_players.add( 0, _players.remove( n + 1 )) ;
+	for( int n = 0 ; n < _players.size() - 1 ; n ++ ) {
+	    _players.add( 0, _players.remove( n + 1 )) ;
 		}
 		/* example of reverse algo running vvv
 		1 2 3 4 5

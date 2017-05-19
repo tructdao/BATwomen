@@ -6,14 +6,20 @@ public class ClassicUno{
     public static RQueue<Card> _deck;
     private LList<Player> _players;
     private LLStack<Card> _discard;
-
+    
     public ClassicUno(){
 	_deck= new RQueue<Card>();
 	_players= new LList<Player>();
 	_discard= new LLStack<Card>();
     }//ends constructor
-
-    
+    //------------------v-----v--Accessors------------
+    public LList<Player> getPlayers(){
+	return _players;
+    }
+    public LLStack<Card> getDiscard(){
+	return _discard;
+    }
+    //----------------^------^--Accessors-----------
     public void newGame(){
 	
     }//ends newGame
