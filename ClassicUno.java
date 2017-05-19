@@ -12,6 +12,7 @@ public class ClassicUno{
 	_players= new LList<Player>();
 	_discard= new LLStack<Card>();
     }//ends constructor
+
     //------------------v-----v--Accessors------------
     public LList<Player> getPlayers(){
 	return _players;
@@ -19,27 +20,38 @@ public class ClassicUno{
     public LLStack<Card> getDiscard(){
 	return _discard;
     }
-    //----------------^------^--Accessors-----------
+    //----------------^------^--Accessors-------------
+
     public void newGame(){
 	System.out.println("Woo let's play Uno!!");
 	numPlayers();
-	System.out.println("OK, what are your names");
 	
     }//ends newGame
 
-    
+    public void populateDeck() {
+	for( int n = 0 ; n < 10 ; n ++ ) {
+	    for( int i = 0 ; i < 2 ; i ++ ) {
+		_deck.enqueue( new NumberCard( n, "red" )) ;
+		_deck.enqueue( new NumberCard( n, "yellow" )) ;
+		_deck.enqueue( new NumberCard( n, "green" )) ;
+		_deck.enqueue( new NumberCard( n, "blue" )) ;
+		
+		if( n == 0 ) { // idk if works
+		    break ;
+		}
+	    }
+	}
+    }
     
     public String chooseVersion(){
 	return "";
     }//ends chooseVersion
 
     
-    public void playerName(){
-	for (int p=1; p<=numPlayers();p++){
-	    System.out.println("Hello player "+ p + " What's your name?");
-	    String nombre= Keyboard.readString();
-	    _players.get(p-1).setName(nombre);
-	}
+    public String playerName(){
+	System.out.println("Hello player. What's your name?");
+	String nombre= Keyboard.readString();
+	return nombre;
     }//ends playerName()
 
     public int numPlayers(){
