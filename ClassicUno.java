@@ -23,18 +23,23 @@ public class ClassicUno{
     public void newGame(){
 	System.out.println("Woo let's play Uno!!");
 	numPlayers();
+	System.out.println("OK, what are your names");
 	
     }//ends newGame
+
+    
     
     public String chooseVersion(){
 	return "";
     }//ends chooseVersion
 
     
-    public String playerName(){
-	System.out.println("Hello player. What's your name?");
-	String nombre= Keyboard.readString();
-	return nombre;
+    public void playerName(){
+	for (int p=1; p<=numPlayers();p++){
+	    System.out.println("Hello player "+ p + " What's your name?");
+	    String nombre= Keyboard.readString();
+	    _players.get(p-1).setName(nombre);
+	}
     }//ends playerName()
 
     public int numPlayers(){
