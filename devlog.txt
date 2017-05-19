@@ -54,6 +54,10 @@ Bayan ::
 Alison :: Added devlog, cards classes, and worked on reverse method. 
 Truc ::
      - Created the classes we planned out on UML diagrams in our project proposal
+     - Worked on the player class (accessors)
+     - started setup of the Tournaments
+     - linked the submodule
+     - created the plan directory
      
 ==============================================================
 2017-05-19

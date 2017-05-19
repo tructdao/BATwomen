@@ -16,17 +16,36 @@ public class Player{
 	_score = 0;
 	_won = false;
 	_hand = new ArrayList<Card>();
+	_name = "";
     }
-    public Player( String name){
-	this();
-	_name= name;
-    }
-    public Player(int gW, int gP, int s){
+
+    public Player(int gW, int gP, int s, String name){
 	this();
 	_gamesWon = gW;
 	_gamesPlayed = gP;
 	_score = s;
+	_name = name;
     }
+
+    //--------------------------- vv Accessors vv -----------------------
+
+    public String getName(){
+	return _name;
+    }
+
+    public int getGamesWon(){
+	return _gamesWon;
+    }
+
+    public int getScore(){
+	return _score;
+    }
+
+    public int getGamesPlayed(){
+	return _gamesPlayed;
+    }
+    
+    //--------------------------- ^^ Accessors ^^ -----------------------
 
     public ArrayList<Card> drawCard(){
 	_hand.add(ClassicUno._deck.dequeue());
