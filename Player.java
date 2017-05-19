@@ -46,12 +46,7 @@ public class Player{
     }
     
  //--------------------------- ^^ Accessors ^^ -----------------------
-     int _gamesWon;
-    int _gamesPlayed;
-    int _score;
-    boolean _won;
-    ArrayList<Card> _hand;
-    String _name;
+
 
  //--------------------------- vv Mutators vv -----------------------
     public void setGamesWon(int gamesWon){

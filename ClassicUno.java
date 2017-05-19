@@ -21,6 +21,8 @@ public class ClassicUno{
     }
     //----------------^------^--Accessors-----------
     public void newGame(){
+	System.out.println("Woo let's play Uno!!");
+	numPlayers();
 	
     }//ends newGame
     
