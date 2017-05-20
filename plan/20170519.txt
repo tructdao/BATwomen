@@ -5,13 +5,13 @@ Bayan Berri, Alison Lee, Truc Dao
 
 Bayan:
 	- Start working on starting the game(Reader input stuff)
-	  - player names?
-	  - asking what version
-	  - do you want to see the rules of the game
+	  - player names?-Done
+	  - asking what version-Done
+	  - do you want to see the rules of the game-Done
 	    - write rules of the game so that when you run the file it displays.
 	   
 Alison:
-	- Create RQueue for a deck.
+	- Create RQueue for a deck.-Done
 	  - 2 of each number in each color(1-9, R,G,Y,B).
 	  - 1 zero of each color.
 	  - 2 of each action card for each color (+2, reverse, skip)

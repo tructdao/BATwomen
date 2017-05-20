@@ -32,8 +32,11 @@ public class ClassicUno{
 	}
 	int v= chooseVersion();
 	populateDeck();
-	System.out.println("\n here's the deck(TEST RM LINE LATER");
-	System.out.println(_deck);
+	if (v==3){
+	    printRules();
+	}	
+	//System.out.println(_deck);
+	
     }//ends newGame
 
     public void populateDeck() {
@@ -73,9 +76,15 @@ public class ClassicUno{
 	System.out.println("What version would you like to play?(int response)");
 	System.out.println("\t1: Classic");
 	System.out.println("\t2: Tournament");
+	System.out.println("\t3: Rules");
 	int vers= Keyboard.readInt();
 	return vers;
     }//ends chooseVersion
+    public void printRules(){
+        System.out.println("UNO-Classic");
+	System.out.println("At the beginning, each player is dealt 7 cards face down. The rest of the cards are placed in a draw pile. \nThen one card is flipped from the top of the draw pile and added to the discard pile. \nAs the game goes on, the goal is to match the top card of the discard pile with a card of the same color, number, or action.\n if the player has no matches or choose not to play any of their cards they must draw a card. \n If the drawn card can be played, then play it. Otherwise it's the next player's turn.\n\n Have Fun!!");
+	
+    }
 
     
     public String playerName(){
@@ -118,7 +127,7 @@ public class ClassicUno{
 	return false;
     }//ends match
 	
-    public void discard() {
+    public void setDiscard() {
 		
     }//ends discard
 

@@ -108,7 +108,7 @@ public class RQueue<T> implements Queue<T>
     //main method for testing
     public static void main( String[] args ) 
     {
-	Queue<String> PirateQueue = new RQueue<String>();
+	RQueue<String> PirateQueue = new RQueue<String>();
 
 	System.out.println("\nnow enqueuing..."); 
 	PirateQueue.enqueue("Dread");
@@ -117,7 +117,7 @@ public class RQueue<T> implements Queue<T>
 	PirateQueue.enqueue("Blackbeard");
 	PirateQueue.enqueue("Peter");
 	PirateQueue.enqueue("Stuyvesant");
-
+	PirateQueue.sample();
 	System.out.println("\nnow testing toString()..."); 
 	System.out.println( PirateQueue ); //for testing toString()...
 
