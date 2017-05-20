@@ -71,7 +71,7 @@ Alison ::
 	 - created Uno class (equivalent of Woo.java)
 	 - created method to populate deck
 	 - deal method
-Truc ::
+Truc :: - worked on Tournament creation
 ==============================================================
 2017-05-20
 --------------------------------------------------------------

@@ -12,6 +12,10 @@ public class Tournament{
 	numPlayers = participants;
     }
 
+    public void createLB( Player x ){
+	
+    }
+
     public Player search( TreeNode current, Player x ){
 	if (current.getValue() != x){
 	    if (current.getLeft() == null && current.getRight() == null){
