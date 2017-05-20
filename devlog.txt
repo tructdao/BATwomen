@@ -66,7 +66,7 @@ Truc ::
 --------------------------------------------------------------
 Bayan ::
       - Player class mutators
-      -
+      - asks players for names. 
 Alison :: 
 	 - created Uno class (equivalent of Woo.java)
 	 - created method to populate deck
@@ -75,7 +75,10 @@ Truc :: - worked on Tournament creation
 ==============================================================
 2017-05-20
 --------------------------------------------------------------
-Bayan :: 
+Bayan ::
+      - added toString for numcard and actioncard,
+      - continued working on the starting parts of the game.
+      	- chooseVersion, numPlayers(fixed)
 Alison :: 
 Truc ::
 ==============================================================
