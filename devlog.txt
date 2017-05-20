@@ -51,7 +51,9 @@ Bayan ::
       - Added a main class for classicUno (will start the game)
       	- worked on getting classicUno and Player to compile (not running yet)
 	- some basic debugging. 
-Alison :: Added devlog, cards classes, and worked on reverse method. 
+Alison :: 
+	 - Added devlog, cards classes
+	 - Worked on reverse method. 
 Truc ::
      - Created the classes we planned out on UML diagrams in our project proposal
      - Worked on the player class (accessors)
@@ -66,6 +68,9 @@ Bayan ::
       - Player class mutators
       -
 Alison :: 
+	 - created Uno class (equivalent of Woo.java)
+	 - created method to populate deck
+	 - deal method
 Truc ::
 ==============================================================
 2017-05-20

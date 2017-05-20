@@ -70,9 +70,7 @@ public class Player{
 	
  //--------------------------- ^^ Mutators ^^ -----------------------
     public ArrayList<Card> drawCard(){
-	for( n = 0 ; n < 7 ; n ++ ) {
-	    _hand.add(ClassicUno._deck.dequeue());
-	}
+	_hand.add(ClassicUno._deck.dequeue());
 	return _hand;
     }
 
