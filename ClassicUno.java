@@ -24,8 +24,16 @@ public class ClassicUno{
 
     public void newGame(){
 	System.out.println("Woo let's play Uno!!");
-	numPlayers();
-	
+	int nP=numPlayers();
+	for( int x=1; x<=nP; x++){
+	    Player newPlayer= new Player();
+	    newPlayer.setName(playerName());
+	    _players.add(newPlayer);
+	}
+	int v= chooseVersion();
+	populateDeck();
+	System.out.println("\n here's the deck(TEST RM LINE LATER");
+	System.out.println(_deck);
     }//ends newGame
 
     public void populateDeck() {
@@ -42,49 +50,53 @@ public class ClassicUno{
 			}
 		}
 		for( int n = 0 ; n < 2 ; n ++ ) {
-			_deck.enqueue( new ActionCard( "+2", red )) ;
-			_deck.enqueue( new ActionCard( "reverse", red )) ;
-			_deck.enqueue( new ActionCard( "skip", red )) ;
-			_deck.enqueue( new ActionCard( "+2", yellow )) ;
-			_deck.enqueue( new ActionCard( "reverse", yellow )) ;
-			_deck.enqueue( new ActionCard( "skip", yellow )) ;
-			_deck.enqueue( new ActionCard( "+2", green )) ;
-			_deck.enqueue( new ActionCard( "reverse", green )) ;
-			_deck.enqueue( new ActionCard( "skip", green )) ;
-			_deck.enqueue( new ActionCard( "+2", blue )) ;
-			_deck.enqueue( new ActionCard( "reverse", blue )) ;
-			_deck.enqueue( new ActionCard( "skip", blue )) ;
+			_deck.enqueue( new ActionCard( "+2", "red" )) ;
+			_deck.enqueue( new ActionCard( "reverse", "red" )) ;
+			_deck.enqueue( new ActionCard( "skip", "red" )) ;
+			_deck.enqueue( new ActionCard( "+2", "yellow" )) ;
+			_deck.enqueue( new ActionCard( "reverse", "yellow" )) ;
+			_deck.enqueue( new ActionCard( "skip", "yellow" )) ;
+			_deck.enqueue( new ActionCard( "+2", "green" )) ;
+			_deck.enqueue( new ActionCard( "reverse", "green" )) ;
+			_deck.enqueue( new ActionCard( "skip", "green" )) ;
+			_deck.enqueue( new ActionCard( "+2", "blue" )) ;
+			_deck.enqueue( new ActionCard( "reverse", "blue" )) ;
+			_deck.enqueue( new ActionCard( "skip", "blue" )) ;
 		}
 		for( int n = 0 ; n < 4 ; n ++ ) {
 			_deck.enqueue( new ActionCard( "+4", "" )) ;
 			_deck.enqueue( new ActionCard( "wild", "" )) ;
 		}
-	}
+    }//ends populate deck
     
-    public String chooseVersion(){
-	return "";
+    public int chooseVersion(){
+	System.out.println("What version would you like to play?(int response)");
+	System.out.println("\t1: Classic");
+	System.out.println("\t2: Tournament");
+	int vers= Keyboard.readInt();
+	return vers;
     }//ends chooseVersion
 
     
     public String playerName(){
-	System.out.println("Hello player. What's your name?");
+	System.out.println("Hello, What's your name?");
 	String nombre= Keyboard.readString();
 	return nombre;
     }//ends playerName()
 
     public int numPlayers(){
-	System.out.println("How many players will be playing this round of UNO");
+	System.out.println("How many players will be playing this round of UNO(2-12)");
 	int num;
 	while(true){
 	    num = Keyboard.readInt() ;    
-	    if( num >= 2 || num <= 12 ) { 
+	    if( num >= 2 && num <= 12 ) { 
 		return num;
 	    }
 	    else if( num<2){
-		System.out.println("You need more players!");
+		System.out.println("You need more players!\nHow many players will be playing this round of UNO(2-12)? ");
 	    }
 	    else if(num>12){
-		System.out.println("Too many players!");
+		System.out.println("Too many players!\nHow many players will be playing this round of UNO(2-12)");
 	    }
 	}
     }//ends numPlayers
@@ -106,8 +118,8 @@ public class ClassicUno{
 	return false;
     }//ends match
 	
-	public void discard() {
+    public void discard() {
 		
-	}
+    }//ends discard
 
 }//ends class

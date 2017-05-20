@@ -19,4 +19,9 @@ public class NumberCard extends Card {
     public int getNumber(){
 	return _number;
     }
+    public String toString(){
+	String ret= "";
+	ret+= this._number+ " : "+ this._color+"\n";
+	return ret;
+    }
 }

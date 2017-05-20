@@ -21,6 +21,7 @@ public class ActionCard extends Card {
     }
     
     public String addTwo(){
+	return "";
     }
     
     public void reverse(){
@@ -28,5 +29,10 @@ public class ActionCard extends Card {
     }
     
     public void skip(){
+    }
+    public String toString(){
+	String ret= "";
+	ret+= this._action+ " : "+ this._color +"\n";
+	return ret;
     }
 }
