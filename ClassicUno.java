@@ -128,7 +128,7 @@ public class ClassicUno{
     }//ends match
 	
     public void setDiscard() {
-		
+		_discard.push( _deck.dequeue()) ;
     }//ends discard
 
 }//ends class
