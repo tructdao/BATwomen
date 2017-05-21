@@ -74,13 +74,20 @@ public class Player{
 	return _hand;
     }
 
-    /*  public Card playCard(){
+    public Card playCard(){
+	System.out.println("Which card will you play?");
+	System.out.println(this);
+	//should we use mouse clicks to choose a card?
+	ClassicUno._discard.push(_hand.remove(/*index*/));
     }
 
     public String callUno(){
-	_won = true;
+	if( _hand.size() == 0){
+	    _won = true;
+	    System.out.println("UNO!");
+	}
     }
-    */
+
     /*public String toString(){
 	String ret = "";
 	for (Card x : _hand){
