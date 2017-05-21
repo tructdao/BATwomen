@@ -80,6 +80,9 @@ Bayan ::
       - continued working on the starting parts of the game.
       	- chooseVersion, numPlayers(fixed)
 Alison :: 
+	 - reverse
+	 - skip() decision changes
+	 - discard()
 Truc ::
 ==============================================================
 2017-05-21
