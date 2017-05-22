@@ -14,7 +14,8 @@ OBSTACLES OVERCOME
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+-constructors
+-Card Var Type VS Object Type
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -96,7 +97,9 @@ Truc :: Started mapping out methods for cards
 --------------------------------------------------------------
 Bayan :: 
 Alison :: 
-Truc ::
+Truc :: Worked on the player playing cards
+	Fixed the Cards a little bit
+	boolean methods in Cards
 ==============================================================
 2017-05-23
 --------------------------------------------------------------

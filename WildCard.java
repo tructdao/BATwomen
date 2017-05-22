@@ -1,4 +1,4 @@
-public class WildCard extends ActionCard {
+public class WildCard implements Card {
     
     String _ability ;
 
@@ -7,6 +7,8 @@ public class WildCard extends ActionCard {
     
     public WildCard() {
 	_ability = "";
+
+	//should this throw an error? -> never want it to happen
     }
 
     public WildCard( String a ){
@@ -19,5 +21,9 @@ public class WildCard extends ActionCard {
     public String getAbility() {
 	return _ability;
     }
+
+    public boolean isNumberCard(){ return false; }
+    public boolean isActionCard(){ return false; }
+    public boolean isWildCard(){ return true; }
    
 }

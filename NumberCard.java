@@ -1,4 +1,4 @@
-public class NumberCard extends Card {
+public class NumberCard implements Card {
     int _number ;
     String _color ;
 
@@ -24,4 +24,8 @@ public class NumberCard extends Card {
 	ret+= this._number+ " : "+ this._color+"\n";
 	return ret;
     }
+
+    public boolean isNumberCard(){ return true; }
+    public boolean isActionCard(){ return false; }
+    public boolean isWildCard(){ return false; }
 }

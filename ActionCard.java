@@ -1,4 +1,4 @@
-public class ActionCard extends Card {
+public class ActionCard implements Card {
     String _action ;
     String _color ;
 
@@ -9,15 +9,13 @@ public class ActionCard extends Card {
     public ActionCard() {
 	_action="";
 	_color="";
+
+	//see question in WildCard, same applies here
     }
     
     public ActionCard(String a,String c){
 	_action=a;
 	_color=c;
-    }
-
-    public boolean isActionCard(){
-	return true;
     }
 
     public String getAction() {
@@ -31,6 +29,10 @@ public class ActionCard extends Card {
     public String addTwo(){
 	return "";
     }
+
+    public boolean isNumberCard(){ return false; }
+    public boolean isActionCard(){ return true; }
+    public boolean isWildCard(){ return false; }
     
    
 	/* although skip is a card, it doesnt deal with/change chards. it has more to do with a player

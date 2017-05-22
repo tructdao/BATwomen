@@ -1,6 +1,6 @@
 // (one 0 card, two of each number [1-9] cards, two draw2, skip, reverse cards) x each color, 4 wild and 4 wild draw4 cards
 
-public class Card {
+public interface Card {
 
     /* COLOR PRINTING STUFF
     protected static final String reset = "\u001B[0m";
@@ -12,18 +12,14 @@ public class Card {
     protected static final String purple = "\u001B[35m";
     protected static final String cyan = "\u001B[36m";*/
 
-    private String _color;
-
-    public Card(){
-	_color = "";
-    }
+    //private String _color;
     
-    public String getColor(){
-	return _color;
-    }
+    public String getColor();
 
-    public String toString(){
-	String ret = "printing card";
-	return ret;
-    }
+    public String toString();
+
+    public boolean isNumberCard();
+    public boolean isActionCard();
+    public boolean isWildCard();
+    
 }
