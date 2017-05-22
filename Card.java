@@ -23,7 +23,7 @@ public class Card {
     }
 
     public String toString(){
-	String ret = "";
+	String ret = "printing card";
 	return ret;
     }
 }

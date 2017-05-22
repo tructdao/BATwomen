@@ -24,12 +24,7 @@ public class ActionCard extends Card {
 	return "";
     }
     
-    public void reverse(){
-        LLNode temp = _front ;
-		_front = _end ;
-		_end = temp ;
-    }
-    
+   
 	/* although skip is a card, it doesnt deal with/change chards. it has more to do with a player
 	actual skipping will be in the while loop (running the game): if( player's card == skip ) { do nothing and move onto next player ; } 
 	OR

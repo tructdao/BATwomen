@@ -5,7 +5,7 @@ import cs1.Keyboard;
 public class ClassicUno{
     public static RQueue<Card> _deck;
     private LList<Player> _players;
-    private LLStack<Card> _discard;
+    public LLStack<Card> _discard;
     
     public ClassicUno(){
 	_deck= new RQueue<Card>();
@@ -22,6 +22,8 @@ public class ClassicUno{
     }
     //----------------^------^--Accessors-------------
 
+    
+    
     public void newGame(){
 	System.out.println("Woo let's play Uno!!");
 	int nP=numPlayers();
@@ -32,10 +34,19 @@ public class ClassicUno{
 	}
 	int v= chooseVersion();
 	populateDeck();
-	if (v==3){
+	
+	//	setDiscard();
+	System.out.println(_discard.peek());
+	/*if (v==3){
 	    printRules();
-	}	
-	//System.out.println(_deck);
+	}
+	else if (v==1){
+	    setDiscard();
+	    System.out.println(printDiscard());
+	    }*/
+	//	_deck.sample();
+		System.out.println(_deck);	
+
 	
     }//ends newGame
 
@@ -82,7 +93,7 @@ public class ClassicUno{
     }//ends chooseVersion
     public void printRules(){
         System.out.println("UNO-Classic");
-	System.out.println("At the beginning, each player is dealt 7 cards face down. The rest of the cards are placed in a draw pile. \nThen one card is flipped from the top of the draw pile and added to the discard pile. \nAs the game goes on, the goal is to match the top card of the discard pile with a card of the same color, number, or action.\n if the player has no matches or choose not to play any of their cards they must draw a card. \n If the drawn card can be played, then play it. Otherwise it's the next player's turn.\n\n Have Fun!!");
+	System.out.println("At the beginning, each player is dealt 7 cards face down. The rest of the cards are placed in a draw pile. \nThen one card is flipped from the top of the draw pile and added to the discard pile. \nAs the game goes on, the goal is to match the top card of the discard pile with a card of the same color, number, or action.\n if the player has no matches or chooses not to play any of their cards they must draw a card. \n If the drawn card can be played, then play it. Otherwise it's the next player's turn.\n\n Have Fun!!");
 	
     }
 
@@ -114,21 +125,30 @@ public class ClassicUno{
 	return "";
     }//ends sortRank()
     
-    public ArrayList<Card> deal(int indexOfPlayer){
+    public void deal(int indexOfPlayer){
 		for( Player i : _players ) {
 			for( int n = 0 ; n < 7 ; n ++ ) {
 				( i._hand ).add( _deck.dequeue()) ;
 			}
 		}
-		return new ArrayList<Card>();
     }//ends deal()
-    
+
+    public Card printDiscard(){
+	return _discard.peek();
+    }
+    public LLStack<Card> setDiscard(){
+	Card top= _deck.dequeue();
+	_discard.push(top);
+	return _discard;
+    }
     public boolean match(Card other){
 	return false;
     }//ends match
-	
-    public void setDiscard() {
-		_discard.push( _deck.dequeue()) ;
-    }//ends discard
-
+    /*
+      public void reverse(){
+      LLNode temp = _players._head ;
+	_players._head =_players. _tail ;
+	_players._tail = temp ;
+    }*/
+    
 }//ends class

@@ -16,5 +16,5 @@ public class WildCard extends ActionCard {
     public String getAbility() {
 	return _ability;
     }
-
+   
 }
