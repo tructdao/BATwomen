@@ -2,6 +2,10 @@ public class ActionCard extends Card {
     String _action ;
     String _color ;
 
+    //"draw2" = draw 2 card
+    //"skip"
+    //"reverse"
+
     public ActionCard() {
 	_action="";
 	_color="";
@@ -10,6 +14,10 @@ public class ActionCard extends Card {
     public ActionCard(String a,String c){
 	_action=a;
 	_color=c;
+    }
+
+    public boolean isActionCard(){
+	return true;
     }
 
     public String getAction() {

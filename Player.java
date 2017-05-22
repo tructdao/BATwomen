@@ -74,11 +74,23 @@ public class Player{
 	return _hand;
     }
 
-    /* public Card playCard(){
+    /*public Card playCard( Card top ){
 	System.out.println("Which card will you play?");
 	System.out.println(this);
-	int playingCard= Keyboard.readInt();
+	//int playingCard = Keyboard.readInt();
 	//should we use mouse clicks to choose a card?
+	//after Card next is chosen....
+	if ( next.isNumberCard() ){
+	    if ( top.isWildCard() == true ){
+	    break;
+	    }
+	    if ( next.getNumber() != top.getNumber() ){ //not the same number
+		if ( next.getColor() != top.getColor() ){ //not the same color
+		    System.out.println("INVALID CARD!!!!!")
+			return playCard( Card top );
+		}
+	    }
+	}
 	//ClassicUno._discard.push(_hand.remove(playingCard));
 	}*/
     
@@ -89,12 +101,46 @@ public class Player{
 	}
     }
 
+    public void play( Card top ){
+	
+	System.out.println( "Card just dealt : " + top );
+	
+	if ( top.isActionCard() ){
+	    if ( top.getAction().equals("draw2") ){
+		System.out.println("Draw 2 cards.");
+		drawCard();
+		drawCard();
+	    }
+	    else if ( top.getAction().equals("skip") ){
+		System.out.println("You've been skipped!");
+		return;
+	    }
+	    else if ( top.getAction().equals("reverse") ){
+		//reverse in ClassicUno player DLLNode
+		System.out.println("Reversing.... ");
+		return;
+	    }
+	}
+	
+	else if ( top.isWildCard() ){
+	    if ( top.getAbility.equals("draw4") ){
+		System.out.println("Draw 4 cards.");
+		for (int i = 0; i < 4; i++){
+		    drawCard();
+		}
+	    }
+	}
+	
+        playCard( top );
+	
+    }
+
     public String toString(){
-	String ret = _name+ "\n";
+	String ret = _name + "\n";
 	for (Card x : _hand){
 	    ret += x;
 	    ret+= "\t";
 	}
 	return ret;
-	}
+    }
 }

@@ -51,36 +51,36 @@ public class ClassicUno{
     }//ends newGame
 
     public void populateDeck() {
-		for( int n = 0 ; n < 10 ; n ++ ) {
-			for( int i = 0 ; i < 2 ; i ++ ) {
-				_deck.enqueue( new NumberCard( n, "red" )) ;
-				_deck.enqueue( new NumberCard( n, "yellow" )) ;
-				_deck.enqueue( new NumberCard( n, "green" )) ;
-				_deck.enqueue( new NumberCard( n, "blue" )) ;
+	for( int n = 0 ; n < 10 ; n ++ ) {
+	    for( int i = 0 ; i < 2 ; i ++ ) {
+		_deck.enqueue( new NumberCard( n, "red" )) ;
+		_deck.enqueue( new NumberCard( n, "yellow" )) ;
+		_deck.enqueue( new NumberCard( n, "green" )) ;
+		_deck.enqueue( new NumberCard( n, "blue" )) ;
 		
-				if( n == 0 ) { // idk if works
-					break ;
-				}
-			}
+		if( n == 0 ) { // idk if works
+		    break ;
 		}
-		for( int n = 0 ; n < 2 ; n ++ ) {
-			_deck.enqueue( new ActionCard( "+2", "red" )) ;
-			_deck.enqueue( new ActionCard( "reverse", "red" )) ;
-			_deck.enqueue( new ActionCard( "skip", "red" )) ;
-			_deck.enqueue( new ActionCard( "+2", "yellow" )) ;
-			_deck.enqueue( new ActionCard( "reverse", "yellow" )) ;
-			_deck.enqueue( new ActionCard( "skip", "yellow" )) ;
-			_deck.enqueue( new ActionCard( "+2", "green" )) ;
-			_deck.enqueue( new ActionCard( "reverse", "green" )) ;
-			_deck.enqueue( new ActionCard( "skip", "green" )) ;
-			_deck.enqueue( new ActionCard( "+2", "blue" )) ;
-			_deck.enqueue( new ActionCard( "reverse", "blue" )) ;
-			_deck.enqueue( new ActionCard( "skip", "blue" )) ;
-		}
-		for( int n = 0 ; n < 4 ; n ++ ) {
-			_deck.enqueue( new ActionCard( "+4", "" )) ;
-			_deck.enqueue( new ActionCard( "wild", "" )) ;
-		}
+	    }
+	}
+	for( int n = 0 ; n < 2 ; n ++ ) {
+	    _deck.enqueue( new ActionCard( "+2", "red" )) ;
+	    _deck.enqueue( new ActionCard( "reverse", "red" )) ;
+	    _deck.enqueue( new ActionCard( "skip", "red" )) ;
+	    _deck.enqueue( new ActionCard( "+2", "yellow" )) ;
+	    _deck.enqueue( new ActionCard( "reverse", "yellow" )) ;
+	    _deck.enqueue( new ActionCard( "skip", "yellow" )) ;
+	    _deck.enqueue( new ActionCard( "+2", "green" )) ;
+	    _deck.enqueue( new ActionCard( "reverse", "green" )) ;
+	    _deck.enqueue( new ActionCard( "skip", "green" )) ;
+	    _deck.enqueue( new ActionCard( "+2", "blue" )) ;
+	    _deck.enqueue( new ActionCard( "reverse", "blue" )) ;
+	    _deck.enqueue( new ActionCard( "skip", "blue" )) ;
+	}
+	for( int n = 0 ; n < 4 ; n ++ ) {
+	    _deck.enqueue( new ActionCard( "+4", "" )) ;
+	    _deck.enqueue( new ActionCard( "wild", "" )) ;
+	}
     }//ends populate deck
     
     public int chooseVersion(){
@@ -126,24 +126,27 @@ public class ClassicUno{
     }//ends sortRank()
     
     public void deal(int indexOfPlayer){
-		for( Player i : _players ) {
-			for( int n = 0 ; n < 7 ; n ++ ) {
-				( i._hand ).add( _deck.dequeue()) ;
-			}
-		}
+	for( Player i : _players ) {
+	    for( int n = 0 ; n < 7 ; n ++ ) {
+		( i._hand ).add( _deck.dequeue()) ;
+	    }
+	}
     }//ends deal()
 
     public Card printDiscard(){
 	return _discard.peek();
     }
+    
     public LLStack<Card> setDiscard(){
 	Card top= _deck.dequeue();
 	_discard.push(top);
 	return _discard;
     }
+    
     public boolean match(Card other){
 	return false;
     }//ends match
+    
     /*
       public void reverse(){
       LLNode temp = _players._head ;

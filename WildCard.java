@@ -1,6 +1,9 @@
 public class WildCard extends ActionCard {
     
     String _ability ;
+
+    //"draw4"
+    //"colorSwitch"
     
     public WildCard() {
 	_ability = "";
