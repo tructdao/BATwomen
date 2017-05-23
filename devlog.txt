@@ -10,7 +10,7 @@ UNO
 ------------------------------------------
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+- the sample method in Rqueue didn't work as intended, so we switched to linked lists and used the shuffle method. 
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -88,14 +88,17 @@ Truc :: planned Tournament
 ==============================================================
 2017-05-21
 --------------------------------------------------------------
-Bayan :: 
+Bayan ::
+      - worked on trying to figure out why the deck wasn't printing, stumped
 Alison :: 
 Truc :: Started mapping out methods for cards
 	Player.playCard()
 ==============================================================
 2017-05-22
 --------------------------------------------------------------
-Bayan :: 
+Bayan ::
+      - went to the dojo and sat with jeffrey and figured out a way around the problem.
+      - we'll be using linked lists instead of an rqueue for the deck. 
 Alison :: 
 Truc :: Worked on the player playing cards
 	Fixed the Cards a little bit
