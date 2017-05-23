@@ -23,7 +23,7 @@ javac *.java is extremely useful because it tells you which errors to fix at an 
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+- deck will be a linked list
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -98,7 +98,8 @@ Truc :: Started mapping out methods for cards
 --------------------------------------------------------------
 Bayan ::
       - went to the dojo and sat with jeffrey and figured out a way around the problem.
-      - we'll be using linked lists instead of an rqueue for the deck. 
+      - we'll be using linked lists instead of an rqueue for the deck.
+      - the deck is shuffled now :) 
 Alison :: 
 Truc :: Worked on the player playing cards
 	Fixed the Cards a little bit
