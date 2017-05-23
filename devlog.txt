@@ -101,6 +101,7 @@ Bayan ::
       - we'll be using linked lists instead of an rqueue for the deck.
       - the deck is shuffled now :) 
 Alison :: 
+	 - fixed buggy play method with downcasting
 Truc :: Worked on the player playing cards
 	Fixed the Cards a little bit
 	boolean methods in Cards
