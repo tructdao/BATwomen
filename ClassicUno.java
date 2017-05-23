@@ -152,12 +152,30 @@ public class ClassicUno{
 	//return _discard;
     }
     
-    public boolean match(Card other){
-	return false;
+    public void match(Card other){
+	if(!(other.getColor().equals(_discard.peek().getColor()))){
+	    System.out.println("That's not a playable move");
+	    pickCard();	    
+	}
     }//ends match
-    
+
+    public int pickCard(){
+	System.out.println("It's your turn, what card would you like to play(index of your hand)");
+	int x= Keyboard.readInt();
+	return x;
+    }
+    public void takeTurns(){
+	while(_players.size()!=1 && _deck.size()!=0){
+	    for(Player x : _players){
+		System.out.println(x);
+		System.out.println();
+		int ind= pickCard();
+		match(x.getHand().get(ind));
+	    }
+	}
+    }
     /*
-      public void reverse(){
+      public void reverse()
       LLNode temp = _players._head ;
 	_players._head =_players. _tail ;
 	_players._tail = temp ;

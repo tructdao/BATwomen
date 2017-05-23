@@ -111,7 +111,11 @@ Truc :: Worked on the player playing cards
 2017-05-23
 --------------------------------------------------------------
 Bayan ::
-      - the toString for Player works and prints out player name with their hands. 
+      - the toString for Player works and prints out player name with their hands.
+      - added method for match(Card)- checks if the card matches the top of discard
+      - added pickCard()- asks player what card they want to play
+      - added takeTurns()- loops through the players until game is over.
+      	- will solidify them later
 Alison :: 
 Truc ::
 ==============================================================
