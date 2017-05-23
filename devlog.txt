@@ -99,7 +99,9 @@ Truc :: Started mapping out methods for cards
 Bayan ::
       - went to the dojo and sat with jeffrey and figured out a way around the problem.
       - we'll be using linked lists instead of an rqueue for the deck.
-      - the deck is shuffled now :) 
+      - the deck is shuffled now :)
+      - added subclasses for the Action cards for a more object oriented approach
+      -debugged and tested discard methods. 
 Alison :: 
 	 - fixed buggy play method with downcasting
 Truc :: Worked on the player playing cards
