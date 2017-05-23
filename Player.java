@@ -3,12 +3,12 @@ import java.util.*;
 import cs1.Keyboard;
 public class Player{
 
-    int _gamesWon;
-    int _gamesPlayed;
-    int _score;
-    boolean _won;
-    ArrayList<Card> _hand;
-    String _name;
+    private int _gamesWon;
+    private  int _gamesPlayed;
+    private int _score;
+    private boolean _won;
+    private ArrayList<Card> _hand;
+    private String _name;
 
     public Player(){
 	_gamesWon = 0;
@@ -43,6 +43,9 @@ public class Player{
 
     public int getGamesPlayed(){
 	return _gamesPlayed;
+    }
+    public ArrayList<Card> getHand(){
+	return _hand;
     }
     
  //--------------------------- ^^ Accessors ^^ -----------------------
@@ -136,11 +139,11 @@ public class Player{
 	}*/
 
     public String toString(){
-	String ret ="Hey, " + _name + "\nHere's your hand:\n ";
-	for (Card x : _hand){
+	String ret = _name + _hand;
+	/*	for (Card x : _hand){
 	    ret += x;
 	    ret+= "\t";
-	}
+	    }*/
 	return ret;
     }
 }

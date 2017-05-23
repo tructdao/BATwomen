@@ -27,13 +27,6 @@ public class ClassicUno{
     
     
     public void newGame(){
-	System.out.println("Woo let's play Uno!!");
-	int nP=numPlayers();
-	for( int x=1; x<=nP; x++){
-	    Player newPlayer= new Player();
-	    newPlayer.setName(playerName());
-	    _players.add(newPlayer);
-	}
 	int v= chooseVersion();
 	//	setDiscard();
 	if (v==3){
@@ -43,9 +36,18 @@ public class ClassicUno{
 	    populateDeck();
 	    Collections.shuffle(_deck);
 	    //	    System.out.println(_deck);
-	    System.out.println(_players);
+	    System.out.println("Woo let's play Uno!!");
+	    int nP=numPlayers();
+	    for( int x=1; x<=nP; x++){
+		Player newPlayer= new Player();
+		newPlayer.setName(playerName());
+		_players.add(newPlayer);
+	    }
+	    
 	    setDiscard();
 	    deal();
+	    System.out.println("Player Hands:"
+	    System.out.println(_players);
 	    System.out.println("Discard Pile:");
 	    System.out.println(_discard.peek());
 	}
@@ -134,7 +136,8 @@ public class ClassicUno{
     public void deal(){
 	for( Player i : _players ) {
 	    for( int n = 0 ; n < 7 ; n ++ ) {
-		( i._hand ).add( _deck.remove(0)) ;
+		i.setHand( _deck.remove(0)) ;
+		//	System.out.println(i.getHand());
 	    }
 	}
     }//ends deal()
