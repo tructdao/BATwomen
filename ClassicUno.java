@@ -46,7 +46,7 @@ public class ClassicUno{
 	    
 	    setDiscard();
 	    deal();
-	    System.out.println("Player Hands:"
+	    System.out.println("Player Hands:");
 	    System.out.println(_players);
 	    System.out.println("Discard Pile:");
 	    System.out.println(_discard.peek());
