@@ -3,9 +3,9 @@ Bayan Berri, Alison Lee, Truc Dao
 
 5/20
 Bayan:
-	- display discard pile at all times.  
-	-display each player's hand when it's their turn.
-	-toString for players print player: hand
+	- display discard pile at all times. done  
+	-display each player's hand when it's their turn. (move)
+	-toString for players print player: hand done
 Alison:
 	- get shuffle to work, and add it to newGame() so we can make sure it's working.
 	  - (just a possible way) Rqueue has a method called Sample(). each time you add afew cards run sample(), so it's completely out of order.
