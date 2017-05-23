@@ -20,6 +20,7 @@ What we have so far:
 - a basic setup for the discard pile
 
 
+IMPORTANT:
 - having a turns system so that we can start testing that the game actually works.
 - Having a match method to make sure the cards match.
 - coding methods for the action cards. 

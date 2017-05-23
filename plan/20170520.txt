@@ -1,7 +1,7 @@
 Team BatWomen
 Bayan Berri, Alison Lee, Truc Dao
 
-5/22
+5/20
 Bayan:
 	- display discard pile at all times.  
 	-display each player's hand when it's their turn.
