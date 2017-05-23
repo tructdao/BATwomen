@@ -136,7 +136,7 @@ public class Player{
 	}*/
 
     public String toString(){
-	String ret = _name + "\n";
+	String ret ="Hey, " + _name + "\nHere's your hand:\n ";
 	for (Card x : _hand){
 	    ret += x;
 	    ret+= "\t";

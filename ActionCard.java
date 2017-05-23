@@ -1,4 +1,4 @@
-public abstract class ActionCard implements Card {
+public class ActionCard implements Card {
     String _action ;
     String _color ;
 
@@ -17,7 +17,7 @@ public abstract class ActionCard implements Card {
 	_action=a;
 	_color=c;
     }
-    public void action();
+    // public void action();
     public String getAction() {
 	return _action;
     }

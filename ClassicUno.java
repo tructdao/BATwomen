@@ -35,15 +35,17 @@ public class ClassicUno{
 	    _players.add(newPlayer);
 	}
 	int v= chooseVersion();
-	populateDeck();
-	Collections.shuffle(_deck);
-	System.out.println(_deck);	
 	//	setDiscard();
 	if (v==3){
 	    printRules();
 	}
 	else if (v==1){
+	    populateDeck();
+	    Collections.shuffle(_deck);
+	    //	    System.out.println(_deck);
+	    System.out.println(_players);
 	    setDiscard();
+	    deal();
 	    System.out.println("Discard Pile:");
 	    System.out.println(_discard.peek());
 	}
@@ -129,7 +131,7 @@ public class ClassicUno{
 	return "";
     }//ends sortRank()
     
-    public void deal(int indexOfPlayer){
+    public void deal(){
 	for( Player i : _players ) {
 	    for( int n = 0 ; n < 7 ; n ++ ) {
 		( i._hand ).add( _deck.remove(0)) ;
