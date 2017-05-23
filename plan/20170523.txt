@@ -18,6 +18,7 @@ What we have so far:
 -  a linked list of cards SHUFFLED woooo!
 -  the options working (will be useful later on)
 - a basic setup for the discard pile
+- Hands are printing woo
 
 
 IMPORTANT:

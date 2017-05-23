@@ -110,7 +110,8 @@ Truc :: Worked on the player playing cards
 ==============================================================
 2017-05-23
 --------------------------------------------------------------
-Bayan :: 
+Bayan ::
+      - the toString for Player works and prints out player name with their hands. 
 Alison :: 
 Truc ::
 ==============================================================
