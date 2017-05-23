@@ -15,6 +15,9 @@ public interface Card {
     //private String _color;
     
     public String getColor();
+	
+	// for actioncards. for line109 in player
+	public String getAction() ;
 
     public String toString();
 

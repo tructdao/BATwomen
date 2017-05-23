@@ -106,16 +106,16 @@ public class Player{
 	System.out.println( "Card just dealt : " + top );
 	
 	if ( top.isActionCard() ){
-	    if ( top.getAction().equals("draw2") ){
+	    if ( (( ActionCard )top ).getAction().equals("draw2") ){
 		System.out.println("Draw 2 cards.");
 		drawCard();
 		drawCard();
 	    }
-	    else if ( top.getAction().equals("skip") ){
+	    else if ( (( ActionCard )top ).getAction().equals("skip") ){
 		System.out.println("You've been skipped!");
 		return;
 	    }
-	    else if ( top.getAction().equals("reverse") ){
+	    else if ( (( ActionCard )top ).getAction().equals("reverse") ){
 		//reverse in ClassicUno player DLLNode
 		System.out.println("Reversing.... ");
 		return;
@@ -123,7 +123,7 @@ public class Player{
 	}
 	
 	else if ( top.isWildCard() ){
-	    if ( top.getAbility.equals("draw4") ){
+	    if ( (( WildCard )top ).getAbility.equals("draw4") ){
 		System.out.println("Draw 4 cards.");
 		for (int i = 0; i < 4; i++){
 		    drawCard();
