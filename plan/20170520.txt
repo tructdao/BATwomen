@@ -4,8 +4,6 @@ Bayan Berri, Alison Lee, Truc Dao
 5/22
 Bayan:
 	- display discard pile at all times.  
-	- does card match? 
-	- ask player what they want to do, get turns to work.
 	-display each player's hand when it's their turn.
 	-toString for players print player: hand
 Alison:

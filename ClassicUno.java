@@ -36,19 +36,20 @@ public class ClassicUno{
 	}
 	int v= chooseVersion();
 	populateDeck();
-	
-	//	setDiscard();
-	System.out.println(_discard.peek());
-	/*if (v==3){
-
-	  printRules();
-	  }
-	  else if (v==1){
-	  setDiscard();
-	  System.out.println(printDiscard());
-	  }*/
 	Collections.shuffle(_deck);
 	System.out.println(_deck);	
+	//	setDiscard();
+	if (v==3){
+	    printRules();
+	}
+	else if (v==1){
+	    setDiscard();
+	    System.out.println("Discard Pile:");
+	    System.out.println(_discard.peek());
+	}
+
+	//	System.out.println("The Deck of Cards(after top card is discarded)DELETE LATER");
+	//System.out.println(_deck);	
 
 	
     }//ends newGame

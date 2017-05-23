@@ -101,7 +101,7 @@ public class Player{
 	}
     }
 
-    public void play( Card top ){
+    /* public void play( Card top ){
 	
 	System.out.println( "Card just dealt : " + top );
 	
@@ -133,7 +133,7 @@ public class Player{
 	
         playCard( top );
 	
-	}
+	}*/
 
     public String toString(){
 	String ret = _name + "\n";
