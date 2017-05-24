@@ -117,7 +117,7 @@ Bayan ::
       - added takeTurns()- loops through the players until game is over.
       	- will solidify them later
 Alison :: 
-Truc ::
+Truc :: UML Diagrams
 ==============================================================
 2017-05-24
 --------------------------------------------------------------
