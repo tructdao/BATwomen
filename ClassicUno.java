@@ -50,6 +50,8 @@ public class ClassicUno{
 	    System.out.println(_players);
 	    System.out.println("Discard Pile:");
 	    System.out.println(_discard.peek());
+
+	    takeTurns() ;
 	}
 
 	//	System.out.println("The Deck of Cards(after top card is discarded)DELETE LATER");
@@ -152,14 +154,17 @@ public class ClassicUno{
 	//return _discard;
     }
     
-    public void match(Card other){
+    public boolean match(Card other){
 	if(!(other.getColor().equals(_discard.peek().getColor()))){
 	    System.out.println("That's not a playable move");
-	    pickCard();	    
+	    return false ;	    
 	}
+	// cards match!
+	return true ;
     }//ends match
 
-    public int pickCard(){
+    // player inputs index of card he/she wants to play
+    public int pickCard(){ 
 	System.out.println("It's your turn, what card would you like to play(index of your hand)");
 	int x= Keyboard.readInt();
 	return x;
@@ -170,7 +175,18 @@ public class ClassicUno{
 		System.out.println(x);
 		System.out.println();
 		int ind= pickCard();
+		// check if index is out of range
+		while( ind < 0 || ind >= getHandSize()) {
+		    ind = pickCard() ;
+		}
+		//COMBINE while loops!!!!
+		// boolean isMatch = match(x.getHand().get(ind));
+		while( !(match(x.getHand().get(ind)))) {
+		    ind = pickCard() ;
+		}
+		/*
 		match(x.getHand().get(ind));
+		*/
 	    }
 	}
     }
