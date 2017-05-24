@@ -175,19 +175,24 @@ public class ClassicUno{
 		System.out.println(x);
 		System.out.println();
 		int ind= pickCard();
-		// check if index is out of range
-		while( ind < 0 || ind >= getHandSize()) {
+		// checks if index is out of range, and if they do, if match
+		while( ( ind < 0 || ind >= x.getHandSize()) || !(match(x.getHand().get(ind)))) {
 		    ind = pickCard() ;
-		}
-		//COMBINE while loops!!!!
-		// boolean isMatch = match(x.getHand().get(ind));
-		while( !(match(x.getHand().get(ind)))) {
-		    ind = pickCard() ;
+			// also, if no cards match or if a player simply wants a new card, then remove one from deck and add to player hand
 		}
 		/*
-		match(x.getHand().get(ind));
+		if( x.getHandSize() == 2 and theres a usable card ) {
+			call UNO and stuff
+		}
 		*/
-	    }
+		_discard.push( /* add a method in Player class to remove played card */ ) ;
+	    
+		if( x.getHandSize() == 0 ) {
+			// remove player from _player and i guess add it to llist of winningplayers
+			// but must remove by index while this is a foreach loop :( oh noes
+		}
+		
+		}
 	}
     }
     /*
