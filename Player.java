@@ -47,6 +47,10 @@ public class Player{
     public ArrayList<Card> getHand(){
 	return _hand;
     }
+
+    public int getHandSize(){
+	return _hand.size();
+    }
     
  //--------------------------- ^^ Accessors ^^ -----------------------
 
@@ -104,7 +108,7 @@ public class Player{
 	}
     }
 
-    /* public void play( Card top ){
+    public void play( Card top ){
 	
 	System.out.println( "Card just dealt : " + top );
 	
@@ -123,10 +127,7 @@ public class Player{
 		System.out.println("Reversing.... ");
 		return;
 	    }
-	}
-	
-	else if ( top.isWildCard() ){
-	    if ( (( WildCard )top ).getAbility.equals("draw4") ){
+	    if ( (( ActionCard )top ).getAbility.equals("draw4") ){
 		System.out.println("Draw 4 cards.");
 		for (int i = 0; i < 4; i++){
 		    drawCard();
@@ -134,9 +135,13 @@ public class Player{
 	    }
 	}
 	
+	else if ( top.isWildCard() ){
+	    
+	}
+	
         playCard( top );
 	
-	}*/
+    }
 
     public String toString(){
 	String ret = _name + _hand;
