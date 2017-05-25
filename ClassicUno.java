@@ -8,7 +8,7 @@ public class ClassicUno{
     public static LinkedList<Card> _deck;
     private LList<Player> _players;
     public LLStack<Card> _discard;
-    
+    public LLStack<Player> _winners;
     public ClassicUno(){
 	_deck= new LinkedList<Card>();
 	_players= new LList<Player>();
@@ -160,7 +160,7 @@ public class ClassicUno{
 	    pickCard();
 	}
 	else if(other.getColor.equals(_discard.peek().getColor())||//if color matches
-		other.getNumber.equals(_discard.peek().getNumber())||// if number matches
+		other.getNumber == (_discard.peek().getNumber())||// if number matches
 		other.getAction.equals(_discard.peek().getAction())){//if action matches
 	    
 	    return true;
@@ -190,30 +190,30 @@ public class ClassicUno{
 		System.out.println();
 		int ind=  pickCard();
 		// checks if index is out of range, and if they do, if match
-		while( ( ind < 0 || ind >= x.getHandSize()) || !(match(x.getHand().get(ind)))) {
+		while( ( ind < 0 || ind >= x.getHandSize()) || !(match(x.getHand().get(ind))))
+		    ind=pickCard();
 		    if(x== Integer.MAX_VALUE){//draw
 			x.setHand(_deck.remove(0));
 		    }
-		    else{
-			
+		    else if(match(x.getHand(ind))){//if it matches push it to discard
+			_discard.push(x.getHand().remove(ind));
 		    }
-		    // ind = pickCard() ;
-			// also, if no cards match or if a player simply wants a new card, then remove one from deck and add to player hand
+		    
+	    }
+		// also, if no cards match or if a player simply wants a new card, then remove one from deck and add to player hand
 		}
 		/*
 		if( x.getHandSize() == 2 and theres a usable card ) {
 			call UNO and stuff
 		}
 		*/
-		_discard.push( /* add a method in Player class to remove played card */ ) ;
-	    
-		if( x.getHandSize() == 0 ) {
+	//	if( x.getHandSize() == 0 ) {
 			// remove player from _player and i guess add it to llist of winningplayers
 			// but must remove by index while this is a foreach loop :( oh noes
-		}
+	//	}
 		
-		}
-	}
+	//	}
+	//	}
     }
     /*
       public void reverse()
