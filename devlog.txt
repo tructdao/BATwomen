@@ -117,13 +117,15 @@ Bayan ::
       - added takeTurns()- loops through the players until game is over.
       	- will solidify them later
 Alison :: 
-	- flowchart
+	 - flowchart
 Truc :: UML Diagrams
 ==============================================================
 2017-05-24
 --------------------------------------------------------------
 Bayan :: 
 Alison :: 
+	 - worked on the loop that deals with each player's turn
+	 - sortRank() changes
 Truc :: Player revisions
 	Add2 and Add4
 ==============================================================
