@@ -107,7 +107,7 @@ public class Player{
 	    System.out.println("UNO!");
 	}
     }
-
+    /*
     public void play( Card top ){
 	
 	System.out.println( "Card just dealt : " + top );
@@ -142,6 +142,7 @@ public class Player{
         playCard( top );
 	
     }
+    */
 
     public String toString(){
 	String ret = _name + _hand;

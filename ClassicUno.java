@@ -159,9 +159,14 @@ public class ClassicUno{
 	    System.out.println("That's not a playable move");
 	    pickCard();
 	}
-	else if(other.getColor.equals(_discard.peek().getColor())||//if color matches
-		other.getNumber == (_discard.peek().getNumber())||// if number matches
-		other.getAction.equals(_discard.peek().getAction())){//if action matches
+	else if( other.getColor().equals(_discard.peek().getColor())){//color match
+	}
+	
+	else if(other.isNumberCard()){
+	    if(other.getNumber().equals(_discard.peek
+	else if(other.getColor().equals(_discard.peek().getColor())||//if color matches
+		((NumberCard)other).getNumber() == (_discard.peek().getNumber())||// if number matches
+		((ActionCard)other).getAction().equals(_discard.peek().getAction())){//if action matches
 	    
 	    return true;
 	}
@@ -185,23 +190,24 @@ public class ClassicUno{
     }
     public void takeTurns(){
 	while(_players.size()!=1 && _deck.size()!=0){
-	    for(Player x : _players){
-		System.out.println(x);
+	    for(int n = 0 ; n < _player.size() ; n ++ ){
+		Player person = _player.get( n ) ;
+		System.out.println( person );
 		System.out.println();
 		int ind=  pickCard();
 		// checks if index is out of range, and if they do, if match
-		while( ( ind < 0 || ind >= x.getHandSize()) || !(match(x.getHand().get(ind))))
+		while( ( ind < 0 || ind >= person.getHandSize()) || !(match(person.getHand().get(ind))))
 		    ind=pickCard();
-		    if(x== Integer.MAX_VALUE){//draw
-			x.setHand(_deck.remove(0));
+		    if(person == Integer.MAX_VALUE){//draw
+			person.setHand(_deck.remove(0));
 		    }
-		    else if(match(x.getHand(ind))){//if it matches push it to discard
-			_discard.push(x.getHand().remove(ind));
+		    else if(match(person.getHand(ind))){//if it matches push it to discard
+			_discard.push(person.getHand().remove(ind));
 		    }
 		    
 	    }
 		// also, if no cards match or if a player simply wants a new card, then remove one from deck and add to player hand
-		}
+	}
 		/*
 		if( x.getHandSize() == 2 and theres a usable card ) {
 			call UNO and stuff
