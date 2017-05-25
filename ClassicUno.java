@@ -157,16 +157,30 @@ public class ClassicUno{
     public boolean match(Card other){
 	if(!(other.getColor().equals(_discard.peek().getColor()))){
 	    System.out.println("That's not a playable move");
-	    return false ;	    
+	    pickCard();
+	}
+	else if(other.getColor.equals(_discard.peek().getColor())||//if color matches
+		other.getNumber.equals(_discard.peek().getNumber())||// if number matches
+		other.getAction.equals(_discard.peek().getAction())){//if action matches
+	    
+	    return true;
+	}
+	else if (isWildCard()){
+	    return true;
 	}
 	// cards match!
-	return true ;
+	return false ;
     }//ends match
 
     // player inputs index of card he/she wants to play
     public int pickCard(){ 
-	System.out.println("It's your turn, what card would you like to play(index of your hand)");
-	int x= Keyboard.readInt();
+	System.out.println("It's your turn, what card would you like to play(index of your hand). \nIf you'd like to draw a card simply type in the word draw");
+	try{
+	    int x= Keyboard.readInt();
+	}
+	catch(Exception e){
+	    int x= Integer.MAX_VALUE;
+	}
 	return x;
     }
     public void takeTurns(){
@@ -174,10 +188,16 @@ public class ClassicUno{
 	    for(Player x : _players){
 		System.out.println(x);
 		System.out.println();
-		int ind= pickCard();
+		int ind=  pickCard();
 		// checks if index is out of range, and if they do, if match
 		while( ( ind < 0 || ind >= x.getHandSize()) || !(match(x.getHand().get(ind)))) {
-		    ind = pickCard() ;
+		    if(x== Integer.MAX_VALUE){//draw
+			x.setHand(_deck.remove(0));
+		    }
+		    else{
+			
+		    }
+		    // ind = pickCard() ;
 			// also, if no cards match or if a player simply wants a new card, then remove one from deck and add to player hand
 		}
 		/*
