@@ -20,6 +20,5 @@ public interface Card {
 
     public boolean isNumberCard();
     public boolean isActionCard();
-    public boolean isWildCard();
     
 }

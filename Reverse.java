@@ -15,5 +15,11 @@ public class Reverse extends ActionCard{
     public String getAction(){
 	return _action;
     }
+
+    public String toString(){
+	String ret = "";
+	ret += _action + " : " + _color +"\n";
+	return ret;
+    }
     
 }

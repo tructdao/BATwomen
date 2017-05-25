@@ -21,7 +21,7 @@ public class NumberCard implements Card {
     }
     public String toString(){
 	String ret= "";
-	ret+= this._number+ " : "+ this._color+"\n";
+	ret+= _number+ " : "+ _color+"\n";
 	return ret;
     }
 

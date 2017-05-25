@@ -144,6 +144,12 @@ public class Player{
     }
     */
 
+    // public String handString(){
+    // 	String ret = "";
+    // 	for
+    // 	return ret;
+    // }
+
     public String toString(){
 	String ret = _name + _hand;
 	/*	for (Card x : _hand){

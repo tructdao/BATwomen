@@ -2,18 +2,18 @@ import cs1.Keyboard;
 
 public class Wild extends ActionCard {
     
-    String _ability;
+    String _action;
     String _color;
 
     //"colorSwitch"
     
     public Wild() {
-	_ability = "colorSwitch";
+	_action = "colorSwitch";
 	_color = "white";
     }
 
-    public String getAbility() {
-	return _ability;
+    public String getAction() {
+	return _action;
     }
 
     public String setColor(){
@@ -24,8 +24,10 @@ public class Wild extends ActionCard {
         return _color;
     }
 
-    public boolean isNumberCard(){ return false; }
-    public boolean isActionCard(){ return false; }
-    public boolean isWildCard(){ return true; }
+    public String toString(){
+	String ret = "";
+	ret += _action + " : " + _color +"\n";
+	return ret;
+    }
     
 }

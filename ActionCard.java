@@ -4,8 +4,8 @@ public class ActionCard implements Card {
     String _color ;
 
     public ActionCard() {
-	_action="";
-	_color="";
+	_action = "";
+	_color = "";
     }
     
     public ActionCard(String a,String c){
@@ -21,13 +21,14 @@ public class ActionCard implements Card {
 	return _color ;
     }
 
+    public String toString(){
+	String ret = "";
+	ret += _action + " : " + _color +"\n";
+	return ret;
+    }
+
     public boolean isNumberCard(){ return false; }
     public boolean isActionCard(){ return true; }
     public boolean isWildCard(){ return false; }
-	
-    public String toString(){
-	String ret= "";
-	ret += this._action+ " : "+ this._color +"\n";
-	return ret;
-    }
+    
 }

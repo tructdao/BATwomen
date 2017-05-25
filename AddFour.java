@@ -21,4 +21,10 @@ public class AddFour extends ActionCard{
 	_color = Keyboard.readString();
         return _color;
     }
+    
+    public String toString(){
+	String ret = "";
+	ret += _action + " : " + _color +"\n";
+	return ret;
+    }
 }

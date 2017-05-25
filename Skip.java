@@ -21,6 +21,12 @@ public class Skip extends ActionCard{
 	return _color;
     }
 
+    public String toString(){
+	String ret = "";
+	ret += _action + " : " + _color +"\n";
+	return ret;
+    }
+
     /* although skip is a card, it doesnt deal with/change chards. it has more to do with a player
 	actual skipping will be in the while loop (running the game): if( player's card == skip ) { do nothing and move onto next player ; } 
 	OR
