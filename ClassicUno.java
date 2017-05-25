@@ -5,10 +5,12 @@ import java.util.Collections;
 import java.util.LinkedList;
 
 public class ClassicUno{
+    
     public static LinkedList<Card> _deck;
     private LList<Player> _players;
     public LLStack<Card> _discard;
     public LLStack<Player> _winners;
+    
     public ClassicUno(){
 	_deck= new LinkedList<Card>();
 	_players= new LList<Player>();
@@ -74,22 +76,22 @@ public class ClassicUno{
 	    }
 	}
 	for( int n = 0 ; n < 2 ; n ++ ) {
-	    _deck.add( new ActionCard( "+2", "red" )) ;
-	    _deck.add( new ActionCard( "reverse", "red" )) ;
-	    _deck.add( new ActionCard( "skip", "red" )) ;
-	    _deck.add( new ActionCard( "+2", "yellow" )) ;
-	    _deck.add( new ActionCard( "reverse", "yellow" )) ;
-	    _deck.add( new ActionCard( "skip", "yellow" )) ;
-	    _deck.add( new ActionCard( "+2", "green" )) ;
-	    _deck.add( new ActionCard( "reverse", "green" )) ;
-	    _deck.add( new ActionCard( "skip", "green" )) ;
-	    _deck.add( new ActionCard( "+2", "blue" )) ;
-	    _deck.add( new ActionCard( "reverse", "blue" )) ;
-	    _deck.add( new ActionCard( "skip", "blue" )) ;
+	    _deck.add( new AddTwo( "red" )) ;
+	    _deck.add( new Reverse( "red" )) ;
+	    _deck.add( new Skip( "red" )) ;
+	    _deck.add( new AddTwo( "yellow" )) ;
+	    _deck.add( new Reverse( "yellow" )) ;
+	    _deck.add( new Skip( "yellow" )) ;
+	    _deck.add( new AddTwo( "green" )) ;
+	    _deck.add( new Reverse( "green" )) ;
+	    _deck.add( new Skip( "green" )) ;
+	    _deck.add( new AddTwo( "blue" )) ;
+	    _deck.add( new Reverse( "blue" )) ;
+	    _deck.add( new Skip( "blue" )) ;
 	}
 	for( int n = 0 ; n < 4 ; n ++ ) {
-	    _deck.add( new ActionCard( "+4", "" )) ;
-	    _deck.add( new ActionCard( "wild", "" )) ;
+	    _deck.add( new AddFour()) ;
+	    _deck.add( new WildCard()) ;
 	}
     }//ends populate deck
     
@@ -163,7 +165,8 @@ public class ClassicUno{
 	}
 	
 	else if(other.isNumberCard()){
-	    if(other.getNumber().equals(_discard.peek
+	    if(other.getNumber().equals(_discard.peek())){}
+	}
 	else if(other.getColor().equals(_discard.peek().getColor())||//if color matches
 		((NumberCard)other).getNumber() == (_discard.peek().getNumber())||// if number matches
 		((ActionCard)other).getAction().equals(_discard.peek().getAction())){//if action matches
