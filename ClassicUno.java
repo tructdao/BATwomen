@@ -91,7 +91,7 @@ public class ClassicUno{
 	}
 	for( int n = 0 ; n < 4 ; n ++ ) {
 	    _deck.add( new AddFour()) ;
-	    _deck.add( new WildCard()) ;
+	    _deck.add( new Wild()) ;
 	}
     }//ends populate deck
     
@@ -230,5 +230,6 @@ public class ClassicUno{
 	_players._head =_players. _tail ;
 	_players._tail = temp ;
     }*/
+
     
 }//ends class
