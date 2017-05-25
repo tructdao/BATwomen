@@ -53,7 +53,7 @@ public class ClassicUno{
 	    System.out.println("Discard Pile:");
 	    System.out.println(_discard.peek());
 
-	    takeTurns() ;
+	    // takeTurns() ;
 	}
 
 	//	System.out.println("The Deck of Cards(after top card is discarded)DELETE LATER");
@@ -96,17 +96,29 @@ public class ClassicUno{
     }//ends populate deck
     
     public int chooseVersion(){
-	System.out.println("What version would you like to play?(int response)");
+	System.out.println("What version would you like to play?" +
+			   "(int response)");
 	System.out.println("\t1: Classic");
 	System.out.println("\t2: Tournament");
 	System.out.println("\t3: Rules");
 	int vers= Keyboard.readInt();
 	return vers;
     }//ends chooseVersion
+    
     public void printRules(){
         System.out.println("UNO-Classic");
-	System.out.println("At the beginning, each player is dealt 7 cards face down. The rest of the cards are placed in a draw pile. \nThen one card is flipped from the top of the draw pile and added to the discard pile. \nAs the game goes on, the goal is to match the top card of the discard pile with a card of the same color, number, or action.\n if the player has no matches or chooses not to play any of their cards they must draw a card. \n If the drawn card can be played, then play it. Otherwise it's the next player's turn.\n\n Have Fun!!");
-	
+	System.out.println("At the beginning, each player is dealt 7 cards " +
+			   "face down. The rest of the cards are placed in a " +
+			   "draw pile. \nThen one card is flipped from the " +
+			   "top of the draw pile and added to the discard " +
+			   "pile. \nAs the game goes on, the goal is to match" +
+			   " the top card of the discard pile with a card of " +
+			   "the same color, number, or action.\nIf the " +
+			   "player has no matches or chooses not to play any " +
+			   "of their cards they must draw a card. \n" +
+			   "If the drawn card can be played, then play it. " +
+			   "Otherwise it's the next player's turn.\n\n" +
+			   "Have Fun!!");
     }
 
     
@@ -117,7 +129,8 @@ public class ClassicUno{
     }//ends playerName()
 
     public int numPlayers(){
-	System.out.println("How many players will be playing this round of UNO(2-12)");
+	System.out.println("How many players will be playing this round " +
+			   "of UNO(2-12)");
 	int num;
 	while(true){
 	    num = Keyboard.readInt() ;    
@@ -125,10 +138,14 @@ public class ClassicUno{
 		return num;
 	    }
 	    else if( num<2){
-		System.out.println("You need more players!\nHow many players will be playing this round of UNO(2-12)? ");
+		System.out.println("You need more players!\n" +
+				   "How many players will be playing this " +
+				   "round of UNO(2-12)? ");
 	    }
 	    else if(num>12){
-		System.out.println("Too many players!\nHow many players will be playing this round of UNO(2-12)");
+		System.out.println("Too many players!\n" +
+				   "How many players will be playing this " +
+				   "round of UNO(2-12)");
 	    }
 	}
     }//ends numPlayers
@@ -155,7 +172,7 @@ public class ClassicUno{
 	_discard.push(top);
 	//return _discard;
     }
-    
+    /*     
     public boolean match(Card other){
 	if(!(other.getColor().equals(_discard.peek().getColor()))){
 	    System.out.println("That's not a playable move");
@@ -179,10 +196,14 @@ public class ClassicUno{
 	// cards match!
 	return false ;
     }//ends match
+    */
 
+    /*
     // player inputs index of card he/she wants to play
     public int pickCard(){ 
-	System.out.println("It's your turn, what card would you like to play(index of your hand). \nIf you'd like to draw a card simply type in the word draw");
+	System.out.println("It's your turn, what card would you like to play" +
+			   "(index of your hand). \nIf you'd like to draw a " +
+			   "card simply type in the word draw");
 	try{
 	    int x= Keyboard.readInt();
 	}
@@ -191,6 +212,8 @@ public class ClassicUno{
 	}
 	return x;
     }
+    */
+    /*
     public void takeTurns(){
 	while(_players.size()!=1 && _deck.size()!=0){
 	    for(int n = 0 ; n < _player.size() ; n ++ ){
@@ -199,31 +222,34 @@ public class ClassicUno{
 		System.out.println();
 		int ind=  pickCard();
 		// checks if index is out of range, and if they do, if match
-		while( ( ind < 0 || ind >= person.getHandSize()) || !(match(person.getHand().get(ind))))
+		while( ( ind < 0 || ind >= person.getHandSize()) ||
+		       !(match(person.getHand().get(ind)))){
 		    ind=pickCard();
 		    if(person == Integer.MAX_VALUE){//draw
 			person.setHand(_deck.remove(0));
 		    }
-		    else if(match(person.getHand(ind))){//if it matches push it to discard
+		    else if(match(person.getHand(ind))){
+			//if it matches push it to discard
 			_discard.push(person.getHand().remove(ind));
 		    }
-		    
+		}   
 	    }
-		// also, if no cards match or if a player simply wants a new card, then remove one from deck and add to player hand
+    	    //also, if no cards match or if a player simply wants a
+    	    //new card, then remove one from deck and add to player hand
+    	}
+    		
+	if( x.getHandSize() == 2 and theres a usable card ) {
+	    call UNO and stuff
+    		}
+	if( x.getHandSize() == 0 ) {
+	    //remove player from _player and i guess add it to llist of winningplayers
+	    //but must remove by index while this is a foreach loop :( oh noes
 	}
-		/*
-		if( x.getHandSize() == 2 and theres a usable card ) {
-			call UNO and stuff
-		}
-		*/
-	//	if( x.getHandSize() == 0 ) {
-			// remove player from _player and i guess add it to llist of winningplayers
-			// but must remove by index while this is a foreach loop :( oh noes
-	//	}
 		
-	//	}
-	//	}
+    
     }
+    */
+
     /*
       public void reverse()
       LLNode temp = _players._head ;

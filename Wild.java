@@ -7,7 +7,7 @@ public class Wild extends ActionCard {
 
     //"colorSwitch"
     
-    public WildCard() {
+    public Wild() {
 	_ability = "colorSwitch";
 	_color = "white";
     }
