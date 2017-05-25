@@ -7,6 +7,7 @@ public class WildCard implements Card {
     
     public WildCard() {
 	_ability = "colorSwitch";
+	_color = "white";
     }
 
     public String getAbility() {

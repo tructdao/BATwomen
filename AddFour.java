@@ -5,6 +5,7 @@ public class AddFour extends ActionCard{
 
     public AddFour(){
 	_action = "draw4";
+	_color = "white";
     }
 
     public String getAction(){

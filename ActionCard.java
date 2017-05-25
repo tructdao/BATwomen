@@ -27,7 +27,7 @@ public class ActionCard implements Card {
 	
     public String toString(){
 	String ret= "";
-	ret+= this._action+ " : "+ this._color +"\n";
+	ret += this._action+ " : "+ this._color +"\n";
 	return ret;
     }
 }
