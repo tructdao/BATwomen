@@ -36,8 +36,8 @@ public class ClassicUno{
 	}
 	else if (v==1){
 	    populateDeck();
-	    Collections.shuffle(_deck);
-	    //	    System.out.println(_deck);
+	    // Collections.shuffle(_deck);
+	    System.out.println(_deck);
 	    System.out.println("Woo let's play Uno!!");
 	    int nP=numPlayers();
 	    for( int x=1; x<=nP; x++){
