@@ -36,7 +36,7 @@ public class ClassicUno{
 	}
 	else if (v==1){
 	    populateDeck();
-	    // Collections.shuffle(_deck);
+	    Collections.shuffle(_deck);
 	    System.out.println(_deck);
 	    System.out.println("Woo let's play Uno!!");
 	    int nP=numPlayers();
@@ -52,12 +52,10 @@ public class ClassicUno{
 	    System.out.println(_players);
 	    System.out.println("Discard Pile:");
 	    System.out.println(_discard.peek());
-
-	    // takeTurns() ;
 	}
 
-	//	System.out.println("The Deck of Cards(after top card is discarded)DELETE LATER");
-	//System.out.println(_deck);	
+
+
 
 	
     }//ends newGame
@@ -158,7 +156,7 @@ public class ClassicUno{
 	for( Player i : _players ) {
 	    for( int n = 0 ; n < 7 ; n ++ ) {
 		i.setHand( _deck.remove(0)) ;
-		//	System.out.println(i.getHand());
+	
 	    }
 	}
     }//ends deal()
@@ -170,9 +168,9 @@ public class ClassicUno{
     public void setDiscard(){
 	Card top= _deck.remove(0);
 	_discard.push(top);
-	//return _discard;
+
     }
-    /*     
+    /*  
     public boolean match(Card other){
 	if(!(other.getColor().equals(_discard.peek().getColor()))){
 	    System.out.println("That's not a playable move");
@@ -198,7 +196,7 @@ public class ClassicUno{
     }//ends match
     */
 
-    /*
+    
     // player inputs index of card he/she wants to play
     public int pickCard(){ 
 	System.out.println("It's your turn, what card would you like to play" +
@@ -212,43 +210,46 @@ public class ClassicUno{
 	}
 	return x;
     }
-    */
-    /*
+    
+    
     public void takeTurns(){
 	while(_players.size()!=1 && _deck.size()!=0){
 	    for(int n = 0 ; n < _player.size() ; n ++ ){
 		Player person = _player.get( n ) ;
 		System.out.println( person );
 		System.out.println();
-		int ind=  pickCard();
-		// checks if index is out of range, and if they do, if match
+		//	int ind =  pickCard();
 		while( ( ind < 0 || ind >= person.getHandSize()) ||
 		       !(match(person.getHand().get(ind)))){
-		    ind=pickCard();
-		    if(person == Integer.MAX_VALUE){//draw
+		   int ind = pickCard();
+		    if(ind == Integer.MAX_VALUE){//draw
 			person.setHand(_deck.remove(0));
 		    }
-		    else if(match(person.getHand(ind))){
+		    else if(match(person.getHand.get(ind))){
 			//if it matches push it to discard
-			_discard.push(person.getHand().remove(ind));
+			_discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
 		    }
+		    else{
+			System.out.println("That move doesn't work!" +
+					   "Try picking another card or draw");
+			pickCard();
 		}   
 	    }
-    	    //also, if no cards match or if a player simply wants a
-    	    //new card, then remove one from deck and add to player hand
     	}
     		
+	    /*Put it in another method. 
 	if( x.getHandSize() == 2 and theres a usable card ) {
-	    call UNO and stuff
-    		}
-	if( x.getHandSize() == 0 ) {
+	    // call UNO and stuff
+	    }*/
+	    
+	    /*	if( x.getHandSize() == 0 ) {
 	    //remove player from _player and i guess add it to llist of winningplayers
-	    //but must remove by index while this is a foreach loop :( oh noes
+	    //but must remove by index while this is a foreach loop :( oh noes*/
 	}
 		
     
     }
-    */
+    
 
     /*
       public void reverse()
