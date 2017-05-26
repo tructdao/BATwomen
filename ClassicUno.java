@@ -191,7 +191,7 @@ public class ClassicUno{
 		return true ;
 	    }  
 	    // action == action
-	    else if( other.getAction().equals( _discard.peek().getAction())) {
+	    else if(((ActionCard) other).getAction().equals( ((ActionCard)_discard.peek()).getAction())) {
 		return true ;
 	    }
 	}
