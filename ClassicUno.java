@@ -196,31 +196,14 @@ public class ClassicUno{
 	    }
 	}
 
-	else if( other.isWildCard() || other.getAction().equals( "draw4")) {
+	else if( ((ActionCard)other).getAction().equals("colorSwitch")
+		 ||((ActionCard) other).getAction().equals( "draw4")) {
 	    return true ;
 	}
 	else {
 	    return false ;
 	}
-	/*
-	else if( other.getColor().equals(_discard.peek().getColor())){//color match
-	}
-	
-	else if(other.isNumberCard()){
-	    if(other.getNumber().equals(_discard.peek())){}
-	}
-	else if(other.getColor().equals(_discard.peek().getColor())||//if color matches
-		((NumberCard)other).getNumber() == (_discard.peek().getNumber())||// if number matches
-		((ActionCard)other).getAction().equals(_discard.peek().getAction())){//if action matches
-	    
-	    return true;
-	}
-	else if (isWildCard()){
-	    return true;
-	}
-	// cards match!
-	return false ;
-	*/
+	return false;
     }//ends match
     
 
