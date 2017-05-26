@@ -20,6 +20,8 @@ The discard pile of cards is a stack, allowing for cards to be pushed on while s
 
 The deck of cards is a LinkedList of Cards. 
 
+Each Player can see the last card played on the discard pile and draw cards from the deck. 
+
 <h1>Launch Instructions</h1>
 
 To launch the game:
