@@ -170,12 +170,39 @@ public class ClassicUno{
 	_discard.push(top);
 
     }
-    /*  
+    
     public boolean match(Card other){
-	if(!(other.getColor().equals(_discard.peek().getColor()))){
-	    System.out.println("That's not a playable move");
-	    pickCard();
+       
+        if( other.isNumberCard() && _discard.peek().isNumberCard()) {
+	    // num == num
+	    if(((NumberCard  )other).getNumber() == ((NumberCard)_discard.peek()).getNumber()) {
+		return true ;
+	    }
+	    // color == color for num cards
+	    else if( other.getColor().equals(_discard.peek().getColor())) {
+		return true ;
+	    }
+
+	    return false ;
+	} 
+	else if(other.isActionCard() && _discard.peek().isActionCard()) {
+	    // color == color for action cards
+	    if(other.getColor() == _discard.peek().getColor()) {
+		return true ;
+	    }  
+	    // action == action
+	    else if( other.getAction().equals( _discard.peek().getAction())) {
+		return true ;
+	    }
 	}
+
+	else if( other.isWildCard() || other.getAction().equals( "draw4")) {
+	    return true ;
+	}
+	else {
+	    return false ;
+	}
+	/*
 	else if( other.getColor().equals(_discard.peek().getColor())){//color match
 	}
 	
@@ -193,8 +220,9 @@ public class ClassicUno{
 	}
 	// cards match!
 	return false ;
+	*/
     }//ends match
-    */
+    
 
     
     // player inputs index of card he/she wants to play
@@ -202,11 +230,13 @@ public class ClassicUno{
 	System.out.println("It's your turn, what card would you like to play" +
 			   "(index of your hand). \nIf you'd like to draw a " +
 			   "card simply type in the word draw");
+	int x ;
+
 	try{
-	    int x= Keyboard.readInt();
+	    x= Keyboard.readInt();
 	}
 	catch(Exception e){
-	    int x= Integer.MAX_VALUE;
+	    x= Integer.MAX_VALUE;
 	}
 	return x;
     }
@@ -214,18 +244,19 @@ public class ClassicUno{
     
     public void takeTurns(){
 	while(_players.size()!=1 && _deck.size()!=0){
-	    for(int n = 0 ; n < _player.size() ; n ++ ){
-		Player person = _player.get( n ) ;
+	    for(int n = 0 ; n < _players.size() ; n ++ ){
+		Player person = _players.get( n ) ;
 		System.out.println( person );
 		System.out.println();
-		//	int ind =  pickCard();
+		
+		int ind =  pickCard();
 		while( ( ind < 0 || ind >= person.getHandSize()) ||
 		       !(match(person.getHand().get(ind)))){
-		   int ind = pickCard();
+		   ind = pickCard();
 		    if(ind == Integer.MAX_VALUE){//draw
 			person.setHand(_deck.remove(0));
 		    }
-		    else if(match(person.getHand.get(ind))){
+		    else if(match(person.getHand().get(ind))){
 			//if it matches push it to discard
 			_discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
 		    }

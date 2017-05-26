@@ -27,4 +27,8 @@ public class AddFour extends ActionCard{
 	ret += _action + " : " + _color +"\n";
 	return ret;
     }
+
+    public boolean isAddFour() {
+	return true ;
+    }
 }
