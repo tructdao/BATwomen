@@ -33,7 +33,6 @@ public class ClassicUno{
     
     public void newGame(){
 	int v= chooseVersion();
-	//	setDiscard();
 	if (v==3){
 	    printRules();
 	    newGame();
@@ -41,7 +40,6 @@ public class ClassicUno{
 	else if (v==1){
 	    populateDeck();
 	    Collections.shuffle(_deck);
-	    // System.out.println(_deck);
 	    System.out.println("Woo let's play Uno!!");
 	    int nP=numPlayers();
 	    for( int x=1; x<=nP; x++){
@@ -52,8 +50,6 @@ public class ClassicUno{
 	    
 	    setDiscard();
 	    deal();
-	    // System.out.println("Player Hands:");
-	    //System.out.println(_players);
 	    System.out.println("Discard Pile:");
 	    System.out.println(_discard.peek());
 	    takeTurns();
@@ -61,12 +57,14 @@ public class ClassicUno{
     }//ends newGame
 
      //------------------v-----v--Setting the Game Up------------
+
     /**
      * populateDeck() adds 108 cards to the deck:
      * RGBY in each color:
      * 1 zero, 2 of each 1-9, 1 wild, 1 plus4, 2 of each reverse, skip, plus2
      * (108 cards) 
      */
+
     public void populateDeck() {
 	for( int n = 0 ; n < 10 ; n ++ ) {
 	    for( int i = 0 ; i < 2 ; i ++ ) {
@@ -106,6 +104,7 @@ public class ClassicUno{
       * tournament: winner moves on to another round
       * rules: prints out the rules and then asks the user to choose the version again
       */
+
     public int chooseVersion(){
 	System.out.println("What version would you like to play?" +
 			   "(int response)");
@@ -119,6 +118,7 @@ public class ClassicUno{
     /**
      * printRules() will be run only if the user inputs three for chooseVersion()
      */
+
     public void printRules(){
         System.out.println("UNO-Classic");
 	System.out.println("At the beginning, each player is dealt 7 cards " +
@@ -285,9 +285,6 @@ public class ClassicUno{
 		System.out.println("Here's the discard pile \n"+
 				   printDiscard());
 		int ind =  pickCard(n);
-		/*while( !( ind < 0 || ind >= person.getHandSize() ||
-		  !(match(person.getHand().get(ind))))){*/
-		//	ind = pickCard();
 		if(ind == 1000){//draw
 		    person.setHand(_deck.remove(0));
 		}
