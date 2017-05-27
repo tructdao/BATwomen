@@ -33,11 +33,12 @@ public class ClassicUno{
 	//	setDiscard();
 	if (v==3){
 	    printRules();
+	    newGame();
 	}
 	else if (v==1){
 	    populateDeck();
 	    Collections.shuffle(_deck);
-	    System.out.println(_deck);
+	    // System.out.println(_deck);
 	    System.out.println("Woo let's play Uno!!");
 	    int nP=numPlayers();
 	    for( int x=1; x<=nP; x++){
@@ -48,10 +49,11 @@ public class ClassicUno{
 	    
 	    setDiscard();
 	    deal();
-	    System.out.println("Player Hands:");
-	    System.out.println(_players);
+	    // System.out.println("Player Hands:");
+	    //System.out.println(_players);
 	    System.out.println("Discard Pile:");
 	    System.out.println(_discard.peek());
+	    takeTurns();
 	}
 
 
@@ -209,18 +211,19 @@ public class ClassicUno{
 
     
     // player inputs index of card he/she wants to play
-    public int pickCard(){ 
-	System.out.println("It's your turn, what card would you like to play" +
+    public int pickCard(int n){ 
+	System.out.println("It's your turn player "+ _players.get(n).getName() +
+			   ", what card would you like to play" +
 			   "(index of your hand). \nIf you'd like to draw a " +
-			   "card simply type in the word draw");
+			   "card type 1000");
 	int x ;
-
-	try{
-	    x= Keyboard.readInt();
+	x= Keyboard.readInt();
+	/*	try{
+	    x=Keyboard.readInt();
 	}
 	catch(Exception e){
 	    x= Integer.MAX_VALUE;
-	}
+	    }*/
 	return x;
     }
     
@@ -231,22 +234,23 @@ public class ClassicUno{
 		Player person = _players.get( n ) ;
 		System.out.println( person );
 		System.out.println();
-		
-		int ind =  pickCard();
-		while( ( ind < 0 || ind >= person.getHandSize()) ||
-		       !(match(person.getHand().get(ind)))){
-		   ind = pickCard();
-		    if(ind == Integer.MAX_VALUE){//draw
-			person.setHand(_deck.remove(0));
-		    }
-		    else if(match(person.getHand().get(ind))){
-			//if it matches push it to discard
-			_discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
-		    }
-		    else{
-			System.out.println("That move doesn't work!" +
-					   "Try picking another card or draw");
-			pickCard();
+		System.out.println("Here's the discard pile \n"+
+				   printDiscard());
+		int ind =  pickCard(n);
+		/*while( !( ind < 0 || ind >= person.getHandSize() ||
+		  !(match(person.getHand().get(ind))))){*/
+		//	ind = pickCard();
+		if(ind == 1000){//draw
+		    person.setHand(_deck.remove(0));
+		}
+		else if(match(person.getHand().get(ind))){
+		    //if it matches push it to discard
+		    _discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
+		}
+		else{
+		    System.out.println("That move doesn't work!" +
+				       "Try picking another card or draw");
+		    pickCard(n);
 		}   
 	    }
     	}
@@ -273,4 +277,4 @@ public class ClassicUno{
     }*/
 
     
-}//ends class
+//ends class
