@@ -275,6 +275,46 @@ public class ClassicUno{
      */
     public void takeTurns(){
 	while(_players.size()!=1 && _deck.size()!=0){
+	    int n= 0;
+	    while (n<_players.size()){
+		Player person = _players.get( n ) ;
+		System.out.println( person );
+		System.out.println();
+		System.out.println("Here's the discard pile \n"+ printDiscard());
+		int ind =  pickCard(n);
+		if(ind == 1000){//draw
+		    person.setHand(_deck.remove(0));
+		    n+=1;
+		}
+		else if(match(person.getHand().get(ind))){
+		    //if it matches push it to discard
+		    _discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
+	    
+		    if(skipTurn(person.getHand().get(ind))){		
+			if(n==_players.size()-1){
+			    System.out.println("it's player at index 1's turn");
+			    n=1;
+			}
+			else{
+			    System.out.println("skip the next person");
+			    n+=1;
+			}
+			//	n+=1;
+		    }
+		    n+=1;
+		}
+		else{
+		    System.out.println("That move doesn't work!" +
+				       "Try picking another card or draw");
+		}
+	    }
+	}
+    }
+		
+		
+		
+		
+	    /*
 	    for(int n = 0 ; n < _players.size() ; n ++ ){
 		Player person = _players.get( n ) ;
 		System.out.println( person );
@@ -304,7 +344,7 @@ public class ClassicUno{
 			  n+=1;
 			  }
 			  }
-			*/
+			/
 			
 		    }
 		    else{
@@ -315,7 +355,7 @@ public class ClassicUno{
 		}
 	    }
 	}
-    }
+   }*/
 
 
     public boolean skipTurn(Card playedCard){
