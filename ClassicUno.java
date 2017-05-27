@@ -11,7 +11,7 @@ public class ClassicUno{
     public LLStack<Card> _discard;
     public LLStack<Player> _winners;
     
-   
+    
     /*default constructor*/ 
     public ClassicUno(){
 	_deck= new LinkedList<Card>();
@@ -218,7 +218,7 @@ public class ClassicUno{
 	    else if( other.getColor().equals(_discard.peek().getColor())) {
 		return true ;
 	    }
-
+	    
 	    return false ;
 	}
 	else if(other.isActionCard() && _discard.peek().isActionCard()) {
@@ -282,35 +282,38 @@ public class ClassicUno{
 		System.out.println("Here's the discard pile \n"+ printDiscard());
 		
 		// 1st conditional checks if its an actioncard, so it's safe to classcast it afterwards for 2nd conditional
-		if( _discard.peek().isActionCard() && !( ((ActionCard) _discard.peek()).getAction().equals( "skip" ))) {
-			int ind =  pickCard(n);
-			if(ind == 1000){//draw
-				person.setHand(_deck.remove(0));
+		if( _discard.peek().isActionCard() && ((ActionCard) _discard.peek()).getAction().equals( "skip" )) {
+			// do nothing?
 		}
-		else if(match(person.getHand().get(ind))){
-		    //if it matches push it to discard
-		    _discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
-			/*
-		    if(skipTurn(person.getHand().get(ind))){		
-			if(n==_players.size()-1){
-			    System.out.println("it's player at index 1's turn");
-			    n=1;
-			}
-			else{
-			    System.out.println("skip the next person");
-			    n+=1;
-			}
+		else {
+		    int ind =  pickCard(n);
+		    if(ind == 1000){//draw
+			person.setHand(_deck.remove(0));
 		    }
+		    else if(match(person.getHand().get(ind))){
+			//if it matches push it to discard
+			_discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
+			/*
+			  if(skipTurn(person.getHand().get(ind))){		
+			  if(n==_players.size()-1){
+			  System.out.println("it's player at index 1's turn");
+			  n=1;
+			  }
+			  else{
+			  System.out.println("skip the next person");
+			  n+=1;
+			  }
+			  }
 			*/
-		    
+			
+		    }
+		    else{
+			System.out.println("That move doesn't work!" +
+					   "Try picking another card or draw");
+			pickCard(n);
+		    }   
 		}
-		else{
-		    System.out.println("That move doesn't work!" +
-				       "Try picking another card or draw");
-		    pickCard(n);
-		}   
 	    }
-    	}
 	}
     }
 
