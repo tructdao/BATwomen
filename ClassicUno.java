@@ -66,7 +66,6 @@ public class ClassicUno{
      */
 
     public void populateDeck() {
-	/*
 	for( int n = 0 ; n < 10 ; n ++ ) {
 	    for( int i = 0 ; i < 2 ; i ++ ) {
 		_deck.add( new NumberCard( n, "red" )) ;
@@ -78,7 +77,7 @@ public class ClassicUno{
 		    break ;
 		}
 	    }
-	    }*/
+	    }
 	for( int n = 0 ; n < 2 ; n ++ ) {
 	    _deck.add( new AddTwo( "red" )) ;
 	    _deck.add( new Reverse( "red" )) ;
@@ -93,11 +92,10 @@ public class ClassicUno{
 	    _deck.add( new Reverse( "blue" )) ;
 	    _deck.add( new Skip( "blue" )) ;
 	}
-	/*
 	for( int n = 0 ; n < 4 ; n ++ ) {
 	    _deck.add( new AddFour()) ;
 	    _deck.add( new Wild()) ;
-	    }*/
+	}
     }//ends populate deck
 
      /**
@@ -281,15 +279,18 @@ public class ClassicUno{
 		Player person = _players.get( n ) ;
 		System.out.println( person );
 		System.out.println();
-		System.out.println("Here's the discard pile \n"+
-				   printDiscard());
-		int ind =  pickCard(n);
-		if(ind == 1000){//draw
-		    person.setHand(_deck.remove(0));
+		System.out.println("Here's the discard pile \n"+ printDiscard());
+		
+		// 1st conditional checks if its an actioncard, so it's safe to classcast it afterwards for 2nd conditional
+		if( _discard.peek().isActionCard() && !( ((ActionCard) _discard.peek()).getAction().equals( "skip" ))) {
+			int ind =  pickCard(n);
+			if(ind == 1000){//draw
+				person.setHand(_deck.remove(0));
 		}
 		else if(match(person.getHand().get(ind))){
 		    //if it matches push it to discard
 		    _discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
+			/*
 		    if(skipTurn(person.getHand().get(ind))){		
 			if(n==_players.size()-1){
 			    System.out.println("it's player at index 1's turn");
@@ -300,6 +301,7 @@ public class ClassicUno{
 			    n+=1;
 			}
 		    }
+			*/
 		    
 		}
 		else{
@@ -309,6 +311,7 @@ public class ClassicUno{
 		}   
 	    }
     	}
+	}
     }
 
 
@@ -368,8 +371,8 @@ Put it in another method.
 	    }*/
 	    
 	    /*	if( x.getHandSize() == 0 ) {
-	    //remove player from _player and i guess add it to llist of winningplayers
-	    //but must remove by index while this is a foreach loop :( oh noes*/
+	    //remove player from _player and i guess add it to llstack of winning players
+	    _winners.push( _players.remove( n )) ;
     
 
     /*
