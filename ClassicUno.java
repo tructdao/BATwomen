@@ -11,10 +11,13 @@ public class ClassicUno{
     public LLStack<Card> _discard;
     public LLStack<Player> _winners;
     
+   
+    /*default constructor*/ 
     public ClassicUno(){
 	_deck= new LinkedList<Card>();
 	_players= new LList<Player>();
 	_discard= new LLStack<Card>();
+	_winners = new LLStack<Player>();
     }//ends constructor
 
     //------------------v-----v--Accessors------------
@@ -55,13 +58,15 @@ public class ClassicUno{
 	    System.out.println(_discard.peek());
 	    takeTurns();
 	}
-
-
-
-
-	
     }//ends newGame
 
+     //------------------v-----v--Setting the Game Up------------
+    /**
+     * populateDeck() adds 108 cards to the deck:
+     * RGBY in each color:
+     * 1 zero, 2 of each 1-9, 1 wild, 1 plus4, 2 of each reverse, skip, plus2
+     * (108 cards) 
+     */
     public void populateDeck() {
 	for( int n = 0 ; n < 10 ; n ++ ) {
 	    for( int i = 0 ; i < 2 ; i ++ ) {
@@ -94,7 +99,13 @@ public class ClassicUno{
 	    _deck.add( new Wild()) ;
 	}
     }//ends populate deck
-    
+
+     /**
+      * chooseVersion() returns the user input for which choice they would like to complete. 
+      * Classic: classic game of uno
+      * tournament: winner moves on to another round
+      * rules: prints out the rules and then asks the user to choose the version again
+      */
     public int chooseVersion(){
 	System.out.println("What version would you like to play?" +
 			   "(int response)");
@@ -104,7 +115,10 @@ public class ClassicUno{
 	int vers= Keyboard.readInt();
 	return vers;
     }//ends chooseVersion
-    
+
+    /**
+     * printRules() will be run only if the user inputs three for chooseVersion()
+     */
     public void printRules(){
         System.out.println("UNO-Classic");
 	System.out.println("At the beginning, each player is dealt 7 cards " +
@@ -121,13 +135,19 @@ public class ClassicUno{
 			   "Have Fun!!");
     }
 
-    
+    /**
+     * playerName() is a helper method to get the user's names 
+     * useful for adding players with names into the _players instance var
+     */
     public String playerName(){
 	System.out.println("Hello, What's your name?");
 	String nombre= Keyboard.readString();
 	return nombre;
     }//ends playerName()
 
+    /**
+     * numPLayers() returns a user input of an int between 2-12 for number of players playing
+     */
     public int numPlayers(){
 	System.out.println("How many players will be playing this round " +
 			   "of UNO(2-12)");
@@ -149,11 +169,10 @@ public class ClassicUno{
 	    }
 	}
     }//ends numPlayers
-    
-    public String sortRank(){
-	return "";
-    }//ends sortRank()
-    
+
+    /**
+     * when setting up the game it deals 7 cards to each player by removing the cards from the deck
+     */
     public void deal(){
 	for( Player i : _players ) {
 	    for( int n = 0 ; n < 7 ; n ++ ) {
@@ -162,17 +181,42 @@ public class ClassicUno{
 	    }
 	}
     }//ends deal()
-
-    public Card printDiscard(){
-	return _discard.peek();
-    }
-    
+    /**
+     * removes a card from the deck and adds it to the _discard stack
+     */
     public void setDiscard(){
 	Card top= _deck.remove(0);
 	_discard.push(top);
 
     }
+
+     //----------------^------^--Setting the Game Up-------------
+
+    //------------------v-----v--Playing------------
     
+    
+    public String sortRank(){
+	return "";
+    }//ends sortRank()
+
+    
+
+    /**
+     * prints the top card of the discard pile. 
+     */
+    public Card printDiscard(){
+	return _discard.peek();
+    }
+
+    /**
+     */
+   
+    
+    /**
+     * compares top card of _discard with param other
+     * returns true if cards match color, symbol, number, or is a wild card
+     * false otherwise
+     */
     public boolean match(Card other){
        
         if( other.isNumberCard() && _discard.peek().isNumberCard()) {
@@ -208,9 +252,9 @@ public class ClassicUno{
 	return false;
     }//ends match
     
-
-    
-    // player inputs index of card he/she wants to play
+    /**
+     * reader input method, asks specified player(n) what card they want to play
+     */
     public int pickCard(int n){ 
 	System.out.println("It's your turn player "+ _players.get(n).getName() +
 			   ", what card would you like to play" +
@@ -228,6 +272,10 @@ public class ClassicUno{
     }
     
     
+    /**
+     * loops through the list of players and asks them what they'd like to do.
+     * if the move is legal then play it, otherwise ask them again. 
+     */
     public void takeTurns(){
 	while(_players.size()!=1 && _deck.size()!=0){
 	    for(int n = 0 ; n < _players.size() ; n ++ ){
@@ -254,7 +302,7 @@ public class ClassicUno{
 		}   
 	    }
     	}
-    		
+ //----------------^------^--Playing-------------		   		
 	    /*Put it in another method. 
 	if( x.getHandSize() == 2 and theres a usable card ) {
 	    // call UNO and stuff
@@ -264,7 +312,7 @@ public class ClassicUno{
 	    //remove player from _player and i guess add it to llist of winningplayers
 	    //but must remove by index while this is a foreach loop :( oh noes*/
 	}
-		
+ 
     
     }
     
@@ -277,4 +325,4 @@ public class ClassicUno{
     }*/
 
     
-//ends class
+

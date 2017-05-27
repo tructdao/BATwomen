@@ -1,7 +1,7 @@
 Bayan:
 	- create subclasses, action card abstract. subclasses for +2,4,wild, skip and reverse.
-	-  does card match? 
-	- ask player what they want to do, get turns to work
+	-  does card match? (done)
+	- ask player what they want to do, get turns to work(done)
 Truc:
 	- read about mouse clicks on the terminal
 	- continue working on plus 4,reverse, plus 2. will have separate subclasses
@@ -22,6 +22,6 @@ What we have so far:
 
 
 IMPORTANT:
-- having a turns system so that we can start testing that the game actually works.
-- Having a match method to make sure the cards match.
+- having a turns system so that we can start testing that the game actually works.(done)
+- Having a match method to make sure the cards match.(done)
 - coding methods for the action cards. 
