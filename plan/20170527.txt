@@ -1,8 +1,13 @@
 Team BatWomen Wooo MVP works now
 
 Bayan ::
+- incorporate skip,plus2,plus4 into the takeTurns loop
 
 Alison ::
+- work on reverse
+- put winners in the winners list
+
        
 Truc ::
+- start on basic AI or basic tree. 
   
