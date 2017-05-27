@@ -50,8 +50,8 @@ public class ClassicUno{
 	    
 	    setDiscard();
 	    deal();
-	    System.out.println("Discard Pile:");
-	    System.out.println(_discard.peek());
+	    // System.out.println("Discard Pile:");
+	    //System.out.println(_discard.peek());
 	    takeTurns();
 	}
     }//ends newGame
@@ -66,6 +66,7 @@ public class ClassicUno{
      */
 
     public void populateDeck() {
+	/*
 	for( int n = 0 ; n < 10 ; n ++ ) {
 	    for( int i = 0 ; i < 2 ; i ++ ) {
 		_deck.add( new NumberCard( n, "red" )) ;
@@ -77,7 +78,7 @@ public class ClassicUno{
 		    break ;
 		}
 	    }
-	}
+	    }*/
 	for( int n = 0 ; n < 2 ; n ++ ) {
 	    _deck.add( new AddTwo( "red" )) ;
 	    _deck.add( new Reverse( "red" )) ;
@@ -92,10 +93,11 @@ public class ClassicUno{
 	    _deck.add( new Reverse( "blue" )) ;
 	    _deck.add( new Skip( "blue" )) ;
 	}
+	/*
 	for( int n = 0 ; n < 4 ; n ++ ) {
 	    _deck.add( new AddFour()) ;
 	    _deck.add( new Wild()) ;
-	}
+	    }*/
     }//ends populate deck
 
      /**
@@ -194,23 +196,13 @@ public class ClassicUno{
 
     //------------------v-----v--Playing------------
     
-    
-    public String sortRank(){
-	return "";
-    }//ends sortRank()
-
-    
-
     /**
      * prints the top card of the discard pile. 
      */
     public Card printDiscard(){
 	return _discard.peek();
     }
-
-    /**
-     */
-   
+  
     
     /**
      * compares top card of _discard with param other
@@ -230,7 +222,7 @@ public class ClassicUno{
 	    }
 
 	    return false ;
-	} 
+	}
 	else if(other.isActionCard() && _discard.peek().isActionCard()) {
 	    // color == color for action cards
 	    if(other.getColor() == _discard.peek().getColor()) {
@@ -246,6 +238,10 @@ public class ClassicUno{
 		 ||((ActionCard) other).getAction().equals( "draw4")) {
 	    return true ;
 	}
+	//color equals color for any card
+	else if(other.getColor().equals(_discard.peek().getColor())){
+	    return true;
+	}
 	else {
 	    return false ;
 	}
@@ -260,6 +256,9 @@ public class ClassicUno{
 			   ", what card would you like to play" +
 			   "(index of your hand). \nIf you'd like to draw a " +
 			   "card type 1000");
+	System.out.println();
+	//	System.out.println("DISCARD PILE");
+	//System.out.println(printDiscard());
 	int x ;
 	x= Keyboard.readInt();
 	/*	try{
@@ -291,6 +290,17 @@ public class ClassicUno{
 		else if(match(person.getHand().get(ind))){
 		    //if it matches push it to discard
 		    _discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
+		    if(skipTurn(person.getHand().get(ind))){		
+			if(n==_players.size()-1){
+			    System.out.println("it's player at index 1's turn");
+			    n=1;
+			}
+			else{
+			    System.out.println("skip the next person");
+			    n+=1;
+			}
+		    }
+		    
 		}
 		else{
 		    System.out.println("That move doesn't work!" +
@@ -299,8 +309,60 @@ public class ClassicUno{
 		}   
 	    }
     	}
+    }
+
+
+    public boolean skipTurn(Card playedCard){
+	return ((ActionCard)playedCard).getAction().equals("skip");
+    }
+    /*
+    public void skipTurn(Card playedCard){
+	if(((ActionCard)playedCard).getAction().equals("skip")){
+	    System.out.println("your turn was skipped");
+	}
+    }
+    */
+    /*
+      public void reverse(Card playedCard){
+	if(((ActionCard)playedCard).getAction().equals("reverse")){
+	}
+    }
+    
+    public void addTwoCards(Card playedCard){
+	if(((ActionCard)playedCard).getAction().equals("draw2")){
+	}
+    }
+
+    public void addFourCards(Card playedCard){
+	if(((ActionCard)playedCard).getAction().equals("draw4")){
+	}
+    }
+
+    public void playWild(Card playedCard){
+	if(((ActionCard)playedCard).getAction().equals("colorSwitch")){
+	}
+    }
+      public String sortRank(){
+	return "";
+    }//ends sortRank()
+    */
+}
+
+
  //----------------^------^--Playing-------------		   		
-	    /*Put it in another method. 
+/*
+if( person.getHand().get(ind).(ActionCard)getAction().equals("skip")){
+			n+=1;
+		    }
+		    else if(person.getHand().get(ind).(ActionCard)getAction().equals("reverse")){
+		    }
+		    else if(person.getHand().get(ind).(ActionCard)getAction().equals("draw2")){
+			person.setHand(_deck.remove(0));
+			person.setHand(_deck.remove(0));
+		    }
+================================================================
+
+Put it in another method. 
 	if( x.getHandSize() == 2 and theres a usable card ) {
 	    // call UNO and stuff
 	    }*/
@@ -308,10 +370,6 @@ public class ClassicUno{
 	    /*	if( x.getHandSize() == 0 ) {
 	    //remove player from _player and i guess add it to llist of winningplayers
 	    //but must remove by index while this is a foreach loop :( oh noes*/
-	}
- 
-    
-    }
     
 
     /*
