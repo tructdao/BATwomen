@@ -137,6 +137,8 @@ Bayan ::
       - takeTurns and pickCard should work as expected when match is coded.
       - tried to incorporate drawing but if it returns an int it won't work out since draw is a string
 Alison :: 
+	 - classcasted in match() 
+	 - changed foreach loop to for loop to deal with removal problems
 Truc :: Set up the ActionCards and WildCards
 	Colors
 	Printing
@@ -147,6 +149,7 @@ Bayan & Alison :: Planned the match method on kts and coded it in a more organiz
 Bayan ::
       - removed the trycatch block and used 1000 to indicate drawing. 
 Alison :: 
+	 - added isWildCard() method
 Truc ::
 ==============================================================
 2017-05-27
@@ -156,6 +159,8 @@ Bayan ::
       - started working on skip and implementing it (in the works)
       - changed takeTurn from a for loop inside a while loop to a while loop
 Alison :: 
+	 - deck error fixed
+	  - winning players
 Truc ::
 ==============================================================
 2017-05-28
