@@ -99,10 +99,12 @@ public class ClassicUno{
     }//ends populate deck
 
      /**
-      * chooseVersion() returns the user input for which choice they would like to complete. 
+      * chooseVersion() returns the user input for which choice they would
+          like to complete. 
       * Classic: classic game of uno
       * tournament: winner moves on to another round
-      * rules: prints out the rules and then asks the user to choose the version again
+      * rules: prints out the rules and then asks the user to choose the
+          version again
       */
 
     public int chooseVersion(){
@@ -116,7 +118,8 @@ public class ClassicUno{
     }//ends chooseVersion
 
     /**
-     * printRules() will be run only if the user inputs three for chooseVersion()
+     * printRules() will be run only if the user inputs three for
+         chooseVersion()
      */
 
     public void printRules(){
@@ -146,7 +149,8 @@ public class ClassicUno{
     }//ends playerName()
 
     /**
-     * numPLayers() returns a user input of an int between 2-12 for number of players playing
+     * numPLayers() returns a user input of an int between 2-12 for number
+         of players playing
      */
     public int numPlayers(){
 	System.out.println("How many players will be playing this round " +
@@ -171,7 +175,8 @@ public class ClassicUno{
     }//ends numPlayers
 
     /**
-     * when setting up the game it deals 7 cards to each player by removing the cards from the deck
+     * when setting up the game it deals 7 cards to each player by removing
+         the cards from the deck
      */
     public void deal(){
 	for( Player i : _players ) {
@@ -214,12 +219,14 @@ public class ClassicUno{
 		}
         else if( other.isNumberCard() && _discard.peek().isNumberCard()) {
 	    // num == num
-			if((( NumberCard )other).getNumber() == ((NumberCard)_discard.peek()).getNumber()) {
+			if((( NumberCard )other).getNumber() ==
+			   ((NumberCard)_discard.peek()).getNumber()) {
 				return true ;
 			}
 	    }
 	    
-		else if(other.isActionCard() && _discard.peek().isActionCard()) {
+		else if(other.isActionCard() &&
+			_discard.peek().isActionCard()) {
 			// action == action
 			if(((ActionCard) other).getAction().equals( ((ActionCard)_discard.peek()).getAction())) {
 				return true ;
