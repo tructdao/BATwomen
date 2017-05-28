@@ -208,42 +208,33 @@ public class ClassicUno{
      * false otherwise
      */
     public boolean match(Card other){
-       
-        if( other.isNumberCard() && _discard.peek().isNumberCard()) {
+		// color == color for any card
+		if(other.getColor().equals(_discard.peek().getColor())) {
+			return true;
+		}
+        else if( other.isNumberCard() && _discard.peek().isNumberCard()) {
 	    // num == num
-	    if(((NumberCard  )other).getNumber() == ((NumberCard)_discard.peek()).getNumber()) {
-		return true ;
-	    }
-	    // color == color for num cards
-	    else if( other.getColor().equals(_discard.peek().getColor())) {
-		return true ;
+			if((( NumberCard )other).getNumber() == ((NumberCard)_discard.peek()).getNumber()) {
+				return true ;
+			}
 	    }
 	    
-	    return false ;
-	}
-	else if(other.isActionCard() && _discard.peek().isActionCard()) {
-	    // color == color for action cards
-	    if(other.getColor() == _discard.peek().getColor()) {
-		return true ;
-	    }  
-	    // action == action
-	    else if(((ActionCard) other).getAction().equals( ((ActionCard)_discard.peek()).getAction())) {
-		return true ;
-	    }
-	}
+		else if(other.isActionCard() && _discard.peek().isActionCard()) {
+			// action == action
+			if(((ActionCard) other).getAction().equals( ((ActionCard)_discard.peek()).getAction())) {
+				return true ;
+			}
+		}
 
-	else if( ((ActionCard)other).getAction().equals("colorSwitch")
+		else if( ((ActionCard)other).getAction().equals("colorSwitch")
 		 ||((ActionCard) other).getAction().equals( "draw4")) {
-	    return true ;
-	}
-	//color equals color for any card
-	else if(other.getColor().equals(_discard.peek().getColor())){
-	    return true;
-	}
-	else {
-	    return false ;
-	}
-	return false;
+			return true ;
+		}
+		else {
+			return false ;
+		}
+		// ? necessary
+		return false;
     }//ends match
     
     /**
@@ -359,7 +350,10 @@ public class ClassicUno{
 
 
     public boolean skipTurn(Card playedCard){
-	return ((ActionCard)playedCard).getAction().equals("skip");
+		if( !(playedCard.isActionCard())) {
+			return false ;
+		}
+		return ((ActionCard)playedCard).getAction().equals("skip");
     }
     /*
     public void skipTurn(Card playedCard){
