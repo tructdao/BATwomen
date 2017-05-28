@@ -253,16 +253,8 @@ public class ClassicUno{
 			   "(index of your hand). \nIf you'd like to draw a " +
 			   "card type 1000");
 	System.out.println();
-	//	System.out.println("DISCARD PILE");
-	//System.out.println(printDiscard());
 	int x ;
 	x= Keyboard.readInt();
-	/*	try{
-	    x=Keyboard.readInt();
-	}
-	catch(Exception e){
-	    x= Integer.MAX_VALUE;
-	    }*/
 	return x;
     }
     
@@ -287,7 +279,6 @@ public class ClassicUno{
 		else if(match(person.getHand().get(ind))){
 		    //if it matches push it to discard
 		    _discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
-	    
 		    if(skipTurn(person.getHand().get(ind))){		
 			if(n==_players.size()-1){
 			    System.out.println("it's player at index 1's turn");
@@ -297,7 +288,6 @@ public class ClassicUno{
 			    System.out.println("skip the next person");
 			    n+=1;
 			}
-			//	n+=1;
 		    }
 		    n+=1;
 		}

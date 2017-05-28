@@ -151,7 +151,10 @@ Truc ::
 ==============================================================
 2017-05-27
 --------------------------------------------------------------
-Bayan :: 
+Bayan ::
+      - ran the game and found many bugs
+      - started working on skip and implementing it (in the works)
+      - changed takeTurn from a for loop inside a while loop to a while loop
 Alison :: 
 Truc ::
 ==============================================================
