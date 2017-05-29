@@ -106,13 +106,21 @@ public class ClassicUno{
       */
 
     public int chooseVersion(){
-	System.out.println("What version would you like to play?" +
-			   "(int response)");
-	System.out.println("\t1: Classic");
-	System.out.println("\t2: Tournament");
-	System.out.println("\t3: Rules");
-	int vers= Keyboard.readInt();
-	return vers;
+	while(true){
+	    System.out.println("What version would you like to play?" +
+			       "(int response)");
+	    System.out.println("\t1: Classic");
+	    System.out.println("\t2: Tournament");
+	    System.out.println("\t3: Rules");
+	    int vers= Keyboard.readInt();
+	    if(vers>=1 && vers<=3){
+		return vers;
+	    }
+	    else{
+		System.out.println("choice 1 or 2 or 3!! nothing else");
+	    }
+	}
+	//return vers;	
     }//ends chooseVersion
 
     /**
@@ -260,15 +268,42 @@ public class ClassicUno{
 		    person.setHand(_deck.remove(0));
 		    n+=1;
 		}
-		else if(match(person.getHand().get(ind))){
-		    //if it matches push it to discard
-		    _discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
-		    n+=1;
+		else if(ind>=person.getHand().size()){
+		    System.out.println("that doesn't work");
 		}
-		else if (!(match(person.getHand().get(ind)))|| ind!=1000){
+		else if ( ind>=person.getHand().size()&&(
+			  !(match(person.getHand().get(ind)))||
+			  ind!=1000)){
 		    System.out.println("That move doesn't work!" +
 				       "Try picking another card or draw");
 		}
+	    }
+	}
+    }
+		/*
+		if(match(person.getHand().get(ind))&&
+		   ind<person.getHand().size()&&
+		   skipTurn(person.getHand().get(ind))){
+		    if(n==_players.size()-1){
+			System.out.println("last ind so player at ind 1 goes");
+			n=1;
+		    }
+		    else if(n==_players.size()-2){
+			System.out.println("2nd to last so player at ind 0");
+			n=0;
+		    }
+		    else{
+			System.out.println("just increment by 1");
+		    }
+		}
+
+		if(match(person.getHand().get(ind))){
+		    //if it matches push it to discard
+		    _discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
+		    n+=1;
+		    }*/
+	
+		    
 		/*	if(skipTurn(_discard.peek())){		
 		    if(n==_players.size()-1){
 			System.out.println("it's player at index 1's turn");
@@ -292,9 +327,6 @@ public class ClassicUno{
 		    }					
 		*/
 		
-	    }
-	}
-    }		
 
     public boolean skipTurn(Card playedCard){
 	return (playedCard).getSymbol().equals("skip");
