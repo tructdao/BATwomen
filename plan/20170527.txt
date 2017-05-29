@@ -16,4 +16,5 @@ Truc ::
 Bugs ::
 
 - loop in taketurns if its not aplayable move it gives the user one more chance.
-it should keep asking the player to pick smthn until it works!  
+it should keep asking the player to pick smthn until it works!
+- index out of bounds exception

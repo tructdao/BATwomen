@@ -50,8 +50,6 @@ public class ClassicUno{
 	    
 	    setDiscard();
 	    deal();
-	    // System.out.println("Discard Pile:");
-	    //System.out.println(_discard.peek());
 	    takeTurns();
 	}
     }//ends newGame
@@ -73,7 +71,7 @@ public class ClassicUno{
 		_deck.add( new Card( ""+n, "green" )) ;
 		_deck.add( new Card( ""+n, "blue" )) ;
 		
-		if( n == 0 ) { // idk if works
+		if( n == 0 ) {
 		    break ;
 		}
 	    }
@@ -255,7 +253,9 @@ public class ClassicUno{
 		System.out.println( person );
 		System.out.println();
 		System.out.println("Here's the discard pile \n"+ printDiscard());
+		System.out.println();
 		int ind =  pickCard(n);
+		
 		if(ind == 1000){//draw
 		    person.setHand(_deck.remove(0));
 		    n+=1;
@@ -263,72 +263,38 @@ public class ClassicUno{
 		else if(match(person.getHand().get(ind))){
 		    //if it matches push it to discard
 		    _discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
-		    if(skipTurn(_discard.peek())){		
-			if(n==_players.size()-1){
-			    System.out.println("it's player at index 1's turn");
-			    n=1;
-			}
-			else{
-			    System.out.println("skip the next person");
-			    n+=1;
-			}
-		    }
 		    n+=1;
 		}
-		else{
+		else if (!(match(person.getHand().get(ind)))|| ind!=1000){
 		    System.out.println("That move doesn't work!" +
 				       "Try picking another card or draw");
 		}
-	    }
-	}
-    }
-		
-		
-		
-		
-	    /*
-	    for(int n = 0 ; n < _players.size() ; n ++ ){
-		Player person = _players.get( n ) ;
-		System.out.println( person );
-		System.out.println();
-		System.out.println("Here's the discard pile \n"+ printDiscard());
-		
-		// 1st conditional checks if its an actioncard, so it's safe to classcast it afterwards for 2nd conditional
-		if( _discard.peek().isActionCard() && ((ActionCard) _discard.peek()).getAction().equals( "skip" )) {
-			// do nothing?
-		}
-		else {
-		    int ind =  pickCard(n);
-		    if(ind == 1000){//draw
-			person.setHand(_deck.remove(0));
-		    }
-		    else if(match(person.getHand().get(ind))){
-			//if it matches push it to discard
-			_discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
-			/*
-			  if(skipTurn(person.getHand().get(ind))){		
-			  if(n==_players.size()-1){
-			  System.out.println("it's player at index 1's turn");
-			  n=1;
-			  }
-			  else{
-			  System.out.println("skip the next person");
-			  n+=1;
-			  }
-			  }
-			/
-			
+		/*	if(skipTurn(_discard.peek())){		
+		    if(n==_players.size()-1){
+			System.out.println("it's player at index 1's turn");
+			n=1;
 		    }
 		    else{
-			System.out.println("That move doesn't work!" +
-					   "Try picking another card or draw");
-			pickCard(n);
-		    }   
-		}
+		    System.out.println("skip the next person");
+		    n+=1;
+		    }
+		    // n+=1;
+		    }
+		    else if (_discard.peek().getSymbol().equals("add2")){
+		    person.setHand(_deck.remove(0));
+		    person.setHand(_deck.remove(0));
+		    }
+		    else if(_discard.peek().getSymbol().equals("add4")){
+		    person.setHand(_deck.remove(0));
+		    person.setHand(_deck.remove(0));
+		    person.setHand(_deck.remove(0));
+		    person.setHand(_deck.remove(0));
+		    }					
+		*/
+		
 	    }
 	}
-   }*/
-
+    }		
 
     public boolean skipTurn(Card playedCard){
 	return (playedCard).getSymbol().equals("skip");
