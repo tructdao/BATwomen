@@ -68,10 +68,10 @@ public class ClassicUno{
     public void populateDeck() {
 	for( int n = 0 ; n < 10 ; n ++ ) {
 	    for( int i = 0 ; i < 2 ; i ++ ) {
-		_deck.add( new NumberCard( n, "red" )) ;
-		_deck.add( new NumberCard( n, "yellow" )) ;
-		_deck.add( new NumberCard( n, "green" )) ;
-		_deck.add( new NumberCard( n, "blue" )) ;
+		_deck.add( new Card( n, "red" )) ;
+		_deck.add( new Card( n, "yellow" )) ;
+		_deck.add( new Card( n, "green" )) ;
+		_deck.add( new Card( n, "blue" )) ;
 		
 		if( n == 0 ) { // idk if works
 		    break ;
@@ -79,22 +79,22 @@ public class ClassicUno{
 	    }
 	    }
 	for( int n = 0 ; n < 2 ; n ++ ) {
-	    _deck.add( new AddTwo( "red" )) ;
-	    _deck.add( new Reverse( "red" )) ;
-	    _deck.add( new Skip( "red" )) ;
-	    _deck.add( new AddTwo( "yellow" )) ;
-	    _deck.add( new Reverse( "yellow" )) ;
-	    _deck.add( new Skip( "yellow" )) ;
-	    _deck.add( new AddTwo( "green" )) ;
-	    _deck.add( new Reverse( "green" )) ;
-	    _deck.add( new Skip( "green" )) ;
-	    _deck.add( new AddTwo( "blue" )) ;
-	    _deck.add( new Reverse( "blue" )) ;
-	    _deck.add( new Skip( "blue" )) ;
+	    _deck.add( new Card( "add2", "red" )) ;
+	    _deck.add( new Card( "reverse", "red" )) ;
+	    _deck.add( new Card( "skip", "red" )) ;
+	    _deck.add( new Card( "add2", "yellow" )) ;
+	    _deck.add( new Card( "reverse", "yellow" )) ;
+	    _deck.add( new Card( "skip", "yellow" )) ;
+	    _deck.add( new Card( "add2", "green" )) ;
+	    _deck.add( new Card( "reverse", "green" )) ;
+	    _deck.add( new Card( "skip", "green" )) ;
+	    _deck.add( new Card( "add2", "blue" )) ;
+	    _deck.add( new Card( "reverse", "blue" )) ;
+	    _deck.add( new Card( "skip", "blue" )) ;
 	}
 	for( int n = 0 ; n < 4 ; n ++ ) {
-	    _deck.add( new AddFour()) ;
-	    _deck.add( new Wild()) ;
+	    _deck.add( new Card("add4", "black")) ;
+	    _deck.add( new Card("wild", "black")) ;
 	}
     }//ends populate deck
 
@@ -190,7 +190,7 @@ public class ClassicUno{
      * removes a card from the deck and adds it to the _discard stack
      */
     public void setDiscard(){
-	Card top= _deck.remove(0);
+	Card top = _deck.remove(0);
 	_discard.push(top);
 
     }
