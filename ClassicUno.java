@@ -339,20 +339,18 @@ public class ClassicUno{
 			    ind<person.getHand().size()&&
 			    skipTurn(person.getHand().get(ind)))
 			{
-			    //	skipAction( n, person, ind);
-			
-				if(n==_players.size()-1){
-			    System.out.println("last ind so player at ind 1 goes COMMENT OUT LATER");
-			    n=1;
-			}
-			else if(n==_players.size()-2){
-			    System.out.println("2nd to last so player at ind 0 COMMENT OUT LATER");
-			    n=0;
-			}
-			else{
-			    System.out.println("just increment by 1 CO L8R");
-			    n += 2 ;
-			    _discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
+			    if(n==_players.size()-1){
+				System.out.println("last ind so player at ind 1 goes COMMENT OUT LATER");
+				n=1;
+			    }
+			    else if(n==_players.size()-2){
+				System.out.println("2nd to last so player at ind 0 COMMENT OUT LATER");
+				n=0;
+			    }
+			    else{
+				System.out.println("just increment by 1 CO L8R");
+				n += 2 ;
+				_discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
 			    }
 			}
 		    else if ( ind>=person.getHand().size() &&
