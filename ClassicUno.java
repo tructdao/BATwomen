@@ -241,7 +241,6 @@ public class ClassicUno{
 			       "(int response)");
 	    System.out.println("\t1: Draw");
 	    System.out.println("\t2: pick a card");
-	    //System.out.println("\t3: pass");
 	    int choice= Keyboard.readInt();
 	    if(choice>=1 && choice<=2){
 		return choice;
@@ -259,7 +258,6 @@ public class ClassicUno{
 			       "(int response)");
 	    System.out.println("\t1: Play");
 	    System.out.println("\t2: Pass");
-	    //System.out.println("\t3: pass");
 	    int choice= Keyboard.readInt();
 	    if(choice>=1 && choice<=2){
 		return choice;
@@ -281,10 +279,29 @@ public class ClassicUno{
 	x= Keyboard.readInt();
 	return x;
     }
+    //________vvv________HELPERS FOR TAKETURNS_____________vvv__________
+    public int startingTurns(Player person,int n){
 
+	System.out.println(person);
+	System.out.println( "Here's the discard pile");
+	System.out.println(printDiscard());
+	int toDo= options(n);		
+	return toDo;
+    }
     
-    
-    
+    public void toDoDraw(int times,Player person){
+	person.setHand(_deck.remove(0));
+	times++ ;
+	System.out.println( person ) ;
+    }
+
+    public void printSetUp(Player person){
+	System.out.println(person);
+	System.out.println("discard\n"+printDiscard());
+    }
+    public void placeCard(Player person,int ind){
+	_discard.push(person.getHand().remove(ind));
+    }
     /**
      * loops through the list of players and asks them what they'd like to do.
      * if the move is legal then play it, otherwise ask them again. 
@@ -294,58 +311,50 @@ public class ClassicUno{
 	    int n= 0;
 	    while (n<_players.size()){
 		Player person = _players.get( n ) ;
-		System.out.println(person);
-		System.out.println( "Here's the discard pile");
-		System.out.println(printDiscard());
-		int toDo= options(n);		
-		int times = 0 ;
+		int toDo=startingTurns(person,n);
+		int times=0;
 		if(toDo == 1 && times < 1){//draw. will only allow 1000 choice once
-		    person.setHand(_deck.remove(0));
-		    times++ ;
-		    System.out.println( person ) ;
-		   int p = passOrPlay( n ) ;
+		    toDoDraw(times, person);
+		    int p = passOrPlay( n ) ;
 		   if(p==2){
 		       n+=1;
 		   }
 		   else if (p==1){
-		       System.out.println(person);
-		       System.out.println("discard\n"+printDiscard());
+		       printSetUp(person);
 		       int ind= pickCard(n);
 		   }
 		}
 		if(toDo==2){
 		    System.out.println();
-		    System.out.println(person);
+		    printSetUp(person);
 		    int ind= pickCard(n);		    
 		    if(ind>=person.getHand().size()){
 			System.out.println("that doesn't work");
 		    }
 		    else if (match(person.getHand().get(ind))){
-			_discard.push(person.getHand().remove(ind));
+			placeCard(person,ind);
 			n+=1;
 		    }
 		    else if(match(person.getHand().get(ind))&&
 			    ind<person.getHand().size()&&
-			    skipTurn(person.getHand().get(ind))){
-			if(n==_players.size()-1){
-			    System.out.println("last ind so player at ind 1 goes");
+			    skipTurn(person.getHand().get(ind)))
+			{
+			    //	skipAction( n, person, ind);
+			
+				if(n==_players.size()-1){
+			    System.out.println("last ind so player at ind 1 goes COMMENT OUT LATER");
 			    n=1;
 			}
 			else if(n==_players.size()-2){
-			    System.out.println("2nd to last so player at ind 0");
+			    System.out.println("2nd to last so player at ind 0 COMMENT OUT LATER");
 			    n=0;
 			}
 			else{
-			    System.out.println("just increment by 1");
+			    System.out.println("just increment by 1 CO L8R");
 			    n += 2 ;
 			    _discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
+			    }
 			}
-		    }	       	
-		    /*   else if(match(person.getHand().get(ind))){
-			//if it matches push it to discard
-			_discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
-			n+=1;
-			}*/
 		    else if ( ind>=person.getHand().size() &&
 			      ( ind!=1000 || !(match(person.getHand().get(ind))))){
 			System.out.println("That move doesn't work!" +
