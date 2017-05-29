@@ -10,7 +10,8 @@ UNO
 ------------------------------------------
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- the sample method in Rqueue didn't work as intended, so we switched to linked lists and used the shuffle method. 
+- the sample method in Rqueue didn't work as intended, so we switched to linked lists and used the shuffle method.
+- 
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -24,10 +25,10 @@ javac *.java is extremely useful because it tells you which errors to fix at an 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - deck will be a linked list
-
+- no subclasses to card we will just be using one card class with symbol and color
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+- Simplicity is key
 
 ||||||||||||||||||||||||||||||||||||||||||
 	
@@ -165,17 +166,23 @@ Truc ::
 ==============================================================
 2017-05-28
 --------------------------------------------------------------
-Bayan :: 
+Bayan ::
+      - changed Card class instance variables to symbol and color
+      - changed constructors and removed main method from Card
+      - fixed up match() in classic uno
+      - solved the problem where action cards and number cards of the same color dont match
+      
 Alison :: 
 Truc ::
+     Created a new Card class
+	match(Card other)
+	revised initilialization of Cards in _deck
 ==============================================================
 2017-05-29
 --------------------------------------------------------------
 Bayan :: 
 Alison :: 
-Truc :: Created a new Card class
-	match(Card other)
-	revised initilialization of Cards in _deck
+Truc :: 
 ==============================================================
 2017-05-30
 --------------------------------------------------------------
