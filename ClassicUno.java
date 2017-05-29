@@ -68,10 +68,10 @@ public class ClassicUno{
     public void populateDeck() {
 	for( int n = 0 ; n < 10 ; n ++ ) {
 	    for( int i = 0 ; i < 2 ; i ++ ) {
-		_deck.add( new Card( n, "red" )) ;
-		_deck.add( new Card( n, "yellow" )) ;
-		_deck.add( new Card( n, "green" )) ;
-		_deck.add( new Card( n, "blue" )) ;
+		_deck.add( new Card( ""+n, "red" )) ;
+		_deck.add( new Card( ""+n, "yellow" )) ;
+		_deck.add( new Card( ""+n, "green" )) ;
+		_deck.add( new Card( ""+n, "blue" )) ;
 		
 		if( n == 0 ) { // idk if works
 		    break ;
@@ -213,37 +213,21 @@ public class ClassicUno{
      * false otherwise
      */
     public boolean match(Card other){
-		// color == color for any card
-		if(other.getColor().equals(_discard.peek().getColor())) {
-			return true;
-		}
-        else if( other.isNumberCard() && _discard.peek().isNumberCard()) {
-	    // num == num
-			if((( NumberCard )other).getNumber() ==
-			   ((NumberCard)_discard.peek()).getNumber()) {
-				return true ;
-			}
-	    }
-	    
-		else if(other.isActionCard() &&
-			_discard.peek().isActionCard()) {
-			// action == action
-			if(((ActionCard) other).getAction().equals( ((ActionCard)_discard.peek()).getAction())) {
-				return true ;
-			}
-		}
 
-		else if( ((ActionCard)other).getAction().equals("colorSwitch")
-		 ||((ActionCard) other).getAction().equals( "draw4")) {
-			return true ;
-		}
-		else {
-			return false ;
-		}
-		// ? necessary
-		return false;
+	if(other.getSymbol().equals(_discard.peek().getSymbol())){
+	    return true;
+	}
+	else if(other.getColor().equals(_discard.peek().getColor())){
+	    return true;
+	}
+	else if(other.getColor().equals("black")){
+	    return true;
+	}
+	return false;
     }//ends match
-    
+	    
+		
+
     /**
      * reader input method, asks specified player(n) what card they want to play
      */
@@ -279,7 +263,7 @@ public class ClassicUno{
 		else if(match(person.getHand().get(ind))){
 		    //if it matches push it to discard
 		    _discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
-		    if(skipTurn(person.getHand().get(ind))){		
+		    if(skipTurn(_discard.peek())){		
 			if(n==_players.size()-1){
 			    System.out.println("it's player at index 1's turn");
 			    n=1;
@@ -347,10 +331,7 @@ public class ClassicUno{
 
 
     public boolean skipTurn(Card playedCard){
-		if( !(playedCard.isActionCard())) {
-			return false ;
-		}
-		return ((ActionCard)playedCard).getAction().equals("skip");
+	return (playedCard).getSymbol().equals("skip");
     }
     /*
     public void skipTurn(Card playedCard){
