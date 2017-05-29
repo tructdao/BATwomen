@@ -151,7 +151,7 @@ public class Player{
     // }
 
     public String toString(){
-	String ret = _name + _hand;
+	String ret = _name + " " + _hand;
 	/*	for (Card x : _hand){
 	    ret += x;
 	    ret+= "\t";

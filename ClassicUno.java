@@ -254,31 +254,56 @@ public class ClassicUno{
      * if the move is legal then play it, otherwise ask them again. 
      */
     public void takeTurns(){
-	while(_players.size()!=1 && _deck.size()!=0){
-	    int n= 0;
-	    while (n<_players.size()){
-		Player person = _players.get( n ) ;
-		System.out.println( person );
-		System.out.println();
-		System.out.println("Here's the discard pile \n"+ printDiscard());
-		System.out.println();
-		int ind =  pickCard(n);
+		while(_players.size()!=1 && _deck.size()!=0){
+			int n= 0;
+			while (n<_players.size()){
+				Player person = _players.get( n ) ;
+				System.out.println( person );
+				System.out.println();
+				System.out.println("Here's the discard pile \n"+ printDiscard());
+				System.out.println();
+				int ind =  pickCard(n);
 		
-		if(ind == 1000){//draw
-		    person.setHand(_deck.remove(0));
-		    n+=1;
+				int times = 0 ;
+				if(ind == 1000 && times < 1){//draw. will only allow 1000 choice once
+					person.setHand(_deck.remove(0));
+					times++ ;
+					System.out.println( person ) ;
+					ind = pickCard( n ) ;
+				}
+				if(ind>=person.getHand().size()){
+					System.out.println("that doesn't work");
+				}
+				else if(match(person.getHand().get(ind))&&
+						ind<person.getHand().size()&&
+						skipTurn(person.getHand().get(ind))){
+					if(n==_players.size()-1){
+						System.out.println("last ind so player at ind 1 goes");
+						n=1;
+					}
+					else if(n==_players.size()-2){
+						System.out.println("2nd to last so player at ind 0");
+						n=0;
+					}
+					else{
+						System.out.println("just increment by 1");
+						n += 2 ;
+						_discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
+					}
+				}
+
+				else if( ind != 1000 && match(person.getHand().get(ind))){
+				//if it matches push it to discard
+					_discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
+					n+=1;
+				}
+				else if ( ind>=person.getHand().size() &&
+				( ind!=1000 || !(match(person.getHand().get(ind))))){
+					System.out.println("That move doesn't work!" +
+					"Try picking another card or draw");
+				}
+			}
 		}
-		else if(ind>=person.getHand().size()){
-		    System.out.println("that doesn't work");
-		}
-		else if ( ind>=person.getHand().size()&&(
-			  !(match(person.getHand().get(ind)))||
-			  ind!=1000)){
-		    System.out.println("That move doesn't work!" +
-				       "Try picking another card or draw");
-		}
-	    }
-	}
     }
 		/*
 		if(match(person.getHand().get(ind))&&
