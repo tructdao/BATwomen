@@ -77,21 +77,21 @@ public class ClassicUno{
 	    }
 	    }
 	for( int n = 0 ; n < 2 ; n ++ ) {
-	    _deck.add( new Card( "add2", "red" )) ;
+	    _deck.add( new Card( "+2", "red" )) ;
 	    _deck.add( new Card( "reverse", "red" )) ;
 	    _deck.add( new Card( "skip", "red" )) ;
-	    _deck.add( new Card( "add2", "yellow" )) ;
+	    _deck.add( new Card( "+2", "yellow" )) ;
 	    _deck.add( new Card( "reverse", "yellow" )) ;
 	    _deck.add( new Card( "skip", "yellow" )) ;
-	    _deck.add( new Card( "add2", "green" )) ;
+	    _deck.add( new Card( "+2", "green" )) ;
 	    _deck.add( new Card( "reverse", "green" )) ;
 	    _deck.add( new Card( "skip", "green" )) ;
-	    _deck.add( new Card( "add2", "blue" )) ;
+	    _deck.add( new Card( "+2", "blue" )) ;
 	    _deck.add( new Card( "reverse", "blue" )) ;
 	    _deck.add( new Card( "skip", "blue" )) ;
 	}
 	for( int n = 0 ; n < 4 ; n ++ ) {
-	    _deck.add( new Card("add4", "black")) ;
+	    _deck.add( new Card("+4", "black")) ;
 	    _deck.add( new Card("wild", "black")) ;
 	}
     }//ends populate deck
@@ -335,12 +335,12 @@ public class ClassicUno{
 			placeCard(person,ind);
 			n+=1;
 		    }
+		    //incorporating skip
 		    else if(match(person.getHand().get(ind))&&
 			    ind<person.getHand().size()&&
-			    skipTurn(person.getHand().get(ind)))
-			{
-			    if(n==_players.size()-1){
-				System.out.println("last ind so player at ind 1 goes COMMENT OUT LATER");
+			    skipTurn(person.getHand().get(ind))){
+			if(n==_players.size()-1){
+			    System.out.println("last ind so player at ind 1 goes COMMENT OUT LATER");
 				n=1;
 			    }
 			    else if(n==_players.size()-2){
@@ -353,6 +353,21 @@ public class ClassicUno{
 				_discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
 			    }
 			}
+		    //incorporating +2
+		    else if(match(person.getHand().get(ind))&&
+			    ind<person.getHand().size()&&
+			    addTwoCheck(person.getHand().get(ind))){
+			if(n==_players.size()-1){
+			    System.out.println("last ind so player at ind 0 gets the cards COMMENT OUT LATER");
+			    _players.get(0).setHand(_deck.remove(0));
+			    _players.get(0).setHand(_deck.remove(0));
+			}
+			else{
+			    System.out.println("justadd 2 to the next person 1 CO L8R");
+			    _players.get(n+1).setHand(_deck.remove(0));
+			    _players.get(n+1).setHand(_deck.remove(0));
+			}
+		    }
 		    else if ( ind>=person.getHand().size() &&
 			      ( ind!=1000 || !(match(person.getHand().get(ind))))){
 			System.out.println("That move doesn't work!" +
@@ -366,6 +381,9 @@ public class ClassicUno{
 
     public boolean skipTurn(Card playedCard){
 	return (playedCard).getSymbol().equals("skip");
+    }
+    public boolean addTwoCheck(Card playedCard){
+	return (playedCard).getSymbol().equals("+2");
     }
    
 }

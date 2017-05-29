@@ -29,6 +29,7 @@ MID-DEVELOPMENT DESIGN CHANGES
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Simplicity is key
+- modular design is amazing <3 <3 
 
 ||||||||||||||||||||||||||||||||||||||||||
 	
@@ -184,7 +185,8 @@ Bayan ::
       - started sketching out a plan for algorithms to incorporate actions
       - solved index out of bounds exception for choosing cards
       - fixed choose version
-      - added options to pass, play, or draw. 
+      - added options to pass, play, or draw.
+      -	incorprorated some modularity. 
 Alison ::
 Truc ::
 Bayan and Alison ::- got skip to work!! wooo
