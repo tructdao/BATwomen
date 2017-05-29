@@ -30,7 +30,7 @@ LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Simplicity is key
 - modular design is amazing <3 <3 
-
+-Always back up the working version!!
 ||||||||||||||||||||||||||||||||||||||||||
 	
 
@@ -186,7 +186,9 @@ Bayan ::
       - solved index out of bounds exception for choosing cards
       - fixed choose version
       - added options to pass, play, or draw.
-      -	incorprorated some modularity. 
+      -	incorprorated some modularity.
+      - added code for +2, changed add2 to +2
+      	- not sure if +2 works will test later. 
 Alison ::
 Truc ::
 Bayan and Alison ::- got skip to work!! wooo
