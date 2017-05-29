@@ -16,7 +16,4 @@ Truc ::
 Bugs ::
 
 - loop in taketurns if its not aplayable move it gives the user one more chance.
-it should keep asking the player to pick smthn until it works!
-
--players of size >3 throws an exception... why?
-  
+it should keep asking the player to pick smthn until it works!  
