@@ -184,8 +184,10 @@ Bayan ::
       - started sketching out a plan for algorithms to incorporate actions
       - solved index out of bounds exception for choosing cards
       - fixed choose version
-Alison :: 
-Truc :: 
+      - added options to pass, play, or draw. 
+Alison ::
+Truc ::
+Bayan and Alison ::- got skip to work!! wooo
 ==============================================================
 2017-05-30
 --------------------------------------------------------------

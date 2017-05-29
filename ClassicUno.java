@@ -232,21 +232,57 @@ public class ClassicUno{
 	return false;
     }//ends match
 	    
-		
 
+
+     public int options(int n ){
+	while(true){
+	    System.out.println("Hey player what do you want to do?\n" +
+			       _players.get(n).getName()+
+			       "(int response)");
+	    System.out.println("\t1: Draw");
+	    System.out.println("\t2: pick a card");
+	    //System.out.println("\t3: pass");
+	    int choice= Keyboard.readInt();
+	    if(choice>=1 && choice<=2){
+		return choice;
+	    }
+	    else{
+		System.out.println("choice 1 or 2 !! nothing else");
+	    }
+	}
+     }//options end
+
+     public int passOrPlay(int n ){
+	while(true){
+	    System.out.println("Hey player what do you want to do?\n" +
+			       _players.get(n).getName()+
+			       "(int response)");
+	    System.out.println("\t1: Play");
+	    System.out.println("\t2: Pass");
+	    //System.out.println("\t3: pass");
+	    int choice= Keyboard.readInt();
+	    if(choice>=1 && choice<=2){
+		return choice;
+	    }
+	    else{
+		System.out.println("choice 1 or 2!! nothing else");
+	    }
+	}
+     }//options end
     /**
      * reader input method, asks specified player(n) what card they want to play
      */
     public int pickCard(int n){ 
 	System.out.println("It's your turn player "+ _players.get(n).getName() +
 			   ", what card would you like to play" +
-			   "(index of your hand). \nIf you'd like to draw a " +
-			   "card type 1000");
+			   "(index of your hand).\n\n");
 	System.out.println();
 	int x ;
 	x= Keyboard.readInt();
 	return x;
     }
+
+    
     
     
     /**
@@ -254,155 +290,82 @@ public class ClassicUno{
      * if the move is legal then play it, otherwise ask them again. 
      */
     public void takeTurns(){
-		while(_players.size()!=1 && _deck.size()!=0){
-			int n= 0;
-			while (n<_players.size()){
-				Player person = _players.get( n ) ;
-				System.out.println( person );
-				System.out.println();
-				System.out.println("Here's the discard pile \n"+ printDiscard());
-				System.out.println();
-				int ind =  pickCard(n);
-		
-				int times = 0 ;
-				if(ind == 1000 && times < 1){//draw. will only allow 1000 choice once
-					person.setHand(_deck.remove(0));
-					times++ ;
-					System.out.println( person ) ;
-					ind = pickCard( n ) ;
-				}
-				if(ind>=person.getHand().size()){
-					System.out.println("that doesn't work");
-				}
-				else if(match(person.getHand().get(ind))&&
-						ind<person.getHand().size()&&
-						skipTurn(person.getHand().get(ind))){
-					if(n==_players.size()-1){
-						System.out.println("last ind so player at ind 1 goes");
-						n=1;
-					}
-					else if(n==_players.size()-2){
-						System.out.println("2nd to last so player at ind 0");
-						n=0;
-					}
-					else{
-						System.out.println("just increment by 1");
-						n += 2 ;
-						_discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
-					}
-				}
-
-				else if( ind != 1000 && match(person.getHand().get(ind))){
-				//if it matches push it to discard
-					_discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
-					n+=1;
-				}
-				else if ( ind>=person.getHand().size() &&
-				( ind!=1000 || !(match(person.getHand().get(ind))))){
-					System.out.println("That move doesn't work!" +
-					"Try picking another card or draw");
-				}
+	while(_players.size()!=1 && _deck.size()!=0){
+	    int n= 0;
+	    while (n<_players.size()){
+		Player person = _players.get( n ) ;
+		System.out.println(person);
+		System.out.println( "Here's the discard pile");
+		System.out.println(printDiscard());
+		int toDo= options(n);		
+		int times = 0 ;
+		if(toDo == 1 && times < 1){//draw. will only allow 1000 choice once
+		    person.setHand(_deck.remove(0));
+		    times++ ;
+		    System.out.println( person ) ;
+		   int p = passOrPlay( n ) ;
+		   if(p==2){
+		       n+=1;
+		   }
+		   else if (p==1){
+		       System.out.println(person);
+		       System.out.println("discard\n"+printDiscard());
+		       int ind= pickCard(n);
+		   }
+		}
+		if(toDo==2){
+		    System.out.println();
+		    System.out.println(person);
+		    int ind= pickCard(n);		    
+		    if(ind>=person.getHand().size()){
+			System.out.println("that doesn't work");
+		    }
+		    else if (match(person.getHand().get(ind))){
+			_discard.push(person.getHand().remove(ind));
+			n+=1;
+		    }
+		    else if(match(person.getHand().get(ind))&&
+			    ind<person.getHand().size()&&
+			    skipTurn(person.getHand().get(ind))){
+			if(n==_players.size()-1){
+			    System.out.println("last ind so player at ind 1 goes");
+			    n=1;
 			}
+			else if(n==_players.size()-2){
+			    System.out.println("2nd to last so player at ind 0");
+			    n=0;
+			}
+			else{
+			    System.out.println("just increment by 1");
+			    n += 2 ;
+			    _discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
+			}
+		    }	       	
+		    /*   else if(match(person.getHand().get(ind))){
+			//if it matches push it to discard
+			_discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
+			n+=1;
+			}*/
+		    else if ( ind>=person.getHand().size() &&
+			      ( ind!=1000 || !(match(person.getHand().get(ind))))){
+			System.out.println("That move doesn't work!" +
+					   "Try picking another card or draw");
+		    }
 		}
+	    }
+	}
     }
-		/*
-		if(match(person.getHand().get(ind))&&
-		   ind<person.getHand().size()&&
-		   skipTurn(person.getHand().get(ind))){
-		    if(n==_players.size()-1){
-			System.out.println("last ind so player at ind 1 goes");
-			n=1;
-		    }
-		    else if(n==_players.size()-2){
-			System.out.println("2nd to last so player at ind 0");
-			n=0;
-		    }
-		    else{
-			System.out.println("just increment by 1");
-		    }
-		}
-
-		if(match(person.getHand().get(ind))){
-		    //if it matches push it to discard
-		    _discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
-		    n+=1;
-		    }*/
-	
-		    
-		/*	if(skipTurn(_discard.peek())){		
-		    if(n==_players.size()-1){
-			System.out.println("it's player at index 1's turn");
-			n=1;
-		    }
-		    else{
-		    System.out.println("skip the next person");
-		    n+=1;
-		    }
-		    // n+=1;
-		    }
-		    else if (_discard.peek().getSymbol().equals("add2")){
-		    person.setHand(_deck.remove(0));
-		    person.setHand(_deck.remove(0));
-		    }
-		    else if(_discard.peek().getSymbol().equals("add4")){
-		    person.setHand(_deck.remove(0));
-		    person.setHand(_deck.remove(0));
-		    person.setHand(_deck.remove(0));
-		    person.setHand(_deck.remove(0));
-		    }					
-		*/
-		
+    
 
     public boolean skipTurn(Card playedCard){
 	return (playedCard).getSymbol().equals("skip");
     }
-    /*
-    public void skipTurn(Card playedCard){
-	if(((ActionCard)playedCard).getAction().equals("skip")){
-	    System.out.println("your turn was skipped");
-	}
-    }
-    */
-    /*
-      public void reverse(Card playedCard){
-	if(((ActionCard)playedCard).getAction().equals("reverse")){
-	}
-    }
-    
-    public void addTwoCards(Card playedCard){
-	if(((ActionCard)playedCard).getAction().equals("draw2")){
-	}
-    }
-
-    public void addFourCards(Card playedCard){
-	if(((ActionCard)playedCard).getAction().equals("draw4")){
-	}
-    }
-
-    public void playWild(Card playedCard){
-	if(((ActionCard)playedCard).getAction().equals("colorSwitch")){
-	}
-    }
-      public String sortRank(){
-	return "";
-    }//ends sortRank()
-    */
+   
 }
 
 
  //----------------^------^--Playing-------------		   		
 /*
-if( person.getHand().get(ind).(ActionCard)getAction().equals("skip")){
-			n+=1;
-		    }
-		    else if(person.getHand().get(ind).(ActionCard)getAction().equals("reverse")){
-		    }
-		    else if(person.getHand().get(ind).(ActionCard)getAction().equals("draw2")){
-			person.setHand(_deck.remove(0));
-			person.setHand(_deck.remove(0));
-		    }
-================================================================
-
 Put it in another method. 
 	if( x.getHandSize() == 2 and theres a usable card ) {
 	    // call UNO and stuff
@@ -411,14 +374,9 @@ Put it in another method.
 	    /*	if( x.getHandSize() == 0 ) {
 	    //remove player from _player and i guess add it to llstack of winning players
 	    _winners.push( _players.remove( n )) ;
+	    */
     
 
-    /*
-      public void reverse()
-      LLNode temp = _players._head ;
-	_players._head =_players. _tail ;
-	_players._tail = temp ;
-    }*/
-
+  
     
 
