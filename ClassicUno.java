@@ -236,24 +236,24 @@ public class ClassicUno{
 
      public int options(int n ){
 	while(true){
-	    System.out.println("Hey player what do you want to do?\n" +
+	    System.out.println("Hey player, what do you want to do?\n" +
 			       _players.get(n).getName()+
 			       "(int response)");
 	    System.out.println("\t1: Draw");
-	    System.out.println("\t2: pick a card");
+	    System.out.println("\t2: Pick a card");
 	    int choice= Keyboard.readInt();
 	    if(choice>=1 && choice<=2){
 		return choice;
 	    }
 	    else{
-		System.out.println("choice 1 or 2 !! nothing else");
+		System.out.println("Please pick choice 1 or 2 !! Nothing else!");
 	    }
 	}
      }//options end
 
      public int passOrPlay(int n ){
 	while(true){
-	    System.out.println("Hey player what do you want to do?\n" +
+	    System.out.println("Hey player, what do you want to do?\n" +
 			       _players.get(n).getName()+
 			       "(int response)");
 	    System.out.println("\t1: Play");
@@ -263,7 +263,7 @@ public class ClassicUno{
 		return choice;
 	    }
 	    else{
-		System.out.println("choice 1 or 2!! nothing else");
+		System.out.println("Please pick choice 1 or 2!! Nothing else!");
 	    }
 	}
      }//options end
@@ -271,9 +271,9 @@ public class ClassicUno{
      * reader input method, asks specified player(n) what card they want to play
      */
     public int pickCard(int n){ 
-	System.out.println("It's your turn player "+ _players.get(n).getName() +
+	System.out.println("It's your turn, player "+ _players.get(n).getName() +
 			   ", what card would you like to play" +
-			   "(index of your hand).\n\n");
+			   " (index of your hand)?\n\n");
 	System.out.println();
 	int x ;
 	x= Keyboard.readInt();
@@ -289,9 +289,9 @@ public class ClassicUno{
 	return toDo;
     }
     
-    public void toDoDraw(int times,Player person){
+    public void toDoDraw(Player person){
 	person.setHand(_deck.remove(0));
-	times++ ;
+	// times++ ; // this line doesnt affect the times local var in takeTurns()
 	System.out.println( person ) ;
     }
 
@@ -313,60 +313,76 @@ public class ClassicUno{
 		Player person = _players.get( n ) ;
 		int toDo=startingTurns(person,n);
 		int times=0;
-		if(toDo == 1 && times < 1){//draw. will only allow 1000 choice once
-		    toDoDraw(times, person);
+		int ind ;
+		if(toDo == 1 && times < 1){//will only allow drawing once
+		    toDoDraw( person);
+		    times++ ;
+		    
 		    int p = passOrPlay( n ) ;
-		   if(p==2){
-		       n+=1;
-		   }
-		   else if (p==1){
-		       printSetUp(person);
-		       int ind= pickCard(n);
-		   }
+		    if(p==2){ // pass
+			n+=1;
+		    }
+		    else if (p==1){ // play
+			toDo = 5 ;
+		    }
 		}
-		if(toDo==2){
+		if(toDo==2 || toDo == 5 ){ // if player chose to play after drawing
 		    System.out.println();
 		    printSetUp(person);
-		    int ind= pickCard(n);		    
+		    ind= pickCard(n); 
 		    if(ind>=person.getHand().size()){
 			System.out.println("that doesn't work");
 		    }
-		    else if (match(person.getHand().get(ind))){
-			placeCard(person,ind);
-			n+=1;
-		    }
+			// if the FIRST ever discard card is a wild black
+			// necessary bc there is no person to set its color
+			if( _discard.peek().getSymbol().equals( "wild" )) {
+				placeCard( person, ind ) ;
+				n += 1 ;
+			}
+			else if( ind < person.getHand().size() && 
+					person.getHand().get( ind ).getSymbol().equals(( "wild" ))) {
+				placeCard( person, ind ) ;
+				_discard.peek().setColor() ;
+				n += 1 ;
+			}
 		    //incorporating skip
-		    else if(match(person.getHand().get(ind))&&
-			    ind<person.getHand().size()&&
+		    else if(ind<person.getHand().size() && 
+				match(person.getHand().get(ind))&&
 			    skipTurn(person.getHand().get(ind))){
 			if(n==_players.size()-1){
 			    System.out.println("last ind so player at ind 1 goes COMMENT OUT LATER");
-				n=1;
-			    }
-			    else if(n==_players.size()-2){
-				System.out.println("2nd to last so player at ind 0 COMMENT OUT LATER");
-				n=0;
-			    }
-			    else{
-				System.out.println("just increment by 1 CO L8R");
-				n += 2 ;
-				_discard.push(person.getHand().remove(ind));//removes from hand and adds to discard pile
-			    }
+			    n=1;
 			}
-		    //incorporating +2
-		    else if(match(person.getHand().get(ind))&&
-			    ind<person.getHand().size()&&
-			    addTwoCheck(person.getHand().get(ind))){
-			if(n==_players.size()-1){
-			    System.out.println("last ind so player at ind 0 gets the cards COMMENT OUT LATER");
-			    _players.get(0).setHand(_deck.remove(0));
-			    _players.get(0).setHand(_deck.remove(0));
+			else if(n==_players.size()-2){
+			    System.out.println("2nd to last so player at ind 0 COMMENT OUT LATER");
+			    n=0;
 			}
 			else{
-			    System.out.println("justadd 2 to the next person 1 CO L8R");
-			    _players.get(n+1).setHand(_deck.remove(0));
-			    _players.get(n+1).setHand(_deck.remove(0));
+			    System.out.println("just increment by 1 CO L8R");
+			    n += 2 ;
+			    placeCard( person, ind ) ;
 			}
+		    }
+		    //incorporating +2
+		    else if(ind<person.getHand().size() && 
+					match(person.getHand().get(ind))&&
+					addTwoCheck(person.getHand().get(ind))){
+				if(n==_players.size()-1){
+					System.out.println("last ind so player at ind 0 gets the cards COMMENT OUT LATER");
+					_players.get(0).setHand(_deck.remove(0));
+					_players.get(0).setHand(_deck.remove(0));
+				}
+				else{
+					System.out.println("justadd 2 to the next person 1 CO L8R");
+					_players.get(n+1).setHand(_deck.remove(0));
+					_players.get(n+1).setHand(_deck.remove(0));
+				}
+				placeCard( person, ind ) ;
+				n += 1 ;
+		    }
+		    else if (match(person.getHand().get(ind))){
+				placeCard(person,ind);
+				n+=1;
 		    }
 		    else if ( ind>=person.getHand().size() &&
 			      ( ind!=1000 || !(match(person.getHand().get(ind))))){
@@ -399,9 +415,4 @@ Put it in another method.
 	    /*	if( x.getHandSize() == 0 ) {
 	    //remove player from _player and i guess add it to llstack of winning players
 	    _winners.push( _players.remove( n )) ;
-	    */
-    
-
-  
-    
-
+*/

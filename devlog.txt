@@ -190,6 +190,11 @@ Bayan ::
       - added code for +2, changed add2 to +2
       	- not sure if +2 works will test later. 
 Alison ::
+	 - new working version, which is backed up
+	 - conditional for drawing once only. Also allows player to play a card after drawing.
+	 - added conditional so that the player can choose a color after placing a wild black card
+	 - edited the setColor() code in Card.java so that it'll loop when player chooses something other than the 4 colors
+	 - changed order of else if statements in takeTurn(). Also added missing lines. +2 and skip works :)
 Truc ::
 Bayan and Alison ::- got skip to work!! wooo
 ==============================================================

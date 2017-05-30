@@ -54,8 +54,13 @@ public class Card{
     public void setColor(){
 	System.out.println( "What color would you like to play next?" );
 	System.out.println( "red\tyellow\tblue\tgreen" );
-	System.out.print( "Your choice " );
+	System.out.print( "Your choice: " );
 	_color = Keyboard.readString().toLowerCase();
+	while( !(_color.equals("red")) && !(_color.equals("yellow")) && !(_color.equals("blue")) && !(_color.equals("green")))  {
+		System.out.println( "Please pick one of these 4 colors:" ) ;
+		System.out.println( "red\tyellow\tblue\tgreen" );
+		_color = Keyboard.readString().toLowerCase() ;
+	}
     }
 
     public String toString(){
