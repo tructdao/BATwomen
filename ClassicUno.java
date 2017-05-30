@@ -401,6 +401,31 @@ public class ClassicUno{
 			n+=1;
 			
 		    }
+		//incorporating +4
+		    else if(ind<person.getHand().size() && 
+			    match(person.getHand().get(ind))&&
+			    addFourCheck(person.getHand().get(ind))){
+			
+			if(n==_players.size()-1){
+			    System.out.println("last ind so player at ind 0 gets the Four cards COMMENT OUT LATER");
+			    _players.get(0).setHand(_deck.remove(0));
+			    _players.get(0).setHand(_deck.remove(0));
+			    _players.get(0).setHand(_deck.remove(0));
+			    _players.get(0).setHand(_deck.remove(0));
+			    person.getHand().get(ind).setColor();
+			}
+			else{
+			    System.out.println("justadd 2 to the next person 1 CO L8R");
+			    _players.get(n+1).setHand(_deck.remove(0));
+			    _players.get(n+1).setHand(_deck.remove(0));
+			    _players.get(n+1).setHand(_deck.remove(0));
+			    _players.get(n+1).setHand(_deck.remove(0));
+			    person.getHand().get(ind).setColor();
+			}
+			
+			placeCard( person, ind ) ;
+			n += 1 ;
+		    }
 		    else if (match(person.getHand().get(ind))){
 				placeCard(person,ind);
 				n+=1;
@@ -424,14 +449,14 @@ public class ClassicUno{
     }
     public boolean reverseCheck(Card playedCard){
 	return (playedCard).getSymbol().equals("reverse");
-    }
-
-    /*
+    }    
     public boolean addFourCheck(Card playedCard){
+		return (playedCard).getSymbol().equals("+4");
     }
-    public boolean colorSwitchCheck(Card playedCard){
+    public boolean wildCheck(Card playedCard){
+		return (playedCard).getSymbol().equals("wild");
     }
-   */
+   
 }
 
 

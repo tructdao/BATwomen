@@ -29,6 +29,11 @@ public class Card{
 
     //----------------^^ Accessors ^^-----------------
 
+    //----------------vv Mutators vv-----------------
+   /* public setColor(String c){
+	_color=c;
+    }*/
+    //----------------^^ Mutators ^^-----------------
     public boolean match( Card other ){
 
 	//matching symbols
@@ -49,21 +54,26 @@ public class Card{
 	//nope nothing matches oh well
 	return false;
     }
-
+    
     //for wild cards and draw4, after playing the card you need to call this
     public void setColor(){
 	System.out.println( "What color would you like to play next?" );
 	System.out.println( "red\tyellow\tblue\tgreen" );
 	System.out.print( "Your choice: " );
 	_color = Keyboard.readString().toLowerCase();
-	while( !(_color.equals("red")) &&
+	while(_color.equals("black")){
+	      /*!(_color.equals("red")) &&
 	       !(_color.equals("yellow")) &&
 	       !(_color.equals("blue")) &&
-	       !(_color.equals("green")))  {
-		System.out.println( "Please pick one of these 4 colors:" ) ;
-		System.out.println( "red\tyellow\tblue\tgreen" );
-		_color = Keyboard.readString().toLowerCase() ;
+	       !(_color.equals("green")))*/  
+	    System.out.println( "Please pick one of these 4 colors:" ) ;
+	    System.out.println("\t1: red");
+	    System.out.println("\t2: yellow");
+	    System.out.println("\t3: blue");
+	    System.out.println("\t4: green");
+	    _color = Keyboard.readString().toLowerCase() ;
 	}
+
     }
 
     public String toString(){
