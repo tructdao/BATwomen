@@ -196,7 +196,8 @@ Alison ::
 	 - edited the setColor() code in Card.java so that it'll loop when player chooses something other than the 4 colors
 	 - changed order of else if statements in takeTurn(). Also added missing lines. +2 and skip works :)
 	 - deck printing changes
-Truc ::
+Truc :: removed nonfunctional code
+	spacing stuff
 Bayan and Alison ::- got skip to work!! wooo
 ==============================================================
 2017-05-30
