@@ -398,7 +398,7 @@ public class ClassicUno{
 			  n-l-t-j-k
 			  k-j-t-l-n
 			 */
-			n+=1;
+			n+=1;//try putting this before the line _players.reverse()
 			
 		    }
 		//incorporating +4
