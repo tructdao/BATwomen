@@ -1,9 +1,7 @@
-#BatWomen
-Bayan Berri, Alison Lee, Truc Dao
+# BatWomen
+#### Bayan Berri, Alison Lee, Truc Dao
 
 APCS2 pd4
-
-README.md
 
 ## UNO Description
 
@@ -32,6 +30,7 @@ Each Player can see the last card played on the discard pile and draw cards from
 <h1>Launch Instructions</h1>
 
 To launch the game:
-  $ javac Uno.java
-  $ java Uno
-sdf
+ 1.  `$ javac Uno.java`
+ 2.  `$ java Uno`
+ 3. Play
+
