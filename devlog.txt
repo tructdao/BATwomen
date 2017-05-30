@@ -204,7 +204,8 @@ Bayan and Alison ::- got skip to work!! wooo
 Bayan ::
       - Worked on reverse.
       	- added reverse method in LList which implements DLLNode
-	- started incorporating it 
+	- started incorporating it in ClassicUno
+      - Working on add4
 Alison :: 
 Truc ::
 ==============================================================

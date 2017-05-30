@@ -30,9 +30,7 @@ public class Card{
     //----------------^^ Accessors ^^-----------------
 
     //----------------vv Mutators vv-----------------
-   /* public setColor(String c){
-	_color=c;
-    }*/
+   
     //----------------^^ Mutators ^^-----------------
     public boolean match( Card other ){
 
@@ -61,11 +59,10 @@ public class Card{
 	System.out.println( "red\tyellow\tblue\tgreen" );
 	System.out.print( "Your choice: " );
 	_color = Keyboard.readString().toLowerCase();
-	while(_color.equals("black")){
-	      /*!(_color.equals("red")) &&
-	       !(_color.equals("yellow")) &&
-	       !(_color.equals("blue")) &&
-	       !(_color.equals("green")))*/  
+	while(!(_color.equals("red")) &&
+	      !(_color.equals("yellow")) &&
+	      !(_color.equals("blue")) &&
+	      !(_color.equals("green"))){  
 	    System.out.println( "Please pick one of these 4 colors:" ) ;
 	    System.out.println("\t1: red");
 	    System.out.println("\t2: yellow");
