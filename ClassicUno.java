@@ -347,7 +347,7 @@ public class ClassicUno{
 				_discard.peek().setColor() ;
 				n += 1 ;
 			}
-		    //incorporating skip
+		    //incorporating skip--tested
 			else if(ind<person.getHand().size() && 
 				match(person.getHand().get(ind))&&
 				skipTurn(person.getHand().get(ind))){
@@ -368,7 +368,7 @@ public class ClassicUno{
 			    placeCard( person, ind ) ;
 			}
 		    }
-			//incorporating +2
+			//incorporating +2--tested
 		    else if(ind<person.getHand().size() && 
 			    match(person.getHand().get(ind))&&
 			    addTwoCheck(person.getHand().get(ind))){
@@ -390,16 +390,10 @@ public class ClassicUno{
 		    else if(ind<person.getHand().size() && 
 			    match(person.getHand().get(ind))&&
 			    reverseCheck(person.getHand().get(ind))){
+
 			
 			_players.reverse();
-			placeCard(person,ind);
-			/*It's 5 am no time for paper
-			  0-1-2-3-4
-			  n-l-t-j-k
-			  k-j-t-l-n
-			 */
-			n+=1;//try putting this before the line _players.reverse()
-			
+			placeCard(person,ind);	
 		    }
 		//incorporating +4
 		    else if(ind<person.getHand().size() && 
