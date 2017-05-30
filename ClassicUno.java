@@ -170,12 +170,12 @@ public class ClassicUno{
 	    else if( num<2){
 		System.out.println("You need more players!\n" +
 				   "How many players will be playing this " +
-				   "round of UNO(2-12)? ");
+				   "round of UNO (2-12)? ");
 	    }
 	    else if(num>12){
 		System.out.println("Too many players!\n" +
 				   "How many players will be playing this " +
-				   "round of UNO(2-12)");
+				   "round of UNO (2-12)");
 	    }
 	}
     }//ends numPlayers
@@ -304,6 +304,22 @@ public class ClassicUno{
     public void placeCard(Player person,int ind){
 	_discard.push(person.getHand().remove(ind));
     }
+	
+	public void oneCard( Player person ) {
+		if( person.getHand().size() == 1 ) {
+			System.out.println( "Would you like to call UNO? Type 1 for YES, 2 for NO:" ) ;
+			ans = Keyboard.readInt() ;
+			if( ans == 1 ) {
+				System.out.println( ":)" ) ;
+			}
+			else { // meaning anything other than 1. doesnt have to be 2 only
+				System.out.println( ":(\nTwo cards added." ) ;
+				person.setHand( _deck.remove( 0 )) ;
+				person.setHand( _deck.remove( 0 )) ;
+			}
+		}
+	}
+	
     /**
      * loops through the list of players and asks them what they'd like to do.
      * if the move is legal then play it, otherwise ask them again. 
@@ -353,17 +369,17 @@ public class ClassicUno{
 				skipTurn(person.getHand().get(ind))){
 
 			if(n==_players.size()-1){
-			    System.out.println("last ind so player at ind 1 goes COMMENT OUT LATER");
+			    // System.out.println("last ind so player at ind 1 goes COMMENT OUT LATER");
 			    n=1;
 			    placeCard(person,ind);
 			}
 			else if(n==_players.size()-2){
-			    System.out.println("2nd to last so player at ind 0 COMMENT OUT LATER");
+			    // System.out.println("2nd to last so player at ind 0 COMMENT OUT LATER");
 			    n=0;
 			    placeCard(person,ind);
 			}
 			else{
-			    System.out.println("just increment by 1 CO L8R");
+			    // System.out.println("just increment by 1 CO L8R");
 			    n += 2 ;
 			    placeCard( person, ind ) ;
 			}
@@ -374,12 +390,12 @@ public class ClassicUno{
 			    addTwoCheck(person.getHand().get(ind))){
 			
 				if(n==_players.size()-1){
-					System.out.println("last ind so player at ind 0 gets the cards COMMENT OUT LATER");
+					// System.out.println("last ind so player at ind 0 gets the cards COMMENT OUT LATER");
 					_players.get(0).setHand(_deck.remove(0));
 					_players.get(0).setHand(_deck.remove(0));
 				}
 				else{
-				    System.out.println("justadd 2 to the next person 1 CO L8R");
+				     // System.out.println("justadd 2 to the next person 1 CO L8R");
 				    _players.get(n+1).setHand(_deck.remove(0));
 				    _players.get(n+1).setHand(_deck.remove(0));
 				}
@@ -403,7 +419,7 @@ public class ClassicUno{
 			    addFourCheck(person.getHand().get(ind))){
 			
 			if(n==_players.size()-1){
-			    System.out.println("last ind so player at ind 0 gets the Four cards COMMENT OUT LATER");
+			    // System.out.println("last ind so player at ind 0 gets the Four cards COMMENT OUT LATER");
 			    _players.get(0).setHand(_deck.remove(0));
 			    _players.get(0).setHand(_deck.remove(0));
 			    _players.get(0).setHand(_deck.remove(0));
@@ -411,7 +427,7 @@ public class ClassicUno{
 			    person.getHand().get(ind).setColor();
 			}
 			else{
-			    System.out.println("justadd 2 to the next person 1 CO L8R");
+			    // System.out.println("justadd 2 to the next person 1 CO L8R");
 			    _players.get(n+1).setHand(_deck.remove(0));
 			    _players.get(n+1).setHand(_deck.remove(0));
 			    _players.get(n+1).setHand(_deck.remove(0));

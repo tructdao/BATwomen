@@ -14,7 +14,7 @@ public class Player{
 	//	_gamesWon = 0;
 	//_gamesPlayed = 0;
 	//_score = 0;
-	//_won = false;
+	_won = false;
 	_hand = new ArrayList<Card>();
 	_name = "";
     }
