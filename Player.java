@@ -90,7 +90,7 @@ public class Player{
 
     public String toString(){
         
-	String ret = _name ;
+	String ret = "\nPLAYER" + _name ;
 	ret += "\nINDEX\tCARD\n" ;
 	for( int n = 0 ; n < _hand.size() ; n ++ ) {
 		ret += n + "\t" + _hand.get( n ) +"\n" ;

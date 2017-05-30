@@ -349,6 +349,8 @@ public class LList<T> implements List<T>
 
 	james.reverse();
 	System.out.println("REVERSED:\n\n"+ james);
+	james.reverse() ;
+	System.out.println( "reversed reversed james" + james ) ;
 	//System.out.println("\n\n\n\n\n");
 	//	System.out.println(reverse(james));
 

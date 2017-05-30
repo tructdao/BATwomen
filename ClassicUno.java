@@ -379,9 +379,9 @@ public class ClassicUno{
 					_players.get(0).setHand(_deck.remove(0));
 				}
 				else{
-					System.out.println("justadd 2 to the next person 1 CO L8R");
-					_players.get(n+1).setHand(_deck.remove(0));
-					_players.get(n+1).setHand(_deck.remove(0));
+				    System.out.println("justadd 2 to the next person 1 CO L8R");
+				    _players.get(n+1).setHand(_deck.remove(0));
+				    _players.get(n+1).setHand(_deck.remove(0));
 				}
 				placeCard( person, ind ) ;
 				n += 1 ;
@@ -420,15 +420,17 @@ public class ClassicUno{
 			placeCard( person, ind ) ;
 			n += 1 ;
 		    }
-		    else if (match(person.getHand().get(ind))){
-				placeCard(person,ind);
-				n+=1;
-		    }
 		    else if ( ind>=person.getHand().size() &&
 			      ( ind!=1000 || !(match(person.getHand().get(ind))))){
 			System.out.println("That move doesn't work!" +
 					   "Try picking another card or draw");
 		    }
+		    else if (match(person.getHand().get(ind))){
+			placeCard(person,ind);
+			n+=1;
+		    }
+
+			
 		}
 	    }
 	}
