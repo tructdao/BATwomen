@@ -7,7 +7,7 @@ import java.util.LinkedList;
 public class ClassicUno{
     
     public static LinkedList<Card> _deck;
-    private LList<Player> _players;
+    private LinkedList<Player> _players;
     public LLStack<Card> _discard;
     public LLStack<Player> _winners;
     
@@ -15,13 +15,13 @@ public class ClassicUno{
     /*default constructor*/ 
     public ClassicUno(){
 	_deck= new LinkedList<Card>();
-	_players= new LList<Player>();
+	_players= new LinkedList<Player>();
 	_discard= new LLStack<Card>();
 	_winners = new LLStack<Player>();
     }//ends constructor
 
     //------------------v-----v--Accessors------------
-    public LList<Player> getPlayers(){
+    public LinkedList<Player> getPlayers(){
 	return _players;
     }
     public LLStack<Card> getDiscard(){
@@ -392,7 +392,9 @@ public class ClassicUno{
 			    reverseCheck(person.getHand().get(ind))){
 
 			
-			_players.reverse();
+		        Collections.reverse(_players);
+			n= _players.size()-1-n;
+			n+=1;
 			placeCard(person,ind);	
 		    }
 		//incorporating +4
