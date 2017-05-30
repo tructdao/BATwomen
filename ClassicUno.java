@@ -253,8 +253,9 @@ public class ClassicUno{
 
      public int passOrPlay(int n ){
 	while(true){
-	    System.out.println("Hey player, what do you want to do?\n" +
-			       _players.get(n).getName()+
+	    System.out.println("Hey player, " +
+			       _players.get(n).getName() +
+			       " what do you want to do?\n" +
 			       "(int response)");
 	    System.out.println("\t1: Play");
 	    System.out.println("\t2: Pass");
@@ -347,9 +348,10 @@ public class ClassicUno{
 				n += 1 ;
 			}
 		    //incorporating skip
-		    else if(ind<person.getHand().size() && 
+			else if(ind<person.getHand().size() && 
 				match(person.getHand().get(ind))&&
-			    skipTurn(person.getHand().get(ind))){
+				skipTurn(person.getHand().get(ind))){
+
 			if(n==_players.size()-1){
 			    System.out.println("last ind so player at ind 1 goes COMMENT OUT LATER");
 			    n=1;
@@ -364,10 +366,11 @@ public class ClassicUno{
 			    placeCard( person, ind ) ;
 			}
 		    }
-		    //incorporating +2
+			//incorporating +2
 		    else if(ind<person.getHand().size() && 
-					match(person.getHand().get(ind))&&
-					addTwoCheck(person.getHand().get(ind))){
+			    match(person.getHand().get(ind))&&
+			    addTwoCheck(person.getHand().get(ind))){
+			
 				if(n==_players.size()-1){
 					System.out.println("last ind so player at ind 0 gets the cards COMMENT OUT LATER");
 					_players.get(0).setHand(_deck.remove(0));
@@ -380,6 +383,14 @@ public class ClassicUno{
 				}
 				placeCard( person, ind ) ;
 				n += 1 ;
+		    }
+			//incorporating reverse
+		    else if(ind<person.getHand().size() && 
+			    match(person.getHand().get(ind))&&
+			    reverseCheck(person.getHand().get(ind))){
+			
+			_players.reverse();
+			
 		    }
 		    else if (match(person.getHand().get(ind))){
 				placeCard(person,ind);
@@ -402,13 +413,16 @@ public class ClassicUno{
     public boolean addTwoCheck(Card playedCard){
 	return (playedCard).getSymbol().equals("+2");
     }
+    public boolean reverseCheck(Card playedCard){
+	return (playedCard).getSymbol().equals("reverse");
+    }
+
     /*
     public boolean addFourCheck(Card playedCard){
     }
     public boolean colorSwitchCheck(Card playedCard){
     }
-    public boolean reverseCheck(Card playedCard){
-    }*/
+   */
 }
 
 
