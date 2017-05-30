@@ -11,7 +11,7 @@ UNO
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - the sample method in Rqueue didn't work as intended, so we switched to linked lists and used the shuffle method.
-- 
+
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -187,8 +187,7 @@ Bayan ::
       - fixed choose version
       - added options to pass, play, or draw.
       -	incorprorated some modularity.
-      - added code for +2, changed add2 to +2
-      	- not sure if +2 works will test later. 
+      - added code for +2, changed add2 to +2 
 Alison ::
 	 - new working version, which is backed up
 	 - conditional for drawing once only. Also allows player to play a card after drawing.
@@ -202,7 +201,10 @@ Bayan and Alison ::- got skip to work!! wooo
 ==============================================================
 2017-05-30
 --------------------------------------------------------------
-Bayan :: 
+Bayan ::
+      - Worked on reverse.
+      	- added reverse method in LList which implements DLLNode
+	- started incorporating it 
 Alison :: 
 Truc ::
 ==============================================================

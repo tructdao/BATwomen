@@ -355,10 +355,12 @@ public class ClassicUno{
 			if(n==_players.size()-1){
 			    System.out.println("last ind so player at ind 1 goes COMMENT OUT LATER");
 			    n=1;
+			    placeCard(person,ind);
 			}
 			else if(n==_players.size()-2){
 			    System.out.println("2nd to last so player at ind 0 COMMENT OUT LATER");
 			    n=0;
+			    placeCard(person,ind);
 			}
 			else{
 			    System.out.println("just increment by 1 CO L8R");
@@ -390,6 +392,13 @@ public class ClassicUno{
 			    reverseCheck(person.getHand().get(ind))){
 			
 			_players.reverse();
+			placeCard(person,ind);
+			/*It's 5 am no time for paper
+			  0-1-2-3-4
+			  n-l-t-j-k
+			  k-j-t-l-n
+			 */
+			n+=1;
 			
 		    }
 		    else if (match(person.getHand().get(ind))){
