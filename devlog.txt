@@ -195,6 +195,7 @@ Alison ::
 	 - added conditional so that the player can choose a color after placing a wild black card
 	 - edited the setColor() code in Card.java so that it'll loop when player chooses something other than the 4 colors
 	 - changed order of else if statements in takeTurn(). Also added missing lines. +2 and skip works :)
+	 - deck printing changes
 Truc ::
 Bayan and Alison ::- got skip to work!! wooo
 ==============================================================

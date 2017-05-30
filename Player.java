@@ -151,11 +151,18 @@ public class Player{
     // }
 
     public String toString(){
-	String ret = _name + " " + _hand;
+	//String ret = _name + " " + _hand;
 	/*	for (Card x : _hand){
 	    ret += x;
 	    ret+= "\t";
 	    }*/
+		
+	String ret = _name ;
+	ret += "\nINDEX\tCARD\n" ;
+	for( int n = 0 ; n < _hand.size() ; n ++ ) {
+		ret += n + "\t" + _hand.get( n ) +"\n" ;
+	}
+	
 	return ret;
     }
 }
