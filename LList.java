@@ -154,7 +154,8 @@ public class LList<T> implements List<T>
     }
     //--------------^  List interface methods  ^--------------
 
-
+   
+    
     //--------------v  Helper methods  v--------------
     public void addFirst( T newFirstVal ) 
     { 
@@ -231,6 +232,17 @@ public class LList<T> implements List<T>
 	return retStr;
     }
 
+    public void reverse(){
+	DLLNode<T> temp=_head;
+	_head=_tail;
+	DLLNode<T> pointer= _head;
+	while(pointer!=null){
+	    temp=pointer._nextNode;
+	    pointer._nextNode=pointer._prevNode;
+	    pointer._prevNode=temp;
+	    pointer=pointer._nextNode;
+	}
+    }
 
 
     /*****************************************************
@@ -316,47 +328,30 @@ public class LList<T> implements List<T>
 	LList<String> james = new LList<String>();
 
 	System.out.println("initially: " );
-	System.out.println( james + "\tsize: " + james.size() );
+	//	System.out.println( james + "\tsize: " + james.size() );
 
 	james.add("beat");
-	System.out.println( james + "\tsize: " + james.size() );
+	//System.out.println( james + "\tsize: " + james.size() );
 
 	james.add("a");
-	System.out.println( james + "\tsize: " + james.size() );
+	//System.out.println( james + "\tsize: " + james.size() );
 
 	james.add("need");
-	System.out.println( james + "\tsize: " + james.size() );
+	//System.out.println( james + "\tsize: " + james.size() );
 
 	james.add("I");
-	System.out.println( james + "\tsize: " + james.size() );
+	//System.out.println( james + "\tsize: " + james.size() );
 
-	System.out.println( "2nd item is: " + james.get(1) );
+	//System.out.println( "2nd item is: " + james.get(1) );
 
 	System.out.println( "...and now 2nd item is: " + james.set(1,"got") );
 	System.out.println( james + "\tsize: " + james.size() );
 
-	james.add(0,"whut");
-	System.out.println( "...after add(0,whut): " );
-	System.out.println( james + "\tsize: " + james.size() );
+	james.reverse();
+	System.out.println("REVERSED:\n\n"+ james);
+	//System.out.println("\n\n\n\n\n");
+	//	System.out.println(reverse(james));
 
-	james.add(4,"phat");
-	System.out.println( "...after add(4,phat): " );
-	System.out.println( james + "\tsize: " + james.size() );
-
-	System.out.println( "...after remove last: " 
-			    + james.remove( james._size-1) );
-	System.out.println( james + "\tsize: " + james.size() );
-
-	System.out.println( "...after remove(0): " + james.remove(0) );
-	System.out.println( james + "\tsize: " + james.size() );
-
-	System.out.println( "...after remove(0): " + james.remove(0) );
-	System.out.println( james + "\tsize: " + james.size() );
-
-	System.out.println( "...after remove(0): " + james.remove(0) );
-	System.out.println( james + "\tsize: " + james.size() );
-	/*~~~~~~~~~~~~~~~m~o~v~e~~m~e~~d~o~w~n~~~~~~~~~~~~~~
-	  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     }//end main
 
 }//end class LList

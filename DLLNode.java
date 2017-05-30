@@ -6,7 +6,7 @@
 public class DLLNode<T> 
 {
     private T _cargo;    //cargo may only be of type T
-    private DLLNode<T> _nextNode, _prevNode; //pointers to next, prev DLLNodes
+     DLLNode<T> _nextNode, _prevNode; //pointers to next, prev DLLNodes
 
 
     // constructor -- initializes instance vars

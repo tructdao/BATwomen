@@ -267,6 +267,7 @@ public class ClassicUno{
 	    }
 	}
      }//options end
+
     /**
      * reader input method, asks specified player(n) what card they want to play
      */
@@ -401,7 +402,13 @@ public class ClassicUno{
     public boolean addTwoCheck(Card playedCard){
 	return (playedCard).getSymbol().equals("+2");
     }
-   
+    /*
+    public boolean addFourCheck(Card playedCard){
+    }
+    public boolean colorSwitchCheck(Card playedCard){
+    }
+    public boolean reverseCheck(Card playedCard){
+    }*/
 }
 
 
