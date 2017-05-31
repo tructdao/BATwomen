@@ -306,7 +306,7 @@ public class ClassicUno{
     }
     
     public void oneCard( Player person ) {
-	if( person.getHand().size() == 1 ) {
+	if( person.getHandSize() == 1 ) {
 	    System.out.println( "Would you like to call UNO? Type 1 for YES, 2 for NO:" ) ;
 	    int ans = Keyboard.readInt() ;
 	    if( ans == 1 ) {
