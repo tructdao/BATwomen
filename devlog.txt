@@ -211,7 +211,7 @@ Bayan ::
       -fixed readme
 Alison :: 
       - added oneCard() method, which checks if the player has one card left. Penalizes them if UNO isn't called.
-Truc ::
+Truc :: Started UML
 ==============================================================
 2017-05-31
 --------------------------------------------------------------
@@ -219,7 +219,7 @@ Bayan ::
       - Wrote UML
       - Made Flow Chart
 Alison :: 
-Truc ::
+Truc :: 
 ==============================================================
 2017-06-01
 --------------------------------------------------------------
