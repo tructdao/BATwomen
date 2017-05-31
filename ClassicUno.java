@@ -65,7 +65,7 @@ public class ClassicUno{
 
     public void populateDeck() {
 	for( int n = 0 ; n < 10 ; n ++ ) {
-	    for( int i = 0 ; i < 3 ; i ++ ) {
+	    for( int i = 0 ; i < 0 ; i ++ ) {
 		_deck.add( new Card( ""+n, "red" )) ;
 		_deck.add( new Card( ""+n, "yellow" )) ;
 		_deck.add( new Card( ""+n, "green" )) ;
@@ -76,7 +76,7 @@ public class ClassicUno{
 		}
 	    }
 	    }
-	for( int n = 0 ; n < 2 ; n ++ ) {
+	for( int n = 0 ; n < 0 ; n ++ ) {
 	    _deck.add( new Card( "+2", "red" )) ;
 	    _deck.add( new Card( "reverse", "red" )) ;
 	    _deck.add( new Card( "skip", "red" )) ;
@@ -93,6 +93,7 @@ public class ClassicUno{
 	for( int n = 0 ; n < 4 ; n ++ ) {
 	    _deck.add( new Card("+4", "black")) ;
 	    _deck.add( new Card("wild", "black")) ;
+	     _deck.add( new Card( "+2", "red" )) ;
 	}
     }//ends populate deck
 
@@ -352,6 +353,7 @@ public class ClassicUno{
      * if the move is legal then play it, otherwise ask them again. 
      */
     public void takeTurns(){
+	int discardSize=1;
 	while(_players.size()!=1 && _deck.size()!=0){
 	    int n= 0;
 	    while (n<_players.size()){
@@ -380,14 +382,18 @@ public class ClassicUno{
 		    }
 		    // if the FIRST ever discard card is a wild black
 		    // necessary bc there is no person to set its color
-		    if( _discard.peek().getSymbol().equals( "wild" )) {
+		    if( discardSize==1&&
+			(_discard.peek().getSymbol().equals( "wild" )||
+			 _discard.peek().getSymbol().equals("+4"))) {
 			placeCard( person, ind ) ;
+			discardSize+=1;
 			oneCard( n ) ;
 			person.setTimes(0);
 			n += 1 ;
 		    }
+		    //incorporates wild
 		    else if( ind < person.getHand().size() && 
-			     person.getHand().get( ind ).getSymbol().equals(( "wild" ))) {
+			     person.getHand().get( ind ).getSymbol().equals( "wild" ) ) {
 			placeCard( person, ind ) ;
 			_discard.peek().setColor() ;
 			oneCard( n ) ;
@@ -405,12 +411,14 @@ public class ClassicUno{
 			    n=1;
 			    placeCard(person,ind);
 			    oneCard( n ) ;
+			    discardSize+=1;
 			}
 			else if(n==_players.size()-2){
 			    // System.out.println("2nd to last so player at ind 0 COMMENT OUT LATER");
 			    person.setTimes(0);
 			    n=0;
 			    placeCard(person,ind);
+			    discardSize+=1;
 			    oneCard( n ) ;
 			}
 			else{
@@ -418,6 +426,7 @@ public class ClassicUno{
 			    person.setTimes(0);
 			    n += 2 ;
 			    placeCard( person, ind ) ;
+			    discardSize+=1;
 			    oneCard( n ) ;
 			}
 		    }
@@ -437,6 +446,7 @@ public class ClassicUno{
 			    _players.get(n+1).setHand(_deck.remove(0));
 			}
 			placeCard( person, ind ) ;
+			discardSize+=1;			    
 			oneCard( n ) ;
 			person.setTimes(0);
 			n += 1 ;
@@ -450,6 +460,7 @@ public class ClassicUno{
 			person.setTimes(0);
 			n+=1;
 			placeCard(person,ind);	
+			discardSize+=1;
 			oneCard( n ) ;
 		    }
 		    //incorporating +4
@@ -475,6 +486,7 @@ public class ClassicUno{
 			}
 			
 			placeCard( person, ind ) ;
+			discardSize+=1;
 			oneCard( n ) ;
 			person.setTimes(0);
 			n += 1 ;
@@ -486,6 +498,7 @@ public class ClassicUno{
 		    }
 		    else if (match(person.getHand().get(ind))){
 			placeCard(person,ind);
+			discardSize+=1;
 			oneCard( n ) ;
 			person.setTimes(0);
 			n+=1;

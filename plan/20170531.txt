@@ -19,3 +19,8 @@ Bugs:
 
 -if +4 is first card on discard pile.
 - if you call uno but u have more than 1 card. and the person before u has >1 card--> person that called uno must draw 2 times.
+
+- debug uno out of bounds exception if the player calling uno is the last player then go to player.size()-1
+
+
+
