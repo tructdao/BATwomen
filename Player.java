@@ -9,6 +9,8 @@ public class Player{
     private boolean _won;
     private ArrayList<Card> _hand;
     private String _name;
+    private int times ;
+    private boolean Uno ;
 
     public Player(){
 	//	_gamesWon = 0;
@@ -17,9 +19,11 @@ public class Player{
 	_won = false;
 	_hand = new ArrayList<Card>();
 	_name = "";
+	times = 0 ;
+	Uno = false ;
     }
 
-    public Player(int gW, int gP, int s, String name){
+    public Player( String name){
 	this();
 	//_gamesWon = gW;
 	//_gamesPlayed = gP;
@@ -51,6 +55,14 @@ public class Player{
     public int getHandSize(){
 	return _hand.size();
     }
+
+    public int getTimes() {
+	return times; 
+    }
+
+    public boolean getUno() {
+	return Uno ;
+    }
     
  //--------------------------- ^^ Accessors ^^ -----------------------
 
@@ -73,6 +85,14 @@ public class Player{
     }
     public void setName(String name){
 	_name=name;
+    }
+
+    public void setTimes( int n ) {
+	times = n ;
+    }
+
+    public void setUno( boolean u ) {
+	Uno = u ;
     }
 	
  //--------------------------- ^^ Mutators ^^ -----------------------

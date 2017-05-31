@@ -3,7 +3,7 @@ Bayan Berri, Alison Lee, Truc Dao
 
 Bayan:
 	- Incorporate more modular design just for easier debugging later
-	- drawing is buggy if you put an index out of bounds, it lets you draw again(shouldn't happen)	
+	- drawing is buggy if you put an index out of bounds, it lets you draw again(shouldn't happen)	DONEONDONEONDOENODNEON
 
 Alison:
 	- Sort for leaderboard
