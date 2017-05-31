@@ -188,7 +188,7 @@ public class ClassicUno{
 	for( Player i : _players ) {
 	    for( int n = 0 ; n < 7 ; n ++ ) {
 		i.setHand( _deck.remove(0)) ;
-	
+		
 	    }
 	}
     }//ends deal()
@@ -198,10 +198,10 @@ public class ClassicUno{
     public void setDiscard(){
 	Card top = _deck.remove(0);
 	_discard.push(top);
-
+	
     }
-
-     //----------------^------^--Setting the Game Up-------------
+    
+    //----------------^------^--Setting the Game Up-------------
 
     //------------------v-----v--Playing------------
     
@@ -250,8 +250,8 @@ public class ClassicUno{
 	    }
 	}
      }//options end
-
-     public int passOrPlay(int n ){
+    
+    public int passOrPlay(int n ){
 	while(true){
 	    System.out.println("Hey player, " +
 			       _players.get(n).getName() +
@@ -267,8 +267,8 @@ public class ClassicUno{
 		System.out.println("Please pick choice 1 or 2!! Nothing else!");
 	    }
 	}
-     }//options end
-
+    }//options end
+    
     /**
      * reader input method, asks specified player(n) what card they want to play
      */
@@ -283,7 +283,7 @@ public class ClassicUno{
     }
     //________vvv________HELPERS FOR TAKETURNS_____________vvv__________
     public int startingTurns(Player person,int n){
-
+	
 	System.out.println(person);
 	System.out.println( "Here's the discard pile");
 	System.out.println(printDiscard());
@@ -304,22 +304,22 @@ public class ClassicUno{
     public void placeCard(Player person,int ind){
 	_discard.push(person.getHand().remove(ind));
     }
-	
-	public void oneCard( Player person ) {
-		if( person.getHand().size() == 1 ) {
-			System.out.println( "Would you like to call UNO? Type 1 for YES, 2 for NO:" ) ;
-			ans = Keyboard.readInt() ;
-			if( ans == 1 ) {
-				System.out.println( ":)" ) ;
-			}
-			else { // meaning anything other than 1. doesnt have to be 2 only
-				System.out.println( ":(\nTwo cards added." ) ;
-				person.setHand( _deck.remove( 0 )) ;
-				person.setHand( _deck.remove( 0 )) ;
-			}
-		}
+    
+    public void oneCard( Player person ) {
+	if( person.getHand().size() == 1 ) {
+	    System.out.println( "Would you like to call UNO? Type 1 for YES, 2 for NO:" ) ;
+	    int ans = Keyboard.readInt() ;
+	    if( ans == 1 ) {
+		System.out.println( ":)" ) ;
+	    }
+	    else { // meaning anything other than 1. doesnt have to be 2 only
+		System.out.println( ":(\nTwo cards added." ) ;
+		person.setHand( _deck.remove( 0 )) ;
+		person.setHand( _deck.remove( 0 )) ;
+	    }
 	}
-	
+    }
+    
     /**
      * loops through the list of players and asks them what they'd like to do.
      * if the move is legal then play it, otherwise ask them again. 
@@ -351,69 +351,74 @@ public class ClassicUno{
 		    if(ind>=person.getHand().size()){
 			System.out.println("that doesn't work");
 		    }
-			// if the FIRST ever discard card is a wild black
-			// necessary bc there is no person to set its color
-			if( _discard.peek().getSymbol().equals( "wild" )) {
-				placeCard( person, ind ) ;
-				n += 1 ;
-			}
-			else if( ind < person.getHand().size() && 
-					person.getHand().get( ind ).getSymbol().equals(( "wild" ))) {
-				placeCard( person, ind ) ;
-				_discard.peek().setColor() ;
-				n += 1 ;
-			}
+		    // if the FIRST ever discard card is a wild black
+		    // necessary bc there is no person to set its color
+		    if( _discard.peek().getSymbol().equals( "wild" )) {
+			placeCard( person, ind ) ;
+			oneCard( person ) ;
+			n += 1 ;
+		    }
+		    else if( ind < person.getHand().size() && 
+			     person.getHand().get( ind ).getSymbol().equals(( "wild" ))) {
+			placeCard( person, ind ) ;
+			_discard.peek().setColor() ;
+			oneCard( person ) ;
+			n += 1 ;
+		    }
 		    //incorporating skip--tested
-			else if(ind<person.getHand().size() && 
-				match(person.getHand().get(ind))&&
-				skipTurn(person.getHand().get(ind))){
-
+		    else if(ind<person.getHand().size() && 
+			    match(person.getHand().get(ind))&&
+			    skipTurn(person.getHand().get(ind))){
+			
 			if(n==_players.size()-1){
 			    // System.out.println("last ind so player at ind 1 goes COMMENT OUT LATER");
 			    n=1;
 			    placeCard(person,ind);
+			    oneCard( person ) ;
 			}
 			else if(n==_players.size()-2){
 			    // System.out.println("2nd to last so player at ind 0 COMMENT OUT LATER");
 			    n=0;
 			    placeCard(person,ind);
+			    oneCard( person ) ;
 			}
 			else{
 			    // System.out.println("just increment by 1 CO L8R");
 			    n += 2 ;
 			    placeCard( person, ind ) ;
+			    oneCard( person ) ;
 			}
 		    }
-			//incorporating +2--tested
+		    //incorporating +2--tested
 		    else if(ind<person.getHand().size() && 
 			    match(person.getHand().get(ind))&&
 			    addTwoCheck(person.getHand().get(ind))){
 			
-				if(n==_players.size()-1){
-					// System.out.println("last ind so player at ind 0 gets the cards COMMENT OUT LATER");
-					_players.get(0).setHand(_deck.remove(0));
-					_players.get(0).setHand(_deck.remove(0));
-				}
-				else{
-				     // System.out.println("justadd 2 to the next person 1 CO L8R");
-				    _players.get(n+1).setHand(_deck.remove(0));
-				    _players.get(n+1).setHand(_deck.remove(0));
-				}
-				placeCard( person, ind ) ;
-				n += 1 ;
+			if(n==_players.size()-1){
+			    // System.out.println("last ind so player at ind 0 gets the cards COMMENT OUT LATER");
+			    _players.get(0).setHand(_deck.remove(0));
+			    _players.get(0).setHand(_deck.remove(0));
+			}
+			else{
+			    // System.out.println("justadd 2 to the next person 1 CO L8R");
+			    _players.get(n+1).setHand(_deck.remove(0));
+			    _players.get(n+1).setHand(_deck.remove(0));
+			}
+			placeCard( person, ind ) ;
+			oneCard( person ) ;
+			n += 1 ;
 		    }
-			//incorporating reverse
+		    //incorporating reverse
 		    else if(ind<person.getHand().size() && 
 			    match(person.getHand().get(ind))&&
 			    reverseCheck(person.getHand().get(ind))){
-
-			
 		        Collections.reverse(_players);
 			n= _players.size()-1-n;
 			n+=1;
 			placeCard(person,ind);	
+			oneCard( person ) ;
 		    }
-		//incorporating +4
+		    //incorporating +4
 		    else if(ind<person.getHand().size() && 
 			    match(person.getHand().get(ind))&&
 			    addFourCheck(person.getHand().get(ind))){
@@ -436,6 +441,7 @@ public class ClassicUno{
 			}
 			
 			placeCard( person, ind ) ;
+			oneCard( person ) ;
 			n += 1 ;
 		    }
 		    else if ( ind>=person.getHand().size() &&
@@ -445,16 +451,15 @@ public class ClassicUno{
 		    }
 		    else if (match(person.getHand().get(ind))){
 			placeCard(person,ind);
+			oneCard( person ) ;
 			n+=1;
-		    }
-
-			
+		    }	    
 		}
 	    }
 	}
     }
     
-
+    
     public boolean skipTurn(Card playedCard){
 	return (playedCard).getSymbol().equals("skip");
     }
@@ -465,23 +470,23 @@ public class ClassicUno{
 	return (playedCard).getSymbol().equals("reverse");
     }    
     public boolean addFourCheck(Card playedCard){
-		return (playedCard).getSymbol().equals("+4");
+	return (playedCard).getSymbol().equals("+4");
     }
     public boolean wildCheck(Card playedCard){
-		return (playedCard).getSymbol().equals("wild");
+	return (playedCard).getSymbol().equals("wild");
     }
-   
+    
 }
 
 
- //----------------^------^--Playing-------------		   		
+//----------------^------^--Playing-------------		   		
 /*
-Put it in another method. 
-	if( x.getHandSize() == 2 and theres a usable card ) {
-	    // call UNO and stuff
-	    }*/
-	    
-	    /*	if( x.getHandSize() == 0 ) {
-	    //remove player from _player and i guess add it to llstack of winning players
-	    _winners.push( _players.remove( n )) ;
+  Put it in another method. 
+  if( x.getHandSize() == 2 and theres a usable card ) {
+  // call UNO and stuff
+  }*/
+
+/*	if( x.getHandSize() == 0 ) {
+//remove player from _player and i guess add it to llstack of winning players
+_winners.push( _players.remove( n )) ;
 */

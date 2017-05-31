@@ -6,7 +6,7 @@ public class Player{
     //private int _gamesWon;
     //private  int _gamesPlayed;
     //private int _score;
-    //private boolean _won;
+    private boolean _won;
     private ArrayList<Card> _hand;
     private String _name;
 
