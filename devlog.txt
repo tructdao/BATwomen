@@ -207,14 +207,16 @@ Bayan ::
       - Worked on reverse.
       	- added reverse method in LList which implements DLLNode
 	- started incorporating it in ClassicUno
-      - Working on add4
+      - got add4 to work
       -fixed readme
 Alison :: 
 Truc ::
 ==============================================================
 2017-05-31
 --------------------------------------------------------------
-Bayan :: 
+Bayan ::
+      - Wrote UML
+      - Made Flow Chart
 Alison :: 
 Truc ::
 ==============================================================

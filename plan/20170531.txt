@@ -1,0 +1,16 @@
+BatWomen
+Bayan Berri, Alison Lee, Truc Dao
+
+Bayan:
+	- Incorporate more modular design just for easier debugging later
+	- drawing is buggy if you put an index out of bounds, it lets you draw again(shouldn't happen)	
+
+Alison:
+	- Sort for leaderboard
+
+Truc:
+	- add option of playing against computer player to chooseVersion()
+
+Everyone:
+	- Create an AI which will loop through the hand check for cards that work if a number card works place it, if not move on to an action card, other wise see if there is a black card. if not draw check if that card works. if it does place it. Otherwise move on to the next player(human player).
+	- Work on moving everything to processing while having terminal version backed up on github. 
