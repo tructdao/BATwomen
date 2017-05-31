@@ -14,3 +14,8 @@ Truc:
 Everyone:
 	- Create an AI which will loop through the hand check for cards that work if a number card works place it, if not move on to an action card, other wise see if there is a black card. if not draw check if that card works. if it does place it. Otherwise move on to the next player(human player).
 	- Work on moving everything to processing while having terminal version backed up on github. 
+
+Bugs:
+
+-if +4 is first card on discard pile.
+- if you call uno but u have more than 1 card. and the person before u has >1 card--> person that called uno must draw 2 times.
