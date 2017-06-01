@@ -6,7 +6,7 @@ public class Player{
     //private int _gamesWon;
     //private  int _gamesPlayed;
     //private int _score;
-    private boolean _won;
+    private boolean _won; // ?
     private ArrayList<Card> _hand;
     private String _name;
     private int times ;
@@ -16,7 +16,7 @@ public class Player{
 	//	_gamesWon = 0;
 	//_gamesPlayed = 0;
 	//_score = 0;
-	_won = false;
+	_won = false; // ?
 	_hand = new ArrayList<Card>();
 	_name = "";
 	times = 0 ;

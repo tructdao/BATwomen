@@ -51,6 +51,7 @@ public class ClassicUno{
 	    setDiscard();
 	    deal();
 	    takeTurns();
+		printWinners() ;
 	}
     }//ends newGame
 
@@ -65,7 +66,7 @@ public class ClassicUno{
 
     public void populateDeck() {
 	for( int n = 0 ; n < 10 ; n ++ ) {
-	    for( int i = 0 ; i < 0 ; i ++ ) {
+	    for( int i = 0 ; i < 2 ; i ++ ) {
 		_deck.add( new Card( ""+n, "red" )) ;
 		_deck.add( new Card( ""+n, "yellow" )) ;
 		_deck.add( new Card( ""+n, "green" )) ;
@@ -75,8 +76,8 @@ public class ClassicUno{
 		    break ;
 		}
 	    }
-	    }
-	for( int n = 0 ; n < 0 ; n ++ ) {
+	}
+	for( int n = 0 ; n < 2 ; n ++ ) {
 	    _deck.add( new Card( "+2", "red" )) ;
 	    _deck.add( new Card( "reverse", "red" )) ;
 	    _deck.add( new Card( "skip", "red" )) ;
@@ -201,6 +202,18 @@ public class ClassicUno{
 	_discard.push(top);
 	
     }
+	
+	// printing winners
+	public void printWinners() {
+		String winners = "" ;
+		int n = 1 ; 
+		while( !( _winners.isEmpty())) {
+			winners = "\n" + n + "\t" + _winners.pop().getName() + winners ;
+			n += 1 ;
+		}
+		winners = "POSITION\tPLAYER\n" + winners ;
+		System.out.println( winners ) ;
+	}
     
     //----------------^------^--Setting the Game Up-------------
 
@@ -309,7 +322,7 @@ public class ClassicUno{
     public int chooseUno(){
 	while(true){
 	    System.out.println("Would you like to call UNO?\n"
-			       +"  Type 1 for YES, 2 for NO: " ) ;
+			       + "  Type 1 for YES, 2 for NO: " ) ;
 	    int ans= Keyboard.readInt();
 	    if(ans>=1 && ans<=2){
 		return ans;
@@ -321,8 +334,8 @@ public class ClassicUno{
     }
     public void oneCard( int n ) {
 	//	if( person.getHandSize() == 1 ) {
-       
-	    System.out.println( "Would you like to call UNO? Type 1 for YES, 2 for NO:" ) ;
+	
+	    // System.out.println( "Would you like to call UNO? Type 1 for YES, 2 for NO:" ) ;
 	    int ans = chooseUno() ;
 	    if( ans == 1 ) {
 		System.out.println( ":)" ) ;
@@ -334,7 +347,7 @@ public class ClassicUno{
 		    _players.get(n-1).setHand( _deck.remove(0)) ;
 		    _players.get(n-1).setHand( _deck.remove(0)) ;
 		    System.out.println( _players.get(n-1).getName()+ 
-					", You just got uno-ed");
+					", You just got UNO-ed");
 		}
 
 		/*
@@ -347,6 +360,15 @@ public class ClassicUno{
 	
 	    }
     }
+	
+	public boolean noCards( int n ) {
+	    if( _players.get( n ).getHandSize() == 0 ) {
+		_winners.push( _players.remove( n )) ;
+		return true ;
+	    }
+	    
+	    return false ;
+	}
     
     /**
      * loops through the list of players and asks them what they'd like to do.
@@ -355,10 +377,10 @@ public class ClassicUno{
     public void takeTurns(){
 	int discardSize=1;
 	while(_players.size()!=1 && _deck.size()!=0){
-	    int n= 0;
+	    int n = 0 ;
 	    while (n<_players.size()){
 		Player person = _players.get( n ) ;
-		int toDo=startingTurns(person,n);
+		int toDo = startingTurns(person, n);
 		int ind ;
 		if(toDo == 1 && person.getTimes() < 1){//will only allow drawing once
 		    toDoDraw( person);
@@ -398,7 +420,9 @@ public class ClassicUno{
 			_discard.peek().setColor() ;
 			oneCard( n ) ;
 			person.setTimes(0);
-			n += 1 ;
+			if( !(noCards( n ))) {
+			    n += 1 ;
+			}
 		    }
 		    //incorporating skip--tested
 		    else if(ind<person.getHand().size() && 
@@ -408,26 +432,45 @@ public class ClassicUno{
 			if(n==_players.size()-1){
 			    // System.out.println("last ind so player at ind 1 goes COMMENT OUT LATER");
 			    person.setTimes(0);
-			    n=1;
 			    placeCard(person,ind);
 			    oneCard( n ) ;
 			    discardSize+=1;
+			    
+			    if( noCards( n )) {
+					n = 0 ;
+			    }
+				else {
+					n = 1 ;
+				}
 			}
 			else if(n==_players.size()-2){
 			    // System.out.println("2nd to last so player at ind 0 COMMENT OUT LATER");
 			    person.setTimes(0);
-			    n=0;
+			    
 			    placeCard(person,ind);
 			    discardSize+=1;
 			    oneCard( n ) ;
+			    
+			    if( noCards( n )) {
+					n = _players.size() - 1 ;
+			    }
+				else {
+					n=0;
+				}
 			}
 			else{
 			    // System.out.println("just increment by 1 CO L8R");
 			    person.setTimes(0);
-			    n += 2 ;
 			    placeCard( person, ind ) ;
 			    discardSize+=1;
 			    oneCard( n ) ;
+			    
+			    if( noCards( n )) {
+					n += 1 ;
+			    }
+				else {
+					n += 2 ;
+				}
 			}
 		    }
 		    //incorporating +2--tested
@@ -449,7 +492,10 @@ public class ClassicUno{
 			discardSize+=1;			    
 			oneCard( n ) ;
 			person.setTimes(0);
-			n += 1 ;
+			
+			if( !(noCards( n ))) {
+			    n += 1 ;
+			}
 		    }
 		    //incorporating reverse
 		    else if(ind<person.getHand().size() && 
@@ -458,10 +504,13 @@ public class ClassicUno{
 		        Collections.reverse(_players);
 			n= _players.size()-1-n;
 			person.setTimes(0);
-			n+=1;
 			placeCard(person,ind);	
 			discardSize+=1;
 			oneCard( n ) ;
+			
+			if( !(noCards( n ))) {
+			    n += 1 ;
+			}
 		    }
 		    //incorporating +4
 		    else if(ind<person.getHand().size() && 
@@ -489,7 +538,10 @@ public class ClassicUno{
 			discardSize+=1;
 			oneCard( n ) ;
 			person.setTimes(0);
-			n += 1 ;
+			
+			if( !(noCards( n ))) {
+			    n += 1 ;
+			}
 		    }
 		    else if ( ind>=person.getHand().size() ||
 			      !(match(person.getHand().get(ind)))){
@@ -501,11 +553,20 @@ public class ClassicUno{
 			discardSize+=1;
 			oneCard( n ) ;
 			person.setTimes(0);
-			n+=1;
+			
+			if( !(noCards( n ))) {
+			    n += 1 ;
+			}
 		    }	    
 		}
 	    }
 	}
+	System.out.println( "The game has ended.\n" ) ;
+	// there may be multiple remaining players after game ended - like if there are no more cards in deck.
+	for( int i = 0 ; i < _players.size() ; i ++ ) {
+		_winners.push( _players.remove( i )) ;
+	}
+	
     }
     
     
