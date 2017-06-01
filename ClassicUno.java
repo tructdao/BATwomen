@@ -51,7 +51,27 @@ public class ClassicUno{
 	    setDiscard();
 	    deal();
 	    takeTurns();
-		printWinners() ;
+	    printWinners() ;
+	}
+	else if ( v == 2 ){
+	    populateDeck();
+	    Collections.shuffle(_deck);
+	    System.out.println( "Woo let's play Uno!!" );
+	    
+	    // vv In the event that we make a game w multiple AIs vv
+	    // int nP = numPlayers();
+	    // for( int x=1; x<nP; x++ ){
+	    // 	Player newPlayer= new PlayerAI();
+	    // 	newPlayer.setName( playerName() );
+	    // 	_players.add( newPlayer );
+	    // }
+	    // ^^ In the event that we make a game w multiple AI ^^
+	    
+	    _players.add( new PlayerAI() );
+	    setDiscard();
+	    deal();
+	    takeTurns();
+	    printWinners() ;
 	}
     }//ends newGame
 
@@ -94,7 +114,7 @@ public class ClassicUno{
 	for( int n = 0 ; n < 4 ; n ++ ) {
 	    _deck.add( new Card("+4", "black")) ;
 	    _deck.add( new Card("wild", "black")) ;
-	     _deck.add( new Card( "+2", "red" )) ;
+	    _deck.add( new Card( "+2", "red" )) ;
 	}
     }//ends populate deck
 
@@ -112,7 +132,7 @@ public class ClassicUno{
 	    System.out.println("What version would you like to play?" +
 			       "(int response)");
 	    System.out.println("\t1: Classic");
-	    System.out.println("\t2: Tournament");
+	    System.out.println("\t2: vs Computer Player");
 	    System.out.println("\t3: Rules");
 	    int vers= Keyboard.readInt();
 	    if(vers>=1 && vers<=3){
@@ -188,33 +208,33 @@ public class ClassicUno{
      */
     public void deal(){
 	for( Player i : _players ) {
+	    // vv change n < 2 to n < 7 vv
 	    for( int n = 0 ; n < 2 ; n ++ ) {
 		i.setHand( _deck.remove(0)) ;
-		
 	    }
 	}
     }//ends deal()
+    
     /**
      * removes a card from the deck and adds it to the _discard stack
      */
     public void setDiscard(){
 	Card top = _deck.remove(0);
 	_discard.push(top);
-	
     }
 	
-	// printing winners
-	public void printWinners() {
-		String winners = "" ;
-		int n = 1 ; 
-		while( !( _winners.isEmpty())) {
-			winners = "\n" + n + "\t" + _winners.pop().getName()
-			    + winners ;
-			n += 1 ;
-		}
-		winners = "POSITION\tPLAYER\n" + winners ;
-		System.out.println( winners ) ;
+    // printing winners
+    public void printWinners() {
+	String winners = "" ;
+	int n = 1 ; 
+	while( !( _winners.isEmpty())) {
+	    winners = "\n" + n + "\t" + _winners.pop().getName()
+		+ winners ;
+	    n += 1 ;
 	}
+	winners = "POSITION\tPLAYER\n" + winners ;
+	System.out.println( winners ) ;
+    }
     
     //----------------^------^--Setting the Game Up-------------
 
