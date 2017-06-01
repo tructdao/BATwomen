@@ -219,7 +219,12 @@ Bayan ::
       - Wrote UML
       - Made Flow Chart
 Alison :: 
+	 - worked on method noCards(), which checks for winning players and removes them
+	 - changed takeTurns() a little to prevent misshaps with noCards() and n += 1
+	 - worked on method to print winning players
 Truc :: 
+Bayan and Alison ::
+	 - worked on oneCard() method - a player will be allowed to calll UNO on the previous
 ==============================================================
 2017-06-01
 --------------------------------------------------------------
