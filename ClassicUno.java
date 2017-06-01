@@ -208,7 +208,8 @@ public class ClassicUno{
 		String winners = "" ;
 		int n = 1 ; 
 		while( !( _winners.isEmpty())) {
-			winners = "\n" + n + "\t" + _winners.pop().getName() + winners ;
+			winners = "\n" + n + "\t" + _winners.pop().getName()
+			    + winners ;
 			n += 1 ;
 		}
 		winners = "POSITION\tPLAYER\n" + winners ;
