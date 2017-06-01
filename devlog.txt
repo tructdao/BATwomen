@@ -222,7 +222,7 @@ Alison ::
 	 - worked on method noCards(), which checks for winning players and removes them
 	 - changed takeTurns() a little to prevent misshaps with noCards() and n += 1
 	 - worked on method to print winning players
-Truc :: 
+Truc :: started on the AI Player methods
 Bayan and Alison ::
 	 - worked on oneCard() method - a player will be allowed to calll UNO on the previous
 ==============================================================
