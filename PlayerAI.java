@@ -38,7 +38,7 @@ public class PlayerAI extends Player{
 
     /****
      * HOW TO IMPLEMENT THIS IN CLASSIC UNO:
-     * if (AIPlayer.turn( _discard.pop() ) == - 1){ AIPlayer.draw() }
+     * if ( AIPlayer.turn( _discard.pop() ) == - 1){ AIPlayer.draw() }
      * else{ _discard.push( AIPlayer.play( AIPlayer.turn( _discard.pop() ) ) }
      ****/
 }
