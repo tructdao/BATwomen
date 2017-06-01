@@ -70,7 +70,7 @@ public class Player{
     
     public void decideWinner(){
 	if( _hand.size() == 0){
-	    _won = true;
+	    // _won = true;
 	    System.out.println("UNO!");
 	}
     }

@@ -1,30 +1,31 @@
 import java.io.*;
 import java.util.*;
-import cs1.Keyboard;
+//import cs1.Keyboard;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.Stack;
 
 class ClassicUno{
     
-    static LinkedList<Card> _deck;
+   // static LinkedList<Card> _deck;
     LinkedList<Player> _players;
-    LLStack<Card> _discard;
-    LLStack<Player> _winners;
+    Stack<Card> _discard;
+    Stack<Player> _winners;
     
     
     /*default constructor*/ 
     ClassicUno(){
       _deck= new LinkedList<Card>();
       _players= new LinkedList<Player>();
-      _discard= new LLStack<Card>();
-      _winners = new LLStack<Player>();
+      _discard= new Stack<Card>();
+      _winners = new Stack<Player>();
     }//ends constructor
 
     //------------------v-----v--Accessors------------
     LinkedList<Player> getPlayers(){
       return _players;
     }
-    LLStack<Card> getDiscard(){
+    Stack<Card> getDiscard(){
       return _discard;
     }
     //----------------^------^--Accessors-------------
@@ -112,7 +113,8 @@ class ClassicUno{
       System.out.println("\t1: Classic");
       System.out.println("\t2: Tournament");
       System.out.println("\t3: Rules");
-      int vers= Keyboard.readInt();
+      int vers=1;
+     // int vers= Keyboard.readInt();
       if(vers>=1 && vers<=3){
     return vers;
       }
@@ -150,8 +152,8 @@ class ClassicUno{
      */
     String playerName(){
   System.out.println("Hello, What's your name?");
-  String nombre= Keyboard.readString();
-  return nombre;
+ // String nombre= Keyboard.readString();
+  return "";
     }//ends playerName()
 
     /**
@@ -163,7 +165,7 @@ class ClassicUno{
          "of UNO(2-12)");
   int num;
   while(true){
-      num = Keyboard.readInt() ;    
+    num = 4; //Keyboard.readInt() ;    
       if( num >= 2 && num <= 12 ) { 
     return num;
       }
@@ -254,7 +256,7 @@ class ClassicUno{
              "(int response)");
       System.out.println("\t1: Draw (You can only draw once per round)");
       System.out.println("\t2: Pick a card");
-      int choice= Keyboard.readInt();
+      int choice= 3;//Keyboard.readInt();
       if(choice>=1 && choice<=2){
     return choice;
       }

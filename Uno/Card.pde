@@ -1,4 +1,4 @@
-import cs1.Keyboard;
+//import cs1.Keyboard;
 
 class Card{
 
@@ -12,9 +12,9 @@ class Card{
     }
 
     //overloaded constructor
-    Card( String symbol, String color ){
+    Card( String symbol, String c ){
   _symbol = symbol;
-  _color = color;
+  _color = c;
     }
 
     //----------------vv Accessors vv-----------------
@@ -58,7 +58,7 @@ class Card{
       System.out.println( "What color would you like to play next?" );
       System.out.println( "red\tyellow\tblue\tgreen" );
       System.out.print( "Your choice: " );
-      _color = Keyboard.readString().toLowerCase();
+    //  _color = Keyboard.readString().toLowerCase();
     while(!(_color.equals("red")) &&
         !(_color.equals("yellow")) &&
         !(_color.equals("blue")) &&
@@ -68,7 +68,7 @@ class Card{
       System.out.println("\t2: yellow");
       System.out.println("\t3: blue");
       System.out.println("\t4: green");
-      _color = Keyboard.readString().toLowerCase() ;
+    //  _color = Keyboard.readString().toLowerCase() ;
   }
 
     }

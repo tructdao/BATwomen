@@ -3,28 +3,28 @@ import java.util.*;
 import cs1.Keyboard;
 import java.util.Collections;
 import java.util.LinkedList;
-
+import java.util.Stack;
 public class ClassicUno{
     
     public static LinkedList<Card> _deck;
     private LinkedList<Player> _players;
-    public LLStack<Card> _discard;
-    public LLStack<Player> _winners;
+    public Stack<Card> _discard;
+    public Stack<Player> _winners;
     
     
     /*default constructor*/ 
     public ClassicUno(){
 	_deck= new LinkedList<Card>();
 	_players= new LinkedList<Player>();
-	_discard= new LLStack<Card>();
-	_winners = new LLStack<Player>();
+	_discard= new Stack<Card>();
+	_winners = new Stack<Player>();
     }//ends constructor
 
     //------------------v-----v--Accessors------------
     public LinkedList<Player> getPlayers(){
 	return _players;
     }
-    public LLStack<Card> getDiscard(){
+    public Stack<Card> getDiscard(){
 	return _discard;
     }
     //----------------^------^--Accessors-------------
