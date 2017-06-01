@@ -1,0 +1,20 @@
+public class AIUno{
+
+    public static LinkedList<Card> _deck;
+    private LinkedList<Player> _players;
+    public LLStack<Card> _discard;
+
+    public AIUno() {
+	_deck = new LinkedList<Card>();
+	_players = new LinkedList<Player>();
+	_discard = new LLStack<Card>();
+    }
+
+    //each parameter comes from Classic Uno
+    public AIUno( LinkedList<Card> deck, LinkedList<Player> players,
+		  LLStack<Card> discard){
+	_deck = deck;
+	_players = players;
+	_discard = discard;
+    }
+}
