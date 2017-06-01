@@ -1,15 +1,37 @@
 BatWomen
-Bayan Berri, Alison Lee, Truc Dao
+Bayan Berri
+Alison Lee
+Truc Dao
+
+Which jobs are most crucial?
+
+      - Drawing is buggy: if you put an index out of bounds after drawing once, the program allows you to draw a second time, it shouldn't.
+      - Printing out the leaderboard/winners by using a sort
+      - Incorporate an AI as our other version of the game
+      - Add calling Uno if one card.
+      - If the first card on the discard pile is a black card, any card should work.
+
+
+Which components constitute core functionality?
+      - Incorpoating an AI
+      - Ending the game (sort)
+Non essential?
+    - modular design
+    - debug +4
+    - debug drawing two times
+which components are prerequisites for others?
+which tasks can be delegated and which must be collaboratively tackled?
+What is the timeline, and how does it accommodate setbacks, course changes?
 
 Bayan:
 	- Incorporate more modular design just for easier debugging later
-	- drawing is buggy if you put an index out of bounds, it lets you draw again(shouldn't happen)	DONEONDONEONDOENODNEON
+
 
 Alison:
-	- Sort for leaderboard
+
 
 Truc:
-	- add option of playing against computer player to chooseVersion()
+
 
 Everyone:
 	- Create an AI which will loop through the hand check for cards that work if a number card works place it, if not move on to an action card, other wise see if there is a black card. if not draw check if that card works. if it does place it. Otherwise move on to the next player(human player).
