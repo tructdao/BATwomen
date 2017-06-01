@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Collections;
 import java.util.LinkedList;
 
-LinkedList<Card> _deck;
+//LinkedList<Card> _deck;
 void setup() {
   size( 600, 600 ) ;
 }
