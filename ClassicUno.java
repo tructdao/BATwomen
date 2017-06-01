@@ -307,14 +307,21 @@ public class ClassicUno{
     /**
      * reader input method, asks specified player(n) what card they want to play
      */
-    public int pickCard(int n){ 
-	System.out.println("It's your turn, player "+ _players.get(n).getName() +
-			   ", what card would you like to play" +
-			   " (index of your hand)?\n\n");
-	System.out.println();
-	int x ;
-	x= Keyboard.readInt();
-	return x;
+    public int pickCard(int n,Player person){
+	while (true){
+	    System.out.println("It's your turn, player "+ _players.get(n).getName() +
+			       ", what card would you like to play" +
+			       " (index of your hand)?\n\n");
+	    System.out.println();
+	    int x ;
+	    x= Keyboard.readInt();
+	    if (x>=0&& x<=person.getHandSize()){
+		return x;
+	    }
+	    else{
+		System.out.println("pick a valid card");
+	    }
+	}
     }
     //________vvv________HELPERS FOR TAKETURNS_____________vvv__________
     public int startingTurns(Player person,int n){
@@ -419,7 +426,7 @@ public class ClassicUno{
 		if(toDo==2 || toDo == 5 ){ // if player chose to play after drawing
 		    System.out.println();
 		    printSetUp(person);
-		    ind= pickCard(n); 
+		    ind= pickCard(n,person); 
 		    if(ind>=person.getHand().size()){
 			System.out.println("that doesn't work");
 		    }
