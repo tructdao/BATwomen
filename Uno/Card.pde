@@ -55,11 +55,11 @@ class Card{
     
     //for wild cards and draw4, after playing the card you need to call this
     void setColor(){
-  System.out.println( "What color would you like to play next?" );
-  System.out.println( "red\tyellow\tblue\tgreen" );
-  System.out.print( "Your choice: " );
-  _color = Keyboard.readString().toLowerCase();
-  while(!(_color.equals("red")) &&
+      System.out.println( "What color would you like to play next?" );
+      System.out.println( "red\tyellow\tblue\tgreen" );
+      System.out.print( "Your choice: " );
+      _color = Keyboard.readString().toLowerCase();
+    while(!(_color.equals("red")) &&
         !(_color.equals("yellow")) &&
         !(_color.equals("blue")) &&
         !(_color.equals("green"))){  
