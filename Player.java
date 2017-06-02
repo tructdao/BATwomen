@@ -65,6 +65,10 @@ public class Player{
     public void setUno( boolean u ) {
 	Uno = u ;
     }
+
+    public Card removeCard( int index ){
+	return _hand.remove( index );
+    }
 	
  //--------------------------- ^^ Mutators ^^ -----------------------
     public ArrayList<Card> drawCard(){

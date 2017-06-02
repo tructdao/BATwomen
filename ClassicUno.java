@@ -28,8 +28,6 @@ public class ClassicUno{
 	return _discard;
     }
     //----------------^------^--Accessors-------------
-
-    
     
     public void newGame(){
 	int v= chooseVersion();
@@ -70,8 +68,8 @@ public class ClassicUno{
 	    _players.add( new PlayerAI() );
 	    setDiscard();
 	    deal();
-	    takeTurns();
-	    printWinners() ;
+	    AIUno game = new AIUno( _deck, _players, _discard );
+	    game.play();
 	}
     }//ends newGame
 

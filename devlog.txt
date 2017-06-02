@@ -18,7 +18,9 @@ UNRESOLVED ISSUES
 -constructors
 -Card Var Type VS Object Type
 -should be allowed to type in draw but right now it asks to type in 1000 for draw ** keep in mind for debugging!!**
+-Stack refuses to compile in AIUno.java
 COOL STUFF LEARNED
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 javac *.java is extremely useful because it tells you which errors to fix at an early stage. 
 
@@ -238,7 +240,7 @@ Truc :: Created an AI game.
 --------------------------------------------------------------
 Bayan :: 
 Alison :: 
-Truc ::
+Truc :: implemented AI Game in ClassicUno
 ==============================================================
 2017-06-03
 --------------------------------------------------------------

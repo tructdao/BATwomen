@@ -2,17 +2,19 @@ import java.io.*;
 import java.util.*;
 import cs1.Keyboard;
 
+//STACK WON'T COMPILE IN THIS CLASS 
+
 public class AIUno{
 
     public static LinkedList<Card> _deck;
     private LinkedList<Player> _players;
-    public LLStack<Card> _discard;
-    public Stack<Player> _winners;
+    public Stack<Card> _discard;
+    //public Stack<Player> _winners;
 
     public AIUno() {
 	_deck = new LinkedList<Card>();
 	_players = new LinkedList<Player>();
-	_discard = new LLStack<Card>();
+	_discard = new Stack<Card>();
 	//_winners = new Stack<Player>(); --> Gives an error, stack is abstract
 	//Note: instantiating _winners in Classic Uno works so idk whats up here
     }
@@ -46,10 +48,20 @@ public class AIUno{
     }//ends deal()
 
     /**
-     * if there are still Players in the game, continue
+     * if there is still more than 1 Player in the game, continue
+     * if only 1 or no Players are left, return false 
      **/
     public boolean continueGame(){
-        return _players.size() != 0;
+	int stillPlaying = 0;
+        for ( Player i : _players ){
+	    if ( i.getHandSize() != 0 ){
+		stillPlaying += 1;
+	    }
+	    if ( stillPlaying > 1 ){
+		return true;
+	    }
+	}
+	return false;
     }
 
     public void play(){
@@ -102,18 +114,20 @@ public class AIUno{
 		else{
 		    System.out.println( "Your hand: " + i );
 		    choice = -1;
-		    while( choice != 1 || choice != 2 ){
+		    while( choice != 1 && choice != 2 ){
 			System.out.println( "Please choose 1 or 2.");
 			System.out.println( "Would you like to\n" +
 					    "\t1. Draw\n" +
 					    "\t2. Play a card.");
+			System.out.print("Your choice: ");
+			choice = Keyboard.readInt();
 		    }
 		    if (choice == 1){
 			i.setHand( _deck.pop() );
 		    }
 		    else{
 			index = chooseCard( i, top );
-			_discard.push( i.getCard( index ) );
+			_discard.push( i.removeCard( index ) );
 		    }
 		}//end regular person else
 	    }//end for
