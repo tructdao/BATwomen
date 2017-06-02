@@ -41,6 +41,10 @@ public class Player{
     public boolean getUno() {
 	return Uno ;
     }
+
+    public Card getCard( int index ){
+	return _hand.get( index );
+    }
     
  //--------------------------- ^^ Accessors ^^ -----------------------
 
@@ -73,10 +77,6 @@ public class Player{
 	    // _won = true;
 	    System.out.println("UNO!");
 	}
-    }
-
-    public boolean isAI(){
-	return false;
     }
 
     public String toString(){

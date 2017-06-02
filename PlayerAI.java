@@ -47,10 +47,6 @@ public class PlayerAI extends Player{
 	return _hand.remove( index );
     }
 
-    public boolean isAI(){
-	return true;
-    }
-
     //--------------------------- vv Accessors vv -----------------------
 
     public String getName(){

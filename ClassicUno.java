@@ -114,7 +114,7 @@ public class ClassicUno{
 	for( int n = 0 ; n < 4 ; n ++ ) {
 	    _deck.add( new Card("+4", "black")) ;
 	    _deck.add( new Card("wild", "black")) ;
-	    _deck.add( new Card( "+2", "red" )) ;
+	    _deck.add( new Card( "+2", "red" )) ; //wait why
 	}
     }//ends populate deck
 
@@ -309,7 +309,8 @@ public class ClassicUno{
      */
     public int pickCard(int n,Player person){
 	while (true){
-	    System.out.println("It's your turn, player "+ _players.get(n).getName() +
+	    System.out.println("It's your turn, player "+
+			       _players.get(n).getName() +
 			       ", what card would you like to play" +
 			       " (index of your hand)?\n\n");
 	    System.out.println();
