@@ -64,10 +64,17 @@ public class ClassicUno{
 	    // 	_players.add( newPlayer );
 	    // }
 	    // ^^ In the event that we make a game w multiple AI ^^
-	    
-	    _players.add( new PlayerAI() );
+
+	    System.out.println("What is your name?");
+	    String name = Keyboard.readString();
+	    _players.add( new Player( name ) );
+	    //_players.add( new PlayerAI() );
+	    _players.add( new Player( "AI" ) );
 	    setDiscard();
 	    deal();
+	    for (Player x : _players){
+		System.out.println("Player " + x.getName() + ": " + x);
+	    }
 	    AIUno game = new AIUno( _deck, _players, _discard );
 	    game.play();
 	}

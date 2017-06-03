@@ -64,6 +64,18 @@ public class PlayerAI extends Player{
     
     //--------------------------- ^^ Accessors ^^ -----------------------
 
+    //--------------------------- vv Mutators vv ------------------------
+
+    public void setHand( Card card ){
+	_hand.add( card );
+    }
+
+    public Card removeCard( int index ){
+	return _hand.remove( index );
+    }
+
+    //--------------------------- ^^ Mutators ^^ ------------------------
+
     public String toString(){
         
 	String ret = "\nPLAYER " + _name ;

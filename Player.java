@@ -91,6 +91,26 @@ public class Player{
 	    ret += n + "\t" + _hand.get( n ) + "\n" ;
 	}
 	return ret;
-	
     }
+
+    //--------------------- vv AI METHODS vv --------------------
+
+    public int turn( Card top ){
+	for (int i = 0; i < _hand.size(); i++ ){
+	    if ( _hand.get( i ).match( top ) ){
+		//play( i );
+		return i;
+	    }
+	}
+	System.out.println("No playable cards, drawing a card now.");
+	return -1;
+	//DRAW CARD
+    }
+
+    public Card play( int index ){
+	return _hand.remove( index );
+    }
+
+    //--------------------- ^^ AI METHODS ^^ --------------------
+
 }

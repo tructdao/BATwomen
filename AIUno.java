@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.*;
 import cs1.Keyboard;
+import java.util.Stack;
+import java.util.LinkedList;
 
 //STACK WON'T COMPILE IN THIS CLASS 
 
@@ -22,7 +24,7 @@ public class AIUno{
     //each parameter comes from Classic Uno
     //all has been initialized in newGame() in ClassicUno
     public AIUno( LinkedList<Card> deck, LinkedList<Player> players,
-		  LLStack<Card> discard){
+		  Stack<Card> discard){
 	this();
 	_deck = deck;
 	_players = players;
@@ -42,7 +44,7 @@ public class AIUno{
 	for( Player i : _players ) {
 	    // vv change n < 2 to n < 7 vv
 	    for( int n = 0 ; n < 2 ; n ++ ) {
-		i.setHand( _deck.remove(0)) ;
+	        i.setHand( _deck.remove(0) ) ;
 	    }
 	}
     }//ends deal()
@@ -71,7 +73,7 @@ public class AIUno{
 	    for( Player i : _players ){
 		
 	        top = _discard.peek();
-		System.out.print("Top card: " + top);
+		System.out.println("Top card: " + top);
 
 		//check if is an action Card
 		
@@ -100,13 +102,17 @@ public class AIUno{
 
 		//AI
 		if ( i.getName().equals( "AI" ) ){
-		    index = ( ( PlayerAI ) i ).turn( top );
+		    index = i.turn( top );
 		    if ( index != -1 ){
-			_discard.push( ( ( PlayerAI ) i ).play(index) );
+			_discard.push( i.play(index) );
 		    }
 		    else{
 			i.setHand( _deck.pop() );
 			System.out.println("AI has no playable cards.");
+		    }
+		    if (i.getHandSize() == 0){
+			System.out.println("AI WINS!");
+			return;
 		    }
 		}
 
@@ -128,6 +134,10 @@ public class AIUno{
 		    else{
 			index = chooseCard( i, top );
 			_discard.push( i.removeCard( index ) );
+		    }
+		    if( i.getHandSize() == 0){
+			System.out.println("YOU WIN!!");
+			return;
 		    }
 		}//end regular person else
 	    }//end for
