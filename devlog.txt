@@ -241,6 +241,7 @@ Truc :: Created an AI game.
 Bayan :: 
 Alison :: 
 Truc :: implemented AI Game in ClassicUno
+	finished AI Game
 ==============================================================
 2017-06-03
 --------------------------------------------------------------
