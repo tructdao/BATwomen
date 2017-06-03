@@ -226,7 +226,7 @@ public class ClassicUno{
     public void deal(){
 	for( Player i : _players ) {
 	    // vv change n < 2 to n < 7 vv
-	    for( int n = 0 ; n < 7 ; n ++ ) {
+	    for( int n = 0 ; n < 3 ; n ++ ) {
 		i.setHand( _deck.remove(0)) ;
 	    }
 	}
@@ -417,6 +417,7 @@ public class ClassicUno{
 	public boolean noCards( int n ) {
 	    if( _players.get( n ).getHandSize() == 0 ) {
 		_winners.push( _players.remove( n )) ;
+		System.out.println( "Player " + _players.get(n).getName() + ", you have no more cards left :)." )
 		return true ;
 	    }
 	    
@@ -515,46 +516,51 @@ public class ClassicUno{
 		    // if the FIRST ever discard card is a wild black
 		    // necessary bc there is no person to set its color
 		    if(firstDiscard(discardSize )) {
-			placeCard( person, ind ) ;
-			discardSize+=1;
-			oneCard( n ) ;
-			person.setTimes(0);
-			n += 1 ;
+				placeCard( person, ind ) ;
+				discardSize+=1;
+				oneCard( n ) ;
+				person.setTimes(0);
+				n += 1 ;
 		    }
 		    //incorporates wild
 		    else if( ind < person.getHand().size() && 
 			     person.getHand().get( ind ).getSymbol().equals( "wild" ) ) {
-			placeCard( person, ind ) ;
-			_discard.peek().setColor() ;
-			oneCard( n ) ;
-			person.setTimes(0);
-			if( !(noCards( n ))) {   n += 1 ;}
+				placeCard( person, ind ) ;
+				_discard.peek().setColor() ;
+				person.setTimes(0);
+				if( !(noCards( n ))) { 
+				oneCard( n ) ;
+				n += 1 ;}
 		    }
 		    //incorporating skip--tested
 		    else if(skipTurn(person.getHand().get(ind) , person , ind)){
 			if(n==_players.size()-1){
 			    person.setTimes(0);
 			    placeCard(person,ind);
-			    oneCard( n ) ;
 			    discardSize+=1;
 			    if( noCards( n )) {n = 0 ; }
-				else {n = 1 ;}
+				else {
+					oneCard( n ) ;
+					n = 1 ;}
 			}
 			else if(n==_players.size()-2){
 			    person.setTimes(0);
 			    placeCard(person,ind);
 			    discardSize+=1;
-			    oneCard( n ) ;
 			    if( noCards( n )) {n = _players.size() - 1 ; }
-			    else {n=0;}
+			    else {
+					oneCard( n ) ;
+					n=0;
+				}
 			}
 			else{
 			    person.setTimes(0);
 			    placeCard( person, ind ) ;
-			    discardSize+=1;
-			    oneCard( n ) ;    
+			    discardSize+=1;   
 			    if( noCards( n )) {n += 1 ; }
-				else {n += 2 ;}
+				else {
+			    oneCard( n ) ; 
+				n += 2 ;}
 			}
 		    }
 		    //incorporating +2--tested
@@ -562,11 +568,11 @@ public class ClassicUno{
 			if(n==_players.size()-1){ drawTwo(-1);}
 			else{ drawTwo(n);}
 			placeCard( person, ind ) ;
-			discardSize+=1;			    
-			oneCard( n ) ;
+			discardSize+=1;	
 			person.setTimes(0);
 			
 			if( !(noCards( n ))) {
+				oneCard( n ) ;
 			    n += 1 ;
 			}
 		    }
@@ -577,9 +583,8 @@ public class ClassicUno{
 			person.setTimes(0);
 			placeCard(person,ind);	
 			discardSize+=1;
-			oneCard( n ) ;
-			
 			if( !(noCards( n ))) {
+				oneCard( n ) ;
 			    n += 1 ;
 			}
 		    }
@@ -595,9 +600,9 @@ public class ClassicUno{
 			}
 			placeCard( person, ind ) ;
 			discardSize+=1;
-			oneCard( n ) ;
 			person.setTimes(0);
 			if( !(noCards( n ))) {
+				oneCard( n ) ;
 			    n += 1 ;
 			}
 		    }
@@ -608,10 +613,9 @@ public class ClassicUno{
 		    else if (match(person.getHand().get(ind))){
 			placeCard(person,ind);
 			discardSize+=1;
-			oneCard( n ) ;
 			person.setTimes(0);
-			
 			if( !(noCards( n ))) {
+				oneCard( n ) ;
 			    n += 1 ;
 			}
 		    }	    

@@ -20,6 +20,9 @@ class Player {
     _name = name;
   }
 
+  void draw() {
+  }
+
   //--------------------------- vv Accessors vv -----------------------
 
   String getName() {
@@ -67,14 +70,16 @@ class Player {
     _hand.add(ClassicUno._deck.remove(0));
     return _hand;
   }
-
+  
+  /*
   void decideWinner() {
-    if ( _hand.size() == 0) {
-      _won = true;
-      System.out.println("UNO!");
-    }
-  }
-
+   if ( _hand.size() == 0) {
+   _won = true;
+   System.out.println("UNO!");
+   }
+   }
+   */
+   
   boolean isAI() {
     return false;
   }
