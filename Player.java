@@ -7,17 +7,22 @@ public class Player{
     private String _name;
     private int times ;
     private boolean Uno ;
+    private boolean _isAI;
 
     public Player(){
 	_hand = new ArrayList<Card>();
 	_name = "";
 	times = 0 ;
 	Uno = false ;
+	_isAI=false;
     }
 
     public Player( String name ){
 	this();
 	_name = name;
+	if(name.equals("AI")){
+	    _isAI=true;
+	}
     }
 
     //--------------------------- vv Accessors vv -----------------------
@@ -44,6 +49,9 @@ public class Player{
 
     public Card getCard( int index ){
 	return _hand.get( index );
+    }
+    public boolean getAI(){
+	return _isAI;
     }
     
  //--------------------------- ^^ Accessors ^^ -----------------------
