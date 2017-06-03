@@ -376,6 +376,16 @@ public class ClassicUno{
 		if( _players.get( n ).getHandSize() == 1  ) {
 		    _players.get( n ).setUno( true ) ;
 		}
+		else if(n==0){
+		    if(_players.get( _players.size()-1 ).getHandSize()==1&&
+		       _players.get(_players.size()-1).getUno()==false){
+			_players.get(_players.size()-1).setHand( _deck.remove(0)) ;
+			_players.get(_players.size()-1).setHand( _deck.remove(0)) ;
+			System.out.println( _players.get(_players.size()-1).getName()+ 
+					    ", You just got UNO-ed");
+		    }
+			
+		}
 		else if(_players.get( n - 1 ).getHandSize() == 1 && 
 			_players.get(n-1).getUno() == false ) {
 		    _players.get(n-1).setHand( _deck.remove(0)) ;
