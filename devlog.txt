@@ -29,6 +29,7 @@ MID-DEVELOPMENT DESIGN CHANGES
 - deck will be a linked list
 - no subclasses to card we will just be using one card class with symbol and color
 - We decided against having a tournament and incorporating a binary search tree in this manner as we described in our proposal. This is because after a while of thinking we realized that in order to have a tournament we need to have multiple games going on at the same time. Also, while sketching it out with the idea that only one game with a human player will go on at a time, and as progressing up the tree the difficulty of the opponent would have to increase. This doesn't seem realistic to code since each game is different and our AI will loop through their hand and choose a card that matches and place it. 
+-removed PlayerAI class and implemented its methods in Player instead
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -242,6 +243,7 @@ Bayan ::
 Alison :: 
 Truc :: implemented AI Game in ClassicUno
 	finished AI Game
+	changed PlayerAI class to just Player
 ==============================================================
 2017-06-03
 --------------------------------------------------------------
