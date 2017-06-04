@@ -65,16 +65,16 @@ public class ClassicUno{
 	    System.out.println("set discard");
 	    deal();
 	    System.out.println("dealt cards");
-	      for (Player x : _players){
-		 System.out.println();
-		 System.out.println();
-		 System.out.println();
-		 System.out.println("Player " + x.getName() +" "+ x.getAI()+ ": " + x);
-		 System.out.println();
-		 System.out.println();
-		 System.out.println();
+	    for (Player x : _players){
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("Player " + x.getName() +" "+ x.getAI()+ ": " + x);
+		System.out.println();
+		System.out.println();
+		System.out.println();
 	    }
-	      System.out.println("TAKING TURNS");
+	    System.out.println("TAKING TURNS");
 	    takeTurnsAI();
 	    printWinners();
 	
@@ -517,14 +517,20 @@ public class ClassicUno{
 	   
 	}	    
     }
+
+    //AI method, checks the card just drawn
     public void checkdrawnCard(Player person,int n){
 	 int sz= person.getHandSize();
 	if(person.getCard(sz-1).match(_discard.peek())){	
 	    //placeCard(person.getHand().get(person.getHandSize()-1));
 	    _discard.push(person.getHand().remove(person.getHandSize()-1));
-	    n+=1;	    }
+	    n+=1;
+	    System.out.println( "AI played " + _discard.peek() )
+	}
 	else{
-	    n+=1;	}
+	    n+=1;
+	    System.out.println( "AI has no playable cards" );
+	}
     }
     public void askPlayer(Player person,int n){
 	int toDo = startingTurns(person, n);
@@ -552,8 +558,8 @@ public class ClassicUno{
 	    while (n<_players.size()){
 		System.out.println("second loop");
 		    
-		System.out.println("goint through AI stuff");
-		if(n==0){	
+		System.out.println("going through AI stuff");
+		if( _players.get( n ).getName().equals( "AI" )){	
 		    Player AI=  _players.get(n);
 		    //check if cards rn match
 		    checkAIHand(AI,n);
@@ -593,8 +599,8 @@ public class ClassicUno{
 			    _discard.peek().setColor() ;
 			    person.setTimes(0);
 			    if( !(noCards( n ))) { 
-				oneCard( n ) ;
-				n += 1 ;}
+			    	//oneCard( n ) ;
+			    	n += 1 ;}
 			}
 			//incorporating skip--tested
 			else if(skipTurn(person.getHand().get(ind) , person , ind)){
@@ -603,7 +609,7 @@ public class ClassicUno{
 				placeCard(person,ind);
 				if( noCards( n )) {n = 0 ; }
 				else {
-				    oneCard( n ) ;
+				    // oneCard( n ) ;
 				    n = 1 ;}
 			    }
 			    else if(n==_players.size()-2){
@@ -611,7 +617,7 @@ public class ClassicUno{
 				placeCard(person,ind);
 				if( noCards( n )) {n = _players.size() - 1 ; }
 				else {
-				    oneCard( n ) ;
+				    //oneCard( n ) ;
 				    n=0;
 				}
 			    }
@@ -620,7 +626,7 @@ public class ClassicUno{
 				placeCard( person, ind ) ;
 				if( noCards( n )) {n += 1 ; }
 				else {
-				    oneCard( n ) ; 
+				    //oneCard( n ) ; 
 				    n += 2 ;}
 			    }
 			}
@@ -632,7 +638,7 @@ public class ClassicUno{
 			    person.setTimes(0);
 			
 			    if( !(noCards( n ))) {
-				oneCard( n ) ;
+				//oneCard( n ) ;
 				n += 1 ;
 			    }
 			}
@@ -643,7 +649,7 @@ public class ClassicUno{
 			    person.setTimes(0);
 			    placeCard(person,ind);	
 			    if( !(noCards( n ))) {
-				oneCard( n ) ;
+				//oneCard( n ) ;
 				n += 1 ;
 			    }
 			}
@@ -660,7 +666,7 @@ public class ClassicUno{
 			    placeCard( person, ind ) ;
 			    person.setTimes(0);
 			    if( !(noCards( n ))) {
-				oneCard( n ) ;
+				//oneCard( n ) ;
 				n += 1 ;
 			    }
 			}
@@ -672,7 +678,7 @@ public class ClassicUno{
 			    placeCard(person,ind);
 			    person.setTimes(0);
 			    if( !(noCards( n ))) {
-				oneCard( n ) ;
+				//oneCard( n ) ;
 				n += 1 ;
 			    }
 			}   
