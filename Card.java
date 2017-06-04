@@ -30,7 +30,9 @@ public class Card{
     //----------------^^ Accessors ^^-----------------
 
     //----------------vv Mutators vv-----------------
-   
+    public void changeColor(String c){
+	_color=c;
+    }
     //----------------^^ Mutators ^^-----------------
     public boolean match( Card other ){
 
@@ -72,7 +74,7 @@ public class Card{
 	}
     }
 
-    public void setColorAI( Player AI ){
+    /*   public void setColorAI( Player AI ){
 	if ( AI.getHandSize() == 1 ){
 	    if ( AI.getCard( 0 ).getColor().equals( "black" ) ){
 	        int c = (int) Math.random() * 4;
@@ -90,7 +92,7 @@ public class Card{
 	    index = (int) ( Math.random() * AI.getHandSize() );
 	}
 	_color = AI.getCard( index ).getColor();
-    }
+	}*/
 
     public String toString(){
 	String ret = "";
