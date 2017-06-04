@@ -427,22 +427,34 @@ public class ClassicUno{
     public void checkAIHand(Player person,int n){
    
 	for (int x= 0;x<person.getHandSize(); x++){
-	    	if(addFourCheck(person.getHand().get(x) , person , x)){
+	    	if(person.getCard(x).getSymbol().equals("+4")&&
+		   addFourCheck(person.getHand().get(x) , person , x)){
 		    System.out.println("STARTING TO SET COLOR");
 		    int c= (int)(Math.random()*4)+1;
+		    System.out.println("RANDOM:");
+		    System.out.println(c);
 		    if (c==1){
+			System.out.println("SHOULD BE RED");
+					    
 			person.getCard(x).changeColor("red");
 		    }
 		    else if(c==2){
+		    System.out.println("SHOULD BE BLUE");
+
 			person.getCard(x).changeColor("blue");
 		    }
 		    else if(c==3){
+			System.out.println("SHOULD BE YLOW");
+
 			person.getCard(x).changeColor("yellow");
 		    }
 		    else if(c==4){
+			System.out.println("SHOULD BE GRN");
+
 			person.getCard(x).changeColor("green");
 		    }
 		    else {
+			System.out.println("RANDOM IS MSED UP");
 			person.getCard(x).changeColor("ornge");
 		    }
 		    if(n==_players.size()-1){
