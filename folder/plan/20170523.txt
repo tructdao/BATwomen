@@ -1,0 +1,27 @@
+Bayan:
+	- create subclasses, action card abstract. subclasses for +2,4,wild, skip and reverse.
+	-  does card match? (done)
+	- ask player what they want to do, get turns to work(done)
+Truc:
+	- read about mouse clicks on the terminal
+	- continue working on plus 4,reverse, plus 2. will have separate subclasses
+	-Extremely simple AI. just whichever is the first playable card go for it, for the MVP
+Alison:
+	- work on skip.
+	  - make your comment a reality!
+	- in this loop can you add the skip method.
+
+
+What we have so far:
+
+-  a list of players with names
+-  a linked list of cards SHUFFLED woooo!
+-  the options working (will be useful later on)
+- a basic setup for the discard pile
+- Hands are printing woo
+
+
+IMPORTANT:
+- having a turns system so that we can start testing that the game actually works.(done)
+- Having a match method to make sure the cards match.(done)
+- coding methods for the action cards. 

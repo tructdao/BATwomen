@@ -1,0 +1,31 @@
+Team BatWomen
+Bayan Berri, Alison Lee, Truc Dao
+
+5/19-5/20 (Get Basics Down):
+
+Bayan:
+	- Start working on starting the game(Reader input stuff)
+	  - player names?-Done
+	  - asking what version-Done
+	  - do you want to see the rules of the game-Done
+	    - write rules of the game so that when you run the file it displays.
+	   
+Alison:
+	- Create RQueue for a deck.-Done
+	  - 2 of each number in each color(1-9, R,G,Y,B).
+	  - 1 zero of each color.
+	  - 2 of each action card for each color (+2, reverse, skip)
+	  - 4 of each type of wild card( +4, choose color)
+	    - just have cards(no effects)
+	- Have the deal method working(pop 7 cards per person).
+	- Set up basic discard pile(pop one card and push it to the discard pile)
+
+Truc:
+
+	- start working on the tree for the tournament.
+	  -our tree will probably not be a binary search tree, it will be a regular binary tree
+	       -sketch/draft
+	- start working on the action cards methods. 
+
+
+

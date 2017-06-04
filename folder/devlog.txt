@@ -1,0 +1,280 @@
+Team BatWomen- Bayan Berri, Alison Lee, Truc Dao
+APCS2 Period 4
+HW41 -- ProPro
+2017-05-17
+---------------------
+UNO
+
+
+/////////// Zone of Reflection \\\\\\\\\\\
+------------------------------------------
+OBSTACLES OVERCOME
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- the sample method in Rqueue didn't work as intended, so we switched to linked lists and used the shuffle method.
+
+
+UNRESOLVED ISSUES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-constructors
+-Card Var Type VS Object Type
+-should be allowed to type in draw but right now it asks to type in 1000 for draw ** keep in mind for debugging!!**
+- takeTurnsAI needs work on +4, +2
+COOL STUFF LEARNED
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+javac *.java is extremely useful because it tells you which errors to fix at an early stage. 
+
+MID-DEVELOPMENT DESIGN CHANGES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- deck will be a linked list
+- no subclasses to card we will just be using one card class with symbol and color
+- We decided against having a tournament and incorporating a binary search tree in this manner as we described in our proposal. This is because after a while of thinking we realized that in order to have a tournament we need to have multiple games going on at the same time. Also, while sketching it out with the idea that only one game with a human player will go on at a time, and as progressing up the tree the difficulty of the opponent would have to increase. This doesn't seem realistic to code since each game is different and our AI will loop through their hand and choose a card that matches and place it. 
+-removed PlayerAI class and implemented its methods in Player instead
+
+LESSONS LEARNED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Simplicity is key
+- modular design is amazing <3 <3 
+-Always back up the working version!!
+||||||||||||||||||||||||||||||||||||||||||
+	
+
+	
+
+______   ______   __   __   __       ______   _______    
+
+/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\   
+\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__ 
+ \:\ \ \ \\:\/___/\\:\ \\ \ \\:\ \    \:\ \ \ \\:\ /____/\
+  \:\ \ \ \\::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/
+   \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \
+    \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
+
+==============================================================
+2017-05-18
+--------------------------------------------------------------
+Bayan ::
+      - Added the cs1 packag.
+      -Added DLL, RQueue,BST and Stack from the library to our team repo.(and others)
+      - Added a main class for classicUno (will start the game)
+      	- worked on getting classicUno and Player to compile (not running yet)
+	- some basic debugging. 
+Alison :: 
+	 - Added devlog, cards classes
+	 - Worked on reverse method. 
+Truc ::
+     - Created the classes we planned out on UML diagrams in our project proposal
+     - Worked on the player class (accessors)
+     - started setup of the Tournaments
+     - linked the submodule
+     - created the plan directory
+     
+==============================================================
+2017-05-19
+--------------------------------------------------------------
+Bayan ::
+      - Player class mutators
+      - asks players for names. 
+Alison :: 
+	 - created Uno class (equivalent of Woo.java)
+	 - created method to populate deck
+	 - deal method
+Truc :: - worked on Tournament creation
+==============================================================
+2017-05-20
+--------------------------------------------------------------
+Bayan ::
+      - added toString for numcard and actioncard,
+      - continued working on the starting parts of the game.
+      	- chooseVersion, numPlayers(fixed)
+Alison :: 
+	 - reverse
+	 - skip() decision changes
+	 - discard()
+Truc :: planned Tournament
+==============================================================
+2017-05-21
+--------------------------------------------------------------
+Bayan ::
+      - worked on trying to figure out why the deck wasn't printing, stumped
+Alison :: 
+Truc :: Started mapping out methods for cards
+	Player.playCard()
+==============================================================
+2017-05-22
+--------------------------------------------------------------
+Bayan ::
+      - went to the dojo and sat with jeffrey and figured out a way around the problem.
+      - we'll be using linked lists instead of an rqueue for the deck.
+      - the deck is shuffled now :)
+      - added subclasses for the Action cards for a more object oriented approach
+      -debugged and tested discard methods. 
+Alison :: 
+	 - fixed buggy play method with downcasting
+Truc :: Worked on the player playing cards
+	Fixed the Cards a little bit
+	boolean methods in Cards
+==============================================================
+2017-05-23
+--------------------------------------------------------------
+Bayan ::
+      - the toString for Player works and prints out player name with their hands.
+      - added method for match(Card)- checks if the card matches the top of discard
+      - added pickCard()- asks player what card they want to play
+      - added takeTurns()- loops through the players until game is over.
+      	- will solidify them later
+Alison :: 
+	 - flowchart
+Truc :: UML Diagrams
+==============================================================
+2017-05-24
+--------------------------------------------------------------
+Bayan ::
+      -continued working on match, pickCard, and takeTurns to get the game rolling,
+      		 - went back to planning (too messy right now)
+Alison :: 
+	 - worked on the loop that deals with each player's turn
+	 - sortRank() changes
+Truc :: Player revisions
+	Add2 and Add4
+==============================================================
+2017-05-25
+--------------------------------------------------------------
+Bayan ::
+      - takeTurns and pickCard should work as expected when match is coded.
+      - tried to incorporate drawing but if it returns an int it won't work out since draw is a string
+Alison :: 
+	 - classcasted in match() 
+	 - changed foreach loop to for loop to deal with removal problems
+Truc :: Set up the ActionCards and WildCards
+	Colors
+	Printing
+==============================================================
+2017-05-26
+--------------------------------------------------------------
+Bayan & Alison :: Planned the match method on kts and coded it in a more organized fashion
+Bayan ::
+      - removed the trycatch block and used 1000 to indicate drawing. 
+Alison :: 
+	 - added isWildCard() method
+Truc ::
+==============================================================
+2017-05-27
+--------------------------------------------------------------
+Bayan ::
+      - ran the game and found many bugs
+      - started working on skip and implementing it (in the works)
+      - changed takeTurn from a for loop inside a while loop to a while loop
+Alison :: 
+	 - deck error fixed
+	  - winning players
+Truc ::
+==============================================================
+2017-05-28
+--------------------------------------------------------------
+Bayan ::
+      - changed Card class instance variables to symbol and color
+      - changed constructors and removed main method from Card
+      - fixed up match() in classic uno
+      - solved the problem where action cards and number cards of the same color dont match
+      
+Alison :: 
+Truc ::
+     Created a new Card class
+	match(Card other)
+	revised initilialization of Cards in _deck
+==============================================================
+2017-05-29
+--------------------------------------------------------------
+Bayan ::
+      - started sketching out a plan for algorithms to incorporate actions
+      - solved index out of bounds exception for choosing cards
+      - fixed choose version
+      - added options to pass, play, or draw.
+      -	incorprorated some modularity.
+      - added code for +2, changed add2 to +2 
+Alison ::
+	 - new working version, which is backed up
+	 - conditional for drawing once only. Also allows player to play a card after drawing.
+	 - added conditional so that the player can choose a color after placing a wild black card
+	 - edited the setColor() code in Card.java so that it'll loop when player chooses something other than the 4 colors
+	 - changed order of else if statements in takeTurn(). Also added missing lines. +2 and skip works :)
+	 - deck printing changes
+Truc :: removed nonfunctional code
+	spacing stuff
+Bayan and Alison ::- got skip to work!! wooo
+==============================================================
+2017-05-30
+--------------------------------------------------------------
+Bayan ::
+      - Worked on reverse.
+      	- added reverse method in LList which implements DLLNode
+	- started incorporating it in ClassicUno
+      - got add4 to work
+      -fixed readme
+Alison :: 
+      - added oneCard() method, which checks if the player has one card left. Penalizes them if UNO isn't called.
+Truc :: Started UML
+==============================================================
+2017-05-31
+--------------------------------------------------------------
+Bayan ::
+      - Wrote UML
+      - Made Flow Chart
+Alison :: 
+	 - worked on method noCards(), which checks for winning players and removes them
+	 - changed takeTurns() a little to prevent misshaps with noCards() and n += 1
+	 - worked on method to print winning players
+Truc :: started on the AI Player methods
+Bayan and Alison ::
+	 - worked on oneCard() method - a player will be allowed to calll UNO on the previous
+==============================================================
+2017-06-01
+--------------------------------------------------------------
+Bayan :: 
+Alison :: 
+Truc :: Created an AI game.
+	Added methods to Player.
+	Modified PlayerAI.
+Bayan and Alison :: 
+	 - started to work on processing
+==============================================================
+2017-06-02
+--------------------------------------------------------------
+Bayan :: 
+Alison :: 
+Truc :: implemented AI Game in ClassicUno
+	finished AI Game
+	changed PlayerAI class to just Player
+==============================================================
+2017-06-03
+--------------------------------------------------------------
+Bayan ::
+      - A lot of modular design
+      - made method takeTurnsAI() 
+Alison :: 
+	 - edits to takeTurns() regarding winning
+Truc :: revised AI game
+	fixed some bugs
+==============================================================
+2017-06-04
+--------------------------------------------------------------
+Bayan :: 
+Alison :: 
+Truc ::
+==============================================================
+2017-06-05
+--------------------------------------------------------------
+Bayan :: 
+Alison :: 
+Truc ::
+==============================================================
+2017-06-06
+--------------------------------------------------------------
+Bayan :: 
+Alison :: 
+Truc ::
+
+
+
+

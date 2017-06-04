@@ -1,0 +1,26 @@
+Team BatWomen
+Bayan Berri, Alison Lee, Truc Dao
+
+5/20
+Bayan:
+	- display discard pile at all times. done  
+	-display each player's hand when it's their turn. (move)
+	-toString for players print player: hand done
+Alison:
+	- get shuffle to work, and add it to newGame() so we can make sure it's working. done
+	  - (just a possible way) Rqueue has a method called Sample(). each time you add afew cards run sample(), so it's completely out of order.
+	  - or you can add them to an arrayList and thenrandomly pick numbers and add it to the deck(inefficient memory space, but that's not that much of a difference).
+	- skip
+Truc:
+	- +2 (dequeue 2 times)
+	- +4 (dequeue 4 times and choose color)
+	- reverse (DLL switch head and tail i think should work)
+
+
+Next things:
+     - Tournament
+     - See different versions
+     - Calling Uno--> draw 2 if forgot.
+     -processing
+     -(basic AI)
+     
