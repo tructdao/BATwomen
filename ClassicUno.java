@@ -784,16 +784,146 @@ public class ClassicUno{
 		if( _players.get( n ).getName().equals( "AI" )){	
 		    Player AI=  _players.get(n);
 		    //check if cards rn match
-		    checkAIHand(AI,n);
-		    System.out.println("checked AI Hand");
-		    AI.setHand(_deck.remove(0));
-		    System.out.println("have to draw ^ drawing done");
-
-		    //check the latest card in the hand		   
-		    checkdrawnCard(AI,n);
-		    n+=1;
+		    // checkAIHand(AI,n);
+			for (int x= 0;x<AI.getHandSize(); x++){
+	    	if(AI.getCard(x).getSymbol().equals("+4")&&
+		   addFourCheck(AI.getHand().get(x) , AI , x)){
+		    System.out.println("STARTING TO SET COLOR");
+		    int c= (int)(Math.random()*4)+1;
+		    System.out.println("RANDOM:");
+		    System.out.println(c);
+		    if (c==1){
+			System.out.println("SHOULD BE RED");
+			
+			AI.getCard(x).changeColor("red");
+		    }
+		    else if(c==2){
+			System.out.println("SHOULD BE BLUE");
+			
+			AI.getCard(x).changeColor("blue");
+		    }
+		    else if(c==3){
+			System.out.println("SHOULD BE YLOW");
+			
+			AI.getCard(x).changeColor("yellow");
+		    }
+		    else if(c==4){
+			System.out.println("SHOULD BE GRN");
+			
+			AI.getCard(x).changeColor("green");
+		    }
+		    else {
+			System.out.println("RANDOM IS MSED UP");
+			AI.getCard(x).changeColor("ornge");
+		    }
+		    if(n==_players.size()-1){
+			drawFour(-1);
+		       	setColorAI(AI.getHand().get(x));
+		    }
+		    else{
+			drawFour(n);
+			setColorAI(AI.getHand().get(x));
+		    }
+		    placeCard( AI, x ) ;
+		    //discardSize+=1;
+		    //  AI.setTimes(0);
+		    
 		}
-	    
+		if (AI.getCard(x).match(_discard.peek())){
+		    if(AI.getCard(x).getSymbol().equals("0")||
+		       AI.getCard(x).getSymbol().equals("1")||
+		       AI.getCard(x).getSymbol().equals("2")||
+		       AI.getCard(x).getSymbol().equals("3")||
+		       AI.getCard(x).getSymbol().equals("4")||
+		       AI.getCard(x).getSymbol().equals("5")||
+		       AI.getCard(x).getSymbol().equals("6")||
+		       AI.getCard(x).getSymbol().equals("7")||
+		       AI.getCard(x).getSymbol().equals("8")||
+		       AI.getCard(x).getSymbol().equals("9")
+		       ){
+			placeCard(AI, x);
+			
+		    }
+		    // skipAction(AI, x,n);
+		    if(skipTurn(AI.getHand().get(x) , AI , x)){
+			if(n==_players.size()-1){
+			    AI.setTimes(0);
+			    placeCard(AI,x);
+			    //	n+=1;
+			}
+			else if(n==_players.size()-2){
+			    AI.setTimes(0);
+			    placeCard(AI,x);
+			    
+			}
+			else{
+			    AI.setTimes(0);
+			    placeCard( AI, x ) ;
+			}
+		    }
+		    
+		    // addTwoAction(AI,x,n);
+		    //incorporating +2--tested
+		    if(addTwoCheck(AI.getHand().get(x) , AI , x)){
+			if(n==_players.size()-1){ drawTwo(-1);}
+			else{ drawTwo(n);}
+			placeCard( AI, x ) ;
+		    }
+		    
+		    // reverseAction(AI,x,n);
+		    //incorporating reverse
+		    if(reverseCheck(AI.getHand().get(x) , AI , x)){
+			Collections.reverse(_players);
+			n= _players.size()-1-n;
+			AI.setTimes(0);
+			placeCard(AI,x);	
+			//  discardSize+=1;
+		    }
+		    
+		    //	addFourAction(AI, x, n);
+		    /*
+		    //incorporating +4
+		    if(addFourCheck(AI.getHand().get(x) , AI , x)){
+		    if(n==_players.size()-1){
+		    drawFour(-1);
+		    AI.getHand().get(x).setColor();
+		    }
+		    else{
+		    drawFour(n);
+		    AI.getHand().get(x).setColor();
+		    }
+		    placeCard( AI, x ) ;
+		    //discardSize+=1;
+		    AI.setTimes(0);
+		    
+		    }
+		    */
+		    n+=1;
+		    
+		    return;//stop looping
+		}
+			}
+			
+			System.out.println("checked AI Hand");
+			AI.setHand(_deck.remove(0));
+			System.out.println("have to draw ^ drawing done");
+			
+			//check the latest card in the hand		   
+			// checkdrawnCard(AI,n);
+			int sz= AI.getHandSize();
+			if(AI.getCard(sz-1).match(_discard.peek())){	
+			    //placeCard(AI.getHand().get(AI.getHandSize()-1));
+			    _discard.push(AI.getHand().remove(AI.getHandSize()-1));
+			    n+=1;
+			    System.out.println( "AI played " + _discard.peek() ) ;
+			}
+			else{
+			    n+=1;
+			    System.out.println( "AI has no playable cards" );
+			}
+			n+=1;
+		}
+		
 		else{
 		    Player person= _players.get(n);
 		    int toDo = startingTurns(person, n);
