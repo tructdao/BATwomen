@@ -236,6 +236,8 @@ Alison ::
 Truc :: Created an AI game.
 	Added methods to Player.
 	Modified PlayerAI.
+Bayan and Alison :: 
+	 - started to work on processing
 ==============================================================
 2017-06-02
 --------------------------------------------------------------
@@ -251,6 +253,7 @@ Bayan ::
       - A lot of modular design
       - made method takeTurnsAI() 
 Alison :: 
+	 - edits to takeTurns() regarding winning
 Truc ::
 ==============================================================
 2017-06-04

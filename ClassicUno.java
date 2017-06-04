@@ -551,7 +551,7 @@ public class ClassicUno{
     }
 
     public void takeTurnsAI(){
-	//	int discardSize=1;
+	// int discardSize=1;
 	while(_players.size()!=1 && _deck.size()!=0){
 	    int n = 0 ;
 	    System.out.println("TakeTurns begun");
@@ -569,7 +569,9 @@ public class ClassicUno{
 
 		    //check the latest card in the hand		   
 		    checkdrawnCard(AI,n);
-		    n+=1;
+		    if( !( noCards( n ))) {
+			n+=1;
+		    }
 		}
 	    
 		else{
