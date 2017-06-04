@@ -525,7 +525,7 @@ public class ClassicUno{
 	    //placeCard(person.getHand().get(person.getHandSize()-1));
 	    _discard.push(person.getHand().remove(person.getHandSize()-1));
 	    n+=1;
-	    System.out.println( "AI played " + _discard.peek() )
+	    System.out.println( "AI played " + _discard.peek() ) ;
 	}
 	else{
 	    n+=1;
