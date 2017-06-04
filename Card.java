@@ -74,7 +74,7 @@ public class Card{
 	}
     }
 
-    /*   public void setColorAI( Player AI ){
+    public void setColorAI( Player AI ){
 	if ( AI.getHandSize() == 1 ){
 	    if ( AI.getCard( 0 ).getColor().equals( "black" ) ){
 	        int c = (int) Math.random() * 4;
@@ -87,12 +87,14 @@ public class Card{
 		_color = AI.getCard( 0 ).getColor();
 	    }
 	}
-	int index = (int) ( Math.random() * AI.getHandSize() );
-	while( AI.getCard( index ).getColor().equals("black") ){
-	    index = (int) ( Math.random() * AI.getHandSize() );
+	else{ 
+	    int index = (int) ( Math.random() * AI.getHandSize() );
+	    while( AI.getCard( index ).getColor().equals("black") ){
+		index = (int) ( Math.random() * AI.getHandSize() );
+	    }
+	    _color = AI.getCard( index ).getColor();
 	}
-	_color = AI.getCard( index ).getColor();
-	}*/
+    }
 
     public String toString(){
 	String ret = "";

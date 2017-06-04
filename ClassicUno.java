@@ -111,6 +111,7 @@ public class ClassicUno{
      */
 
     public void populateDeck() {
+	/*
 	for( int n = 0 ; n < 10 ; n ++ ) {
 	    for( int i = 0 ; i < 2 ; i ++ ) {
 		_deck.add( new Card( ""+n, "red" )) ;
@@ -122,8 +123,8 @@ public class ClassicUno{
 		    break ;
 		}
 	    }
-	}
-	/*	for( int n = 0 ; n < 2 ; n ++ ) {
+	    }*/
+        for( int n = 0 ; n < 2 ; n ++ ) {
 	    _deck.add( new Card( "+2", "red" )) ;
 	    _deck.add( new Card( "reverse", "red" )) ;
 	    _deck.add( new Card( "skip", "red" )) ;
@@ -136,10 +137,10 @@ public class ClassicUno{
 	    _deck.add( new Card( "+2", "blue" )) ;
 	    _deck.add( new Card( "reverse", "blue" )) ;
 	    _deck.add( new Card( "skip", "blue" )) ;
-	    }*/
+	}
 	for( int n = 0 ; n < 4 ; n ++ ) {
 	    _deck.add( new Card("+4", "black")) ;
-	    //_deck.add( new Card("wild", "black")) ;
+	    _deck.add( new Card("wild", "black")) ;
 	    //_deck.add( new Card( "+2", "red" )) ; //wait why
 	}
     }//ends populate deck
@@ -610,7 +611,8 @@ public class ClassicUno{
 	}
     }
 
-    /* public void takeTurnsAI(){
+    /*
+    public void takeTurnsAI(){
 	// int discardSize=1;
 	while(_players.size()!=1 && _deck.size()!=0){
 	    int n = 0 ;
@@ -717,19 +719,25 @@ public class ClassicUno{
 			    }
 			}
 			//incorporating +4
-			else if(addFourCheck(person.getHand().get(ind) ,
-					     person , ind)){
-			    if(n==_players.size()-1){
-				drawFour(-1);
+			else if( addFourCheck(person.getHand().get(ind) ,
+					     person , ind )){
+			    if( n == _players.size()-1 ){
+				//drawFour(-1);
+				for ( int x = 0; x < 4; x++ ){
+				    _players.get( 0 ).setHand( _deck.remove(0) );
+				}
 				if( person.getAI() ){
-				    //				    person.getHand().get( ind ).setColorAI( person );
+				    person.getHand().get( ind ).setColorAI( person );
 				}
 				else{
 				    person.getHand().get(ind).setColor();
 				}
 			    }
 			    else{
-				drawFour(n);
+				//drawFour(n);
+				for ( int x = 0; x < 4; x++ ){
+				    _players.get( 0 ).setHand( _deck.remove(0) );
+				}
 				if( person.getAI() ){
 				    person.getHand().get(ind).setColorAI( person );
 				}
@@ -763,6 +771,7 @@ public class ClassicUno{
 	}
     }
     */
+    
      public void takeTurnsAI(){
 	//	int discardSize=1;
 	while(_players.size()!=1 && _deck.size()!=0){
@@ -809,7 +818,8 @@ public class ClassicUno{
 			if( ind < person.getHand().size() && 
 				 person.getHand().get( ind ).getSymbol().equals( "wild" ) ) {
 			    placeCard( person, ind ) ;
-			    _discard.peek().setColor() ;
+			    //_discard.peek().setColor() ;
+			    setColorAI( _discard.peek() );
 			    person.setTimes(0);
 			    if( !(noCards( n ))) { 
 			    	//oneCard( n ) ;
@@ -900,7 +910,7 @@ public class ClassicUno{
 	    }
 	}
     }
-
+   
     
 
     public void afterDrawing(Player person, int ind, int n){
