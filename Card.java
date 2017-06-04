@@ -70,7 +70,26 @@ public class Card{
 	    System.out.println("\t4: green");
 	    _color = Keyboard.readString().toLowerCase() ;
 	}
+    }
 
+    public void setColorAI( Player AI ){
+	if ( AI.getHandSize() == 1 ){
+	    if ( AI.getCard( 0 ).getColor().equals( "black" ) ){
+	        int c = (int) Math.random() * 4;
+		if ( c == 1 ){ _color = "red"; }
+		else if ( c == 2 ){ _color = "yellow"; }
+		else if ( c == 3 ){ _color = "blue"; }
+		else{ _color = "green"; }
+	    }
+	    else{
+		_color = AI.getCard( 0 ).getColor();
+	    }
+	}
+	int index = (int) ( Math.random() * AI.getHandSize() );
+	while( AI.getCard( index ).getColor().equals("black") ){
+	    index = (int) ( Math.random() * AI.getHandSize() );
+	}
+	_color = AI.getCard( index ).getColor();
     }
 
     public String toString(){

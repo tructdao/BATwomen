@@ -342,7 +342,7 @@ public class ClassicUno{
 	    System.out.println();
 	    int x ;
 	    x= Keyboard.readInt();
-	    if (x>=0&& x<=person.getHandSize()){
+	    if ( x >= 0 && x < person.getHandSize() ){
 		return x;
 	    }
 	    else{
@@ -491,8 +491,8 @@ public class ClassicUno{
 	    person.setTimes(0);
 	    placeCard(person,ind);	
 	    //  discardSize+=1;
-	   
-	}}
+	}
+    }
     public void addFourAction(Player person, int ind, int n){
 	//incorporating +4
 	if(addFourCheck(person.getHand().get(ind) , person , ind)){
@@ -604,6 +604,7 @@ public class ClassicUno{
 			    	//oneCard( n ) ;
 			    	n += 1 ;}
 			}
+
 			//incorporating skip--tested
 			else if(skipTurn(person.getHand().get(ind) , person , ind)){
 			    if(n==_players.size()-1){
@@ -656,14 +657,25 @@ public class ClassicUno{
 			    }
 			}
 			//incorporating +4
-			else if(addFourCheck(person.getHand().get(ind) , person , ind)){
+			else if(addFourCheck(person.getHand().get(ind) ,
+					     person , ind)){
 			    if(n==_players.size()-1){
 				drawFour(-1);
-				person.getHand().get(ind).setColor();
+				if( person.getAI() ){
+				    person.getHand().get( ind ).setColorAI( person );
+				}
+				else{
+				    person.getHand().get(ind).setColor();
+				}
 			    }
 			    else{
 				drawFour(n);
-				person.getHand().get(ind).setColor();
+				if( person.getAI() ){
+				    person.getHand().get(ind).setColorAI( person );
+				}
+				else{
+				    person.getHand().get(ind).setColor();
+				}
 			    }
 			    placeCard( person, ind ) ;
 			    person.setTimes(0);
@@ -674,7 +686,8 @@ public class ClassicUno{
 			}
 			else if (wrongMove(person,ind)){
 			    System.out.println("That move doesn't work!" +
-					       "Try picking another card or draw");
+					       "Try picking another card or " +
+					       "draw");
 			}
 			else if (match(person.getHand().get(ind))){
 			    placeCard(person,ind);

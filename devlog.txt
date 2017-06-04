@@ -18,7 +18,7 @@ UNRESOLVED ISSUES
 -constructors
 -Card Var Type VS Object Type
 -should be allowed to type in draw but right now it asks to type in 1000 for draw ** keep in mind for debugging!!**
--Stack refuses to compile in AIUno.java
+- takeTurnsAI needs work on +4, +2
 COOL STUFF LEARNED
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -254,7 +254,8 @@ Bayan ::
       - made method takeTurnsAI() 
 Alison :: 
 	 - edits to takeTurns() regarding winning
-Truc ::
+Truc :: revised AI game
+	fixed some bugs
 ==============================================================
 2017-06-04
 --------------------------------------------------------------
