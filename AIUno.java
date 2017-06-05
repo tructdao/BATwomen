@@ -70,7 +70,7 @@ public class AIUno{
 	    for( Player p : _players ){
 		
 	        top = _discard.peek();
-		System.out.println("Top card: " + top);
+			System.out.println("Top card: " + top);
 
 		//check if is an action Card
 		
@@ -148,15 +148,17 @@ public class AIUno{
 			if ( choice == 1 ){
 			    index = chooseCard( p, top );
 			    if ( index != -1 ){
-				_discard.push( p.removeCard( index ) );
+					_discard.push( p.removeCard( index ) );
 			    }
 			}
-			choice = 1;
+			// choice = 1;
 		    }
 		    else{
-			index = chooseCard( p, top );
-			_discard.push( p.removeCard( index ) );
-		    }
+				index = chooseCard( p, top );
+				if( index != -1 ) {
+					_discard.push( p.removeCard( index ) );
+				}
+			}
 		    if( p.getHandSize() == 0){
 			System.out.println("YOU WIN!!");
 			return;
@@ -197,7 +199,7 @@ public class AIUno{
 
 	//Card matches
 	Card chosen = current.getCard( index );
-	if ( chosen.match( top ) ){
+	if ( chosen.match( top ) || top.getColor().equals( "black" )){
 	    if ( chosen.getSymbol().equals( "+4" ) ||
 		 chosen.getSymbol().equals( "wild" ) ){
 		chosen.setColor();

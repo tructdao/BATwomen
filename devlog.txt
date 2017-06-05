@@ -262,6 +262,8 @@ Truc :: revised AI game
 Bayan :: 
 Alison :: 
 Truc :: Completed a working AI Game and fixed all bugs
+Bayan, Alison, and Truc :: 
+	 - collaborative debugging
 ==============================================================
 2017-06-05
 --------------------------------------------------------------
