@@ -74,19 +74,22 @@ public class AIUno{
 
 		//check if is an action Card
 		
-		if ( top.getSymbol().equals( "reverse" ) ){
+		if ( top.getSymbol().equals( "reverse" ) && ! top.getUsed()){
 		    System.out.println("REVERSE");
+		    top.setUsed();
 		    break;
 		}
 
-		if ( top.getSymbol().equals( "skip" ) ){
+		if ( top.getSymbol().equals( "skip" ) && ! top.getUsed()){
 		    System.out.println("SKIP");
+		    top.setUsed();
 		    break;
 		}
 
-		if ( top.getSymbol().equals( "+2" ) ){
+		if ( top.getSymbol().equals( "+2" ) && ! top.getUsed() ){
 		    p.setHand( _deck.pop() );
 		    p.setHand( _deck.pop() );
+		    top.setUsed();
 		}
 
 		if ( top.getSymbol().equals( "+4" ) && ! top.getUsed() ){

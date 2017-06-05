@@ -38,7 +38,7 @@ public class Card{
 
     //----------------vv Mutators vv-----------------
 
-    //ONLY to be used with +4 Cards
+    //Use to stop +4 cards, +2 cards, skip, and reverse
     public void setUsed(){
 	_used = true;
     }
