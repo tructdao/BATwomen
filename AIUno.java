@@ -67,7 +67,12 @@ public class AIUno{
 	Card top;
 	int index, choice;
 	while (  continueGame()  ){
-	    for( Player p : _players ){
+
+	    Player p;
+	    
+	    for( int x = 0; x < _players.size(); x += 1 ){
+
+		p = _players.get( x );
 		
 	        top = _discard.peek();
 			System.out.println("Top card: " + top);
@@ -77,12 +82,14 @@ public class AIUno{
 		if ( top.getSymbol().equals( "reverse" ) && ! top.getUsed()){
 		    System.out.println("REVERSE");
 		    top.setUsed();
+		    x -= 1;
 		    break;
 		}
 
 		if ( top.getSymbol().equals( "skip" ) && ! top.getUsed()){
 		    System.out.println("SKIP");
 		    top.setUsed();
+		    x -= 1;
 		    break;
 		}
 
@@ -103,9 +110,17 @@ public class AIUno{
 
 		//AI
 		if ( p.getName().equals( "AI" ) ){
+		    //AI playing...
 		    index = p.turn( top );
 		    if ( index != -1 ){
 			_discard.push( p.play(index) );
+			if ( _discard.pop().getSymbol.equals("skip") ||
+			     _discard.pop().getSymbol.equals("reverse") ){
+			    index = p.turn( _discard.pop() );
+			    if (index != -1){
+				_discard.push( p.play( index ) );
+			    }
+			}
 		    }
 		    else{
 			p.setHand( _deck.pop() );
@@ -113,8 +128,17 @@ public class AIUno{
 			index = p.turn( top );
 			if ( index != -1 ){
 			    _discard.push( p.play( index ) );
+			    if ( _discard.pop().getSymbol.equals("skip") ||
+				 _discard.pop().getSymbol.equals("reverse") ){
+				index = p.turn( _discard.pop() );
+				if (index != -1){
+				    _discard.push( p.play( index ) );
+				}
+			    }
 			}
 		    }
+
+		    //Check if AI has finished
 		    if ( p.getHandSize() == 0 ){
 			System.out.println("AI WINS!");
 			return;
