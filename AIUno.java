@@ -151,6 +151,7 @@ public class AIUno{
 				_discard.push( p.removeCard( index ) );
 			    }
 			}
+			choice = 1;
 		    }
 		    else{
 			index = chooseCard( p, top );
@@ -197,6 +198,10 @@ public class AIUno{
 	//Card matches
 	Card chosen = current.getCard( index );
 	if ( chosen.match( top ) ){
+	    if ( chosen.getSymbol().equals( "+4" ) ||
+		 chosen.getSymbol().equals( "wild" ) ){
+		chosen.setColor();
+	    }
 	    return index;
 	}
 
