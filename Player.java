@@ -106,11 +106,15 @@ public class Player{
     public int turn( Card top ){
 	for (int i = 0; i < _hand.size(); i++ ){
 	    if ( _hand.get( i ).match( top ) ){
-		//play( i );
+		System.out.println( "AI played " + _hand.get( i ) );
+		if ( _hand.get( i ).getSymbol().equals( "+4" ) ||
+		     _hand.get( i ).getSymbol().equals( "wild" ) ){
+		    _hand.get( i ).setColorAI( this );
+		}
 		return i;
 	    }
 	}
-	System.out.println("No playable cards, drawing a card now.");
+	System.out.println("AI has no playable cards.");
 	return -1;
 	//DRAW CARD
     }
@@ -120,5 +124,4 @@ public class Player{
     }
 
     //--------------------- ^^ AI METHODS ^^ --------------------
-
 }

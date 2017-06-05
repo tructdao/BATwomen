@@ -4,17 +4,20 @@ public class Card{
 
     private String _color;
     private String _symbol;
+    private boolean _used;
   
     //default constructor
     public Card(){
 	_color = "";
 	_symbol = "";
+	_used = false;
     }
 
     //overloaded constructor
     public Card( String symbol, String color ){
 	_symbol = symbol;
 	_color = color;
+	_used = false;
     }
 
     //----------------vv Accessors vv-----------------
@@ -27,9 +30,19 @@ public class Card{
 	return _symbol;
     }
 
+    public boolean getUsed(){
+	return _used;
+    }
+    
     //----------------^^ Accessors ^^-----------------
 
     //----------------vv Mutators vv-----------------
+
+    //ONLY to be used with +4 Cards
+    public void setUsed(){
+	_used = true;
+    }
+    
     public void changeColor(String c){
 	_color=c;
     }

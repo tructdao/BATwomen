@@ -54,29 +54,29 @@ public class ClassicUno{
 	    populateDeck();
 	    Collections.shuffle(_deck);
 	    System.out.println( "Woo let's play Uno!!" );
-	    Player AI= new Player("AI");
-	    _players.add(AI);
-	    Player newPlayer= new Player();
-	    newPlayer.setName(playerName());
-	    System.out.println("setname to player... adding player");
-	    _players.add(newPlayer);
-	    System.out.println("added player... setting up discard");
-	    setDiscard();
-	    System.out.println("set discard");
-	    deal();
-	    System.out.println("dealt cards");
-	    for (Player x : _players){
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println("Player " + x.getName() +" "+ x.getAI()+ ": " + x);
-		System.out.println();
-		System.out.println();
-		System.out.println();
-	    }
-	    System.out.println("TAKING TURNS");
-	    takeTurnsAI();
-	    printWinners();
+	    // Player AI= new Player("AI");
+	    // _players.add(AI);
+	    // Player newPlayer= new Player();
+	    // newPlayer.setName(playerName());
+	    // System.out.println("setname to player... adding player");
+	    // _players.add(newPlayer);
+	    // System.out.println("added player... setting up discard");
+	    // setDiscard();
+	    // System.out.println("set discard");
+	    // deal();
+	    // System.out.println("dealt cards");
+	    // for (Player x : _players){
+	    // 	System.out.println();
+	    // 	System.out.println();
+	    // 	System.out.println();
+	    // 	System.out.println("Player " + x.getName() +" "+ x.getAI()+ ": " + x);
+	    // 	System.out.println();
+	    // 	System.out.println();
+	    // 	System.out.println();
+	    // }
+	    // System.out.println("TAKING TURNS");
+	    // takeTurnsAI();
+	    // printWinners();
 	
 	    // vv In the event that we make a game w multiple AIs vv
 	    // int nP = numPlayers();
@@ -87,17 +87,16 @@ public class ClassicUno{
 	    // }
 	    // ^^ In the event that we make a game w multiple AI ^^
 
-	    /* System.out.println("What is your name?");
+	    System.out.println("What is your name?");
 	    String name = Keyboard.readString();
 	    _players.add( new Player( name ) );
-	    //_players.add( new PlayerAI() );
 	    _players.add( new Player( "AI" ) );
-	    */	    
-	    //  setDiscard();
-	    //deal();
+	    	    
+	    setDiscard();
+	    deal();
 	   
-	     /*  AIUno game = new AIUno( _deck, _players, _discard );
-		 game.play();*/
+	    AIUno game = new AIUno( _deck, _players, _discard );
+	    game.play();
 	}
     }//ends newGame
 
@@ -111,19 +110,21 @@ public class ClassicUno{
      */
 
     public void populateDeck() {
-	for( int n = 0 ; n < 10 ; n ++ ) {
-	    for( int i = 0 ; i < 2 ; i ++ ) {
-		_deck.add( new Card( ""+n, "red" )) ;
-		_deck.add( new Card( ""+n, "yellow" )) ;
-		_deck.add( new Card( ""+n, "green" )) ;
-		_deck.add( new Card( ""+n, "blue" )) ;
+	
+	// for( int n = 0 ; n < 10 ; n ++ ) {
+	//     for( int i = 0 ; i < 2 ; i ++ ) {
+	// 	_deck.add( new Card( ""+n, "red" )) ;
+	// 	_deck.add( new Card( ""+n, "yellow" )) ;
+	// 	_deck.add( new Card( ""+n, "green" )) ;
+	// 	_deck.add( new Card( ""+n, "blue" )) ;
 		
-		if( n == 0 ) {
-		    break ;
-		}
-	    }
-	}
-	/*	for( int n = 0 ; n < 2 ; n ++ ) {
+	// 	if( n == 0 ) {
+	// 	    break ;
+	// 	}
+	//     }
+	// }
+	
+	for( int n = 0 ; n < 2 ; n ++ ) {
 	    _deck.add( new Card( "+2", "red" )) ;
 	    _deck.add( new Card( "reverse", "red" )) ;
 	    _deck.add( new Card( "skip", "red" )) ;
@@ -136,10 +137,10 @@ public class ClassicUno{
 	    _deck.add( new Card( "+2", "blue" )) ;
 	    _deck.add( new Card( "reverse", "blue" )) ;
 	    _deck.add( new Card( "skip", "blue" )) ;
-	    }*/
+	    }
 	for( int n = 0 ; n < 4 ; n ++ ) {
 	    _deck.add( new Card("+4", "black")) ;
-	    //_deck.add( new Card("wild", "black")) ;
+	    _deck.add( new Card("wild", "black")) ;
 	    //_deck.add( new Card( "+2", "red" )) ; //wait why
 	}
     }//ends populate deck
