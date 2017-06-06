@@ -1,0 +1,23 @@
+BatWomen
+Bayan Berri
+Alison Lee
+Truc Dao
+
+Which jobs are most crucial?
+      - Fix the +4 for AI,
+      -Fix the skip for AI
+      -Fix the reverse for AI
+
+What components constitute core functionality?
+     - Fixing the AI
+
+Non essential?
+    - Writing the rules for an AI game
+
+Which components are prerequisites for others?
+
+      - We're just adding final touch ups at this point.
+
+Tasks delegated:
+      - We will all be working on fixing and debugging the AI version.
+      
