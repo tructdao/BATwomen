@@ -34,7 +34,7 @@ MID-DEVELOPMENT DESIGN CHANGES
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Simplicity is key
-- modular design is amazing <3 <3 
+- modular design is amazing 
 -Always back up the working version!!
 ||||||||||||||||||||||||||||||||||||||||||
 	
@@ -231,7 +231,12 @@ Bayan and Alison ::
 ==============================================================
 2017-06-01
 --------------------------------------------------------------
-Bayan :: 
+Bayan ::
+      - Fixed the plan
+      - removed the stack file and implemented java's stack class
+      - deleted extra files (tilde autosave files)
+      - fixed the loop so that if a string is input (non int) it asks for another input
+      - 
 Alison :: 
 Truc :: Created an AI game.
 	Added methods to Player.
@@ -251,7 +256,11 @@ Truc :: implemented AI Game in ClassicUno
 --------------------------------------------------------------
 Bayan ::
       - A lot of modular design
-      - made method takeTurnsAI() 
+      - made method takeTurnsAI()
+      - Fixed it so that if index 0 calls uno on the player before it,
+      java doesn't give an index out of bounds exception anymore
+      - A lot of modular design and fixed AI so that it works(basic)
+      	- we still need to fix and test the different action cards.
 Alison :: 
 	 - edits to takeTurns() regarding winning
 Truc :: revised AI game
@@ -259,8 +268,8 @@ Truc :: revised AI game
 ==============================================================
 2017-06-04
 --------------------------------------------------------------
-Bayan :: 
-Alison :: 
+Bayan ::
+Alison ::
 Truc :: Completed a working AI Game and fixed a lot of bugs
 Bayan, Alison, and Truc :: 
 	 - collaborative debugging
