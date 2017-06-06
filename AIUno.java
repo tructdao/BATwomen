@@ -4,8 +4,6 @@ import cs1.Keyboard;
 import java.util.Stack;
 import java.util.LinkedList;
 
-//STACK WON'T COMPILE IN THIS CLASS 
-
 public class AIUno{
 
     public static LinkedList<Card> _deck;
@@ -77,6 +75,8 @@ public class AIUno{
 	        top = _discard.peek();
 		System.out.println("Top card: " + top);
 
+		System.out.println("AI hand size: " + _players.get(1).getHandSize());
+
 		if ( top.getColor().equals( "black" ) ){
 		    System.out.println("Choose any color!");
 		}
@@ -105,7 +105,7 @@ public class AIUno{
 		    top.setUnplayed();
 		}
 
-		if ( top.getSymbol().equals( "+4" ) && ! top.getUnplayed() ){
+		if ( top.getSymbol().equals( "+4" ) && top.getUnplayed() ){
 		    for ( int n = 0; n < 4; n++ ){
 			p.setHand( _deck.pop() );
 		    }
@@ -120,9 +120,9 @@ public class AIUno{
 		    index = p.turn( top );
 		    if ( index != -1 ){
 			_discard.push( p.play(index) );
-			if ( _discard.pop().getSymbol().equals("skip") ||
-			     _discard.pop().getSymbol().equals("reverse") ){
-			    index = p.turn( _discard.pop() );
+			if ( _discard.peek().getSymbol().equals("skip") ||
+			     _discard.peek().getSymbol().equals("reverse") ){
+			    index = p.turn( _discard.peek() );
 			    if (index != -1){
 				_discard.push( p.play( index ) );
 			    }
@@ -134,9 +134,9 @@ public class AIUno{
 			index = p.turn( top );
 			if ( index != -1 ){
 			    _discard.push( p.play( index ) );
-			    if ( _discard.pop().getSymbol().equals("skip") ||
-			    	 _discard.pop().getSymbol().equals("reverse") ){
-			    	index = p.turn( _discard.pop() );
+			    if ( _discard.peek().getSymbol().equals("skip") ||
+			    	 _discard.peek().getSymbol().equals("reverse") ){
+			    	index = p.turn( _discard.peek() );
 			    	if (index != -1){
 			    	    _discard.push( p.play( index ) );
 			    	}
