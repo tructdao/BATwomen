@@ -69,41 +69,47 @@ public class AIUno{
 	while (  continueGame()  ){
 
 	    Player p;
-	    
-	    for( int x = 0; x < _players.size(); x += 1 ){
 
+	    for (int x = 0; x < _players.size(); x++){
+		System.out.println("Start Loop");
 		p = _players.get( x );
 		
 	        top = _discard.peek();
-			System.out.println("Top card: " + top);
+		System.out.println("Top card: " + top);
+
+		if ( top.getColor().equals( "black" ) ){
+		    System.out.println("Choose any color!");
+		}
 
 		//check if is an action Card
 		
-		if ( top.getSymbol().equals( "reverse" ) && ! top.getUsed()){
-		    System.out.println("REVERSE");
-		    top.setUsed();
-		    x -= 1;
-		    break;
+		if ( top.getSymbol().equals( "reverse" ) ){
+		    if ( top.getUnplayed() ){
+			System.out.println("REVERSE");
+			top.setUnplayed();
+			break;
+		    }
 		}
 
-		if ( top.getSymbol().equals( "skip" ) && ! top.getUsed()){
-		    System.out.println("SKIP");
-		    top.setUsed();
-		    x -= 1;
-		    break;
+		if ( top.getSymbol().equals( "skip" ) ) {
+		    if ( top.getUnplayed() ) {
+			System.out.println("SKIP");
+			top.setUnplayed();
+			break;
+		    }
 		}
 
-		if ( top.getSymbol().equals( "+2" ) && ! top.getUsed() ){
+		if ( top.getSymbol().equals( "+2" ) && top.getUnplayed() ){
 		    p.setHand( _deck.pop() );
 		    p.setHand( _deck.pop() );
-		    top.setUsed();
+		    top.setUnplayed();
 		}
 
-		if ( top.getSymbol().equals( "+4" ) && ! top.getUsed() ){
+		if ( top.getSymbol().equals( "+4" ) && ! top.getUnplayed() ){
 		    for ( int n = 0; n < 4; n++ ){
 			p.setHand( _deck.pop() );
 		    }
-		    top.setUsed();
+		    top.setUnplayed();
 		}
 
 		//Now for the player's actions:
@@ -114,8 +120,8 @@ public class AIUno{
 		    index = p.turn( top );
 		    if ( index != -1 ){
 			_discard.push( p.play(index) );
-			if ( _discard.pop().getSymbol.equals("skip") ||
-			     _discard.pop().getSymbol.equals("reverse") ){
+			if ( _discard.pop().getSymbol().equals("skip") ||
+			     _discard.pop().getSymbol().equals("reverse") ){
 			    index = p.turn( _discard.pop() );
 			    if (index != -1){
 				_discard.push( p.play( index ) );
@@ -128,12 +134,12 @@ public class AIUno{
 			index = p.turn( top );
 			if ( index != -1 ){
 			    _discard.push( p.play( index ) );
-			    if ( _discard.pop().getSymbol.equals("skip") ||
-				 _discard.pop().getSymbol.equals("reverse") ){
-				index = p.turn( _discard.pop() );
-				if (index != -1){
-				    _discard.push( p.play( index ) );
-				}
+			    if ( _discard.pop().getSymbol().equals("skip") ||
+			    	 _discard.pop().getSymbol().equals("reverse") ){
+			    	index = p.turn( _discard.pop() );
+			    	if (index != -1){
+			    	    _discard.push( p.play( index ) );
+			    	}
 			    }
 			}
 		    }
@@ -188,8 +194,10 @@ public class AIUno{
 			return;
 		    }
 		}//end regular person else
-	    }//end for
-	}//end while
+
+		System.out.println("End loop");
+	    }//end inner while
+	}//end outer while
     }//end play()
 
 

@@ -110,7 +110,8 @@ public class ClassicUno{
      */
 
     public void populateDeck() {
-	
+
+	/*
 	for( int n = 0 ; n < 10 ; n ++ ) {
 	    for( int i = 0 ; i < 2 ; i ++ ) {
 	 	_deck.add( new Card( ""+n, "red" )) ;
@@ -123,6 +124,7 @@ public class ClassicUno{
 	 	}
 	    }
 	}
+	*/
 	
 	for( int n = 0 ; n < 2 ; n ++ ) {
 	    _deck.add( new Card( "+2", "red" )) ;

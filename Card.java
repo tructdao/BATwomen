@@ -4,20 +4,20 @@ public class Card{
 
     private String _color;
     private String _symbol;
-    private boolean _used;
+    private boolean _unplayed;
   
     //default constructor
     public Card(){
 	_color = "";
 	_symbol = "";
-	_used = false;
+	_unplayed = true;
     }
 
     //overloaded constructor
     public Card( String symbol, String color ){
 	_symbol = symbol;
 	_color = color;
-	_used = false;
+	_unplayed = true;
     }
 
     //----------------vv Accessors vv-----------------
@@ -30,8 +30,8 @@ public class Card{
 	return _symbol;
     }
 
-    public boolean getUsed(){
-	return _used;
+    public boolean getUnplayed(){
+	return _unplayed;
     }
     
     //----------------^^ Accessors ^^-----------------
@@ -39,8 +39,8 @@ public class Card{
     //----------------vv Mutators vv-----------------
 
     //Use to stop +4 cards, +2 cards, skip, and reverse
-    public void setUsed(){
-	_used = true;
+    public void setUnplayed(){
+	_unplayed = false;
     }
     
     public void changeColor(String c){
@@ -60,7 +60,7 @@ public class Card{
 	}
 
 	//black cards (plus 4 and wild)
-	else if ( _color.equals("black")){
+	else if ( _color.equals("black") || other.getColor().equals( "black" )){
 	    return true;
 	}
 
