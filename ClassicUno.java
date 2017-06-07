@@ -150,19 +150,51 @@ public class ClassicUno{
      */
 
     public void printRules(){
-        System.out.println("UNO-Classic");
-	System.out.println("At the beginning, each player is dealt 7 cards " +
-			   "face down. The rest of the cards are placed in a " +
-			   "draw pile. \nThen one card is flipped from the " +
-			   "top of the draw pile and added to the discard " +
-			   "pile. \nAs the game goes on, the goal is to match" +
-			   " the top card of the discard pile with a card of " +
-			   "the same color, number, or action.\nIf the " +
-			   "player has no matches or chooses not to play any " +
-			   "of their cards they must draw a card. \n" +
-			   "If the drawn card can be played, then play it. " +
-			   "Otherwise it's the next player's turn.\n\n" +
-			   "Have Fun!!");
+	System.out.println( "Which Rules would you like to read?" );
+	System.out.println( "1. UNO-Classic" );
+	System.out.println( "2. UNO-AI mode" );
+	System.out.print( "Your choice: " );
+	int choice = Keyboard.readInt();
+	while ( choice < 1 || choice > 2 ){
+	    System.out.println( "Please choose 1 or 2!" );
+	    System.out.println( "Which Rules would you like to read?" );
+	    System.out.println( "1. UNO-Classic" );
+	    System.out.println( "2. UNO-AI mode" );
+	    System.out.print( "Your choice: " );
+	    choice = Keyboard.readInt();
+	}
+	if (choice == 1){
+	    System.out.println("UNO-Classic");
+	    System.out.println("At the beginning, each player is dealt 7 " +
+			       "cards face down. The rest of the cards are " +
+			       "placed in a draw pile. \nThen one card is " +
+			       "flipped from the top of the draw pile and " +
+			       "added to the discard pile.\nAs the game goes " +
+			       "on, the goal is to match the top card of the " +
+			       "discard pile with a card of the same color, " +
+			       "number, or action.\nIf the player has no " +
+			       "matches or chooses not to play any " +
+			       "of their cards they must draw a card. \n If " +
+			       "the drawn card can be played, then play it." +
+			       "Otherwise it's the next player's turn.\n\n" +
+			       "Have Fun!!");
+	}
+	if (choice == 2){
+	    System.out.println("UNO-AI mode");
+	    System.out.println("AI Uno is a game between you and one AI " +
+			       "opponent. Your objective is to defeat this AI" +
+			       "before the deck runs out of cards.\nThe game " +
+			       "begins with the flipping of a card from the " +
+			       "deck to the discard pile. You and the AI will" +
+			       " take turns trying to play cards that match " +
+			       "the top card of the discard pile. A card is " +
+			       "considered matching if both have the same " +
+			       "color, number, and/or action.\n" +
+			       "You have the option to either play a card, " +
+			       "or draw a new card and try to play or pass. " +
+			       "You can only draw once per turn.\n\n" +
+			       "Have fun and good luck!!");
+	}
     }
 
     /**

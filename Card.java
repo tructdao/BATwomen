@@ -2,6 +2,13 @@ import cs1.Keyboard;
 
 public class Card{
 
+    protected static final String reset = "\u001B[0m";
+    protected static final String black = "\u001B[30m";
+    protected static final String red = "\u001B[31m";
+    protected static final String green = "\u001B[32m";
+    protected static final String yellow = "\u001B[33m";
+    protected static final String blue = "\u001B[34m";
+
     private String _color;
     private String _symbol;
     private boolean _unplayed;
@@ -111,6 +118,9 @@ public class Card{
 
     public String toString(){
 	String ret = "";
+	if ( _color.equals( "red" ) ){
+	    ret += red;
+	}
 	ret= _symbol+ " : " + _color;
 	return ret;
     }
