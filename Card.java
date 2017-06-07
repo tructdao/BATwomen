@@ -121,7 +121,19 @@ public class Card{
 	if ( _color.equals( "red" ) ){
 	    ret += red;
 	}
-	ret= _symbol+ " : " + _color;
-	return ret;
+	else if ( _color.equals( "yellow" ) ){
+	    ret += yellow;
+	}
+	else if ( _color.equals( "green" ) ){
+	    ret += green;
+	}
+	else if ( _color.equals( "blue" ) ){
+	    ret += blue;
+	}
+	else if ( _color.equals( "black" ) ){
+	    ret += black;
+	}
+	ret += _symbol+ " : " + _color;
+	return ret + reset;
     }
 }

@@ -66,6 +66,10 @@ public class AIUno{
 	return false;
     }
 
+    /***
+     * Game run here
+     * The AI and Player take turns accordingly via for loop
+     ***/
     public void play(){
 	
 	Card top;
@@ -159,10 +163,12 @@ public class AIUno{
 				_discard.push( p.play( index ) );
 			    }
 			    else{ //p has no playable card
-				if ( _deck.size() != 0 ){ //
+				if ( _deck.size() != 0 ){ //make sure deck still
+				                          //has cards
 				    p.setHand( _deck.pop() );
 				}
-				else{ break; }
+				else{ break; } //no playable cards but can't
+				               //draw
 			    }
 			}
 		    }
@@ -174,6 +180,8 @@ public class AIUno{
 			    _discard.push( p.play( index ) );
 			    if ( _discard.peek().getSymbol().equals("skip") ||
 			    	 _discard.peek().getSymbol().equals("reverse")){
+				//make sure that _deck still has cards
+				//if no cards, game's gotta end
 				if ( _deck.size() != 0 ){
 				    index = p.turn( _discard.peek() );
 				    if (index != -1){
@@ -236,7 +244,7 @@ public class AIUno{
 		    }
 		}//end regular person else
 
-		System.out.println("End loop");
+		//System.out.println("End loop");
 	    }//end inner while
 	}//end outer while
 

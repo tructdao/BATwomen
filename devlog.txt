@@ -302,6 +302,7 @@ Alison ::
 	 - descriptive comments
 Truc :: finished UML Diagrams
 	comments in AIUno
+	added colors
 Bayan, Alison, Truc ::
 	 - collaborative debugging (fixed problem where deck ran out in the middle of the loop)
 
