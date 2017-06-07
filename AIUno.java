@@ -45,8 +45,10 @@ public class AIUno{
     }//ends deal()
 
     /**
-     * if there is still more than 1 Player in the game, continue
-     * if only 1 or no Players are left, return false 
+     * if there is still more than 1 Player in the game, return true
+     * if only 1 or no Players are left, return false
+     * if the _deck has no more cards left, return false
+     * returning true allows the game to continue, false then stop the game
      **/
     public boolean continueGame(){
 	int stillPlaying = 0;
@@ -65,6 +67,7 @@ public class AIUno{
     }
 
     public void play(){
+	
 	Card top;
 	int index, choice;
 	
@@ -73,7 +76,8 @@ public class AIUno{
 	    Player p;
 
 	    for (int x = 0; x < _players.size(); x++){
-		System.out.println("Start Loop");
+		//System.out.println("Start Loop");
+		System.out.println( "\n\n" );
 		p = _players.get( x );
 		
 	        top = _discard.peek();
@@ -84,7 +88,11 @@ public class AIUno{
 		}
 
 		//check if is an action Card
-		
+
+		/**
+		 * if unused reverse card on top, set top._unplayed to false
+		 * break loop, player cannot play a card
+		 **/
 		if ( top.getSymbol().equals( "reverse" ) ){
 		    if ( top.getUnplayed() ){
 			System.out.println("REVERSE");
@@ -93,6 +101,10 @@ public class AIUno{
 		    }
 		}
 
+		/**
+		 * if unused skip card on top, set top._unplayed to false
+		 * break loop, player cannot play a card
+		 **/
 		if ( top.getSymbol().equals( "skip" ) ) {
 		    if ( top.getUnplayed() ) {
 			System.out.println("SKIP");
@@ -101,6 +113,10 @@ public class AIUno{
 		    }
 		}
 
+		/**
+		 * if unused +2 card on top, set top._unplayed to false
+		 * add two cards to the player's _hand
+		 **/
 		if ( top.getSymbol().equals( "+2" ) && top.getUnplayed() ){
 		    for ( int t = 0; t < 2; t++ ){
 			if ( _deck.size() != 0 ){
@@ -111,6 +127,10 @@ public class AIUno{
 		    top.setUnplayed();
 		}
 
+		/**
+		 * if unused +4 card on top, set top._unplayed to false
+		 * add four cards to the player's _hand
+		 **/
 		if ( top.getSymbol().equals( "+4" ) && top.getUnplayed() ){
 		    for ( int n = 0; n < 4; n++ ){
 			if ( _deck.size() != 0 ){
@@ -127,17 +147,26 @@ public class AIUno{
 		if ( p.getName().equals( "AI" ) ){
 		    //AI playing...
 		    index = p.turn( top );
-		    if ( index != -1 ){
+		    
+		    if ( index != -1 ){ //p has a playable card
 			_discard.push( p.play(index) );
+			
+			//p can play again
 			if ( _discard.peek().getSymbol().equals("skip") ||
 			     _discard.peek().getSymbol().equals("reverse") ){
 			    index = p.turn( _discard.peek() );
-			    if (index != -1){
+			    if (index != -1){ //p has a playable card
 				_discard.push( p.play( index ) );
+			    }
+			    else{ //p has no playable card
+				if ( _deck.size() != 0 ){ //
+				    p.setHand( _deck.pop() );
+				}
+				else{ break; }
 			    }
 			}
 		    }
-		    else{
+		    else{ //p had no playable card
 			p.setHand( _deck.pop() );
 			System.out.println("AI is drawing....");
 			index = p.turn( top );

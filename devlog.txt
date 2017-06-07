@@ -289,7 +289,8 @@ Bayan ::
 Alison :: 
 	 - Finished updated flowchart
 	 - descriptive comments
-Truc ::
+Truc :: finished UML Diagrams
+	comments in AIUno
 Bayan, Alison, Truc ::
 	 - collaborative debugging (fixed problem where deck ran out in the middle of the loop)
 
