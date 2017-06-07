@@ -7,7 +7,7 @@ public class Card{
     protected static final String red = "\u001B[31m";
     protected static final String green = "\u001B[32m";
     protected static final String yellow = "\u001B[33m";
-    protected static final String blue = "\u001B[34m";
+    protected static final String cyan = "\u001B[36m";
 
     private String _color;
     private String _symbol;
@@ -128,7 +128,7 @@ public class Card{
 	    ret += green;
 	}
 	else if ( _color.equals( "blue" ) ){
-	    ret += blue;
+	    ret += cyan;
 	}
 	else if ( _color.equals( "black" ) ){
 	    ret += black;
