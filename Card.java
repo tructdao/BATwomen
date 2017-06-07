@@ -130,9 +130,6 @@ public class Card{
 	else if ( _color.equals( "blue" ) ){
 	    ret += cyan;
 	}
-	else if ( _color.equals( "black" ) ){
-	    ret += black;
-	}
 	ret += _symbol+ " : " + _color;
 	return ret + reset;
     }
