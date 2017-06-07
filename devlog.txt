@@ -12,6 +12,10 @@ OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - the sample method in Rqueue didn't work as intended, so we switched to linked lists and used the shuffle method.
 
+OBSTACLES OVERCOME
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- We learned many emacs keyboard shortcuts. One of the more useful ones was C-c C-c which comments out a highlighted region of code. We prefer it to multiline comments because multiline comments take time to find the end part of the code and can have typos is theres another multiline comment within.
+- We also learned the shortcut to highlight corresponding brackets which was useful when it came to debugging
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
