@@ -50,6 +50,9 @@ public class AIUno{
      **/
     public boolean continueGame(){
 	int stillPlaying = 0;
+	if ( _deck.size() == 0 ){
+	    return false;
+	}
         for ( Player i : _players ){
 	    if ( i.getHandSize() != 0 ){
 		stillPlaying += 1;
@@ -64,6 +67,7 @@ public class AIUno{
     public void play(){
 	Card top;
 	int index, choice;
+	
 	while (  continueGame()  ){
 
 	    Player p;
@@ -74,8 +78,6 @@ public class AIUno{
 		
 	        top = _discard.peek();
 		System.out.println("Top card: " + top);
-
-		System.out.println("AI hand size: " + _players.get(1).getHandSize());
 
 		if ( top.getColor().equals( "black" ) ){
 		    System.out.println("Choose any color!");
@@ -135,7 +137,7 @@ public class AIUno{
 			if ( index != -1 ){
 			    _discard.push( p.play( index ) );
 			    if ( _discard.peek().getSymbol().equals("skip") ||
-			    	 _discard.peek().getSymbol().equals("reverse") ){
+			    	 _discard.peek().getSymbol().equals("reverse")){
 			    	index = p.turn( _discard.peek() );
 			    	if (index != -1){
 			    	    _discard.push( p.play( index ) );
@@ -198,6 +200,9 @@ public class AIUno{
 		System.out.println("End loop");
 	    }//end inner while
 	}//end outer while
+
+	System.out.println( "The deck is out of cards. The game has expired." );
+	
     }//end play()
 
 
