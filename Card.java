@@ -129,8 +129,13 @@ public class Card{
 	}
 	else if ( _color.equals( "blue" ) ){
 	    ret += cyan;
-	}
+	}  
 	ret += _symbol+ " : " + _color;
-	return ret + reset;
+	if ( _color.equals( "black" ) ){
+	    return ret;
+	}
+	else{
+	    return ret + reset;
+	}
     }
 }
