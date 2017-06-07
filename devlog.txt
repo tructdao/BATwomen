@@ -263,6 +263,7 @@ Bayan ::
       	- we still need to fix and test the different action cards.
 Alison :: 
 	 - edits to takeTurns() regarding winning
+	 - attempted debugging
 Truc :: revised AI game
 	fixed some bugs
 ==============================================================
@@ -278,6 +279,7 @@ Bayan, Alison, and Truc ::
 --------------------------------------------------------------
 Bayan :: 
 Alison :: 
+	 - Worked on flowchart
 Truc :: Tried to fix AI Game
 	modified a Card method
 ==============================================================
@@ -285,6 +287,7 @@ Truc :: Tried to fix AI Game
 --------------------------------------------------------------
 Bayan :: 
 Alison :: 
+	 - Finished updated flowchart
 Truc ::
 
 
