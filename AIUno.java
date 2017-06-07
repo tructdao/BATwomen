@@ -102,14 +102,21 @@ public class AIUno{
 		}
 
 		if ( top.getSymbol().equals( "+2" ) && top.getUnplayed() ){
-		    p.setHand( _deck.pop() );
-		    p.setHand( _deck.pop() );
+		    for ( int t = 0; t < 2; t++ ){
+			if ( _deck.size() != 0 ){
+			    p.setHand( _deck.pop() );
+			}
+			else{ break; }
+		    }
 		    top.setUnplayed();
 		}
 
 		if ( top.getSymbol().equals( "+4" ) && top.getUnplayed() ){
 		    for ( int n = 0; n < 4; n++ ){
-			p.setHand( _deck.pop() );
+			if ( _deck.size() != 0 ){
+			    p.setHand( _deck.pop() );
+			}
+			else{ break; }
 		    }
 		    top.setUnplayed();
 		}
@@ -138,10 +145,13 @@ public class AIUno{
 			    _discard.push( p.play( index ) );
 			    if ( _discard.peek().getSymbol().equals("skip") ||
 			    	 _discard.peek().getSymbol().equals("reverse")){
-			    	index = p.turn( _discard.peek() );
-			    	if (index != -1){
-			    	    _discard.push( p.play( index ) );
-			    	}
+				if ( _deck.size() != 0 ){
+				    index = p.turn( _discard.peek() );
+				    if (index != -1){
+					_discard.push( p.play( index ) );
+				    }
+				}
+				else{ break; }
 			    }
 			}
 		    }
@@ -151,7 +161,7 @@ public class AIUno{
 			System.out.println("AI WINS!");
 			return;
 		    }
-		}
+		} //FINISH AI
 
 		//regular person
 		else{
@@ -186,11 +196,11 @@ public class AIUno{
 			// choice = 1;
 		    }
 		    else{
-				index = chooseCard( p, top );
-				if( index != -1 ) {
-					_discard.push( p.removeCard( index ) );
-				}
+			index = chooseCard( p, top );
+			if( index != -1 ) {
+			    _discard.push( p.removeCard( index ) );
 			}
+		    }
 		    if( p.getHandSize() == 0){
 			System.out.println("YOU WIN!!");
 			return;
