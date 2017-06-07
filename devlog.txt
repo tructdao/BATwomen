@@ -289,6 +289,8 @@ Bayan ::
 Alison :: 
 	 - Finished updated flowchart
 Truc ::
+Bayan, Alison, Truc ::
+	 - collaborative debugging (fixed problem where deck ran out in the middle of the loop)
 
 
 
