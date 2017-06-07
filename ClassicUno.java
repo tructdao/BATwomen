@@ -39,53 +39,24 @@ public class ClassicUno{
 	    populateDeck();
 	    Collections.shuffle(_deck);
 	    System.out.println("Woo let's play Uno!!");
+		// user input for # players
 	    int nP=numPlayers();
 	    for( int x=1; x<=nP; x++){
 		Player newPlayer= new Player();
+		// ask each player for their name and add to _players
 		newPlayer.setName(playerName());
 		_players.add(newPlayer);
 	    }
 	    setDiscard();
 	    deal();
 	    takeTurns();
+		// leaderboard
 	    printWinners() ;
 	}
 	else if ( v == 2 ){
 	    populateDeck();
 	    Collections.shuffle(_deck);
 	    System.out.println( "Woo let's play Uno!!" );
-	    // Player AI= new Player("AI");
-	    // _players.add(AI);
-	    // Player newPlayer= new Player();
-	    // newPlayer.setName(playerName());
-	    // System.out.println("setname to player... adding player");
-	    // _players.add(newPlayer);
-	    // System.out.println("added player... setting up discard");
-	    // setDiscard();
-	    // System.out.println("set discard");
-	    // deal();
-	    // System.out.println("dealt cards");
-	    // for (Player x : _players){
-	    // 	System.out.println();
-	    // 	System.out.println();
-	    // 	System.out.println();
-	    // 	System.out.println("Player " + x.getName() +" "+ x.getAI()+ ": " + x);
-	    // 	System.out.println();
-	    // 	System.out.println();
-	    // 	System.out.println();
-	    // }
-	    // System.out.println("TAKING TURNS");
-	    // takeTurnsAI();
-	    // printWinners();
-	
-	    // vv In the event that we make a game w multiple AIs vv
-	    // int nP = numPlayers();
-	    // for( int x=1; x<nP; x++ ){
-	    // 	Player newPlayer= new PlayerAI();
-	    // 	newPlayer.setName( playerName() );
-	    // 	_players.add( newPlayer );
-	    // }
-	    // ^^ In the event that we make a game w multiple AI ^^
 
 	    System.out.println("What is your name?");
 	    String name = Keyboard.readString();
@@ -111,7 +82,7 @@ public class ClassicUno{
 
     public void populateDeck() {
 
-	/*
+	
 	for( int n = 0 ; n < 10 ; n ++ ) {
 	    for( int i = 0 ; i < 2 ; i ++ ) {
 	 	_deck.add( new Card( ""+n, "red" )) ;
@@ -124,7 +95,7 @@ public class ClassicUno{
 	 	}
 	    }
 	}
-	*/
+	
 	
 	for( int n = 0 ; n < 2 ; n ++ ) {
 	    _deck.add( new Card( "+2", "red" )) ;
@@ -143,7 +114,6 @@ public class ClassicUno{
 	for( int n = 0 ; n < 4 ; n ++ ) {
 	    _deck.add( new Card("+4", "black")) ;
 	    _deck.add( new Card("wild", "black")) ;
-	    //_deck.add( new Card( "+2", "red" )) ; //wait why
 	}
     }//ends populate deck
 
@@ -237,7 +207,6 @@ public class ClassicUno{
      */
     public void deal(){
 	for( Player i : _players ) {
-	    // vv change n < 2 to n < 7 vv
 	    for( int n = 0 ; n < 7 ; n ++ ) {
 		i.setHand( _deck.remove(0)) ;
 	    }
@@ -354,6 +323,7 @@ public class ClassicUno{
 	}
     }
     //________vvv________HELPERS FOR TAKETURNS_____________vvv__________
+	// prints hand and top of discard
     public int startingTurns(Player person,int n){
 	
 	System.out.println(person);
@@ -363,6 +333,7 @@ public class ClassicUno{
 	return toDo;
     }
     
+	// if draw choice is picked
     public void toDoDraw(Player person){
 	person.setHand(_deck.remove(0));
 	System.out.println( person ) ;
@@ -372,6 +343,8 @@ public class ClassicUno{
 	System.out.println(person);
 	System.out.println("discard\n"+printDiscard());
     }
+	
+	// card is removed from player hand and added to top of discard
     public void placeCard(Player person,int ind){
 	_discard.push(person.getHand().remove(ind));
     }
@@ -389,6 +362,8 @@ public class ClassicUno{
 	    }
 	}
     }
+	
+	// players get choice to call uno after playing a card
     public void oneCard( int n ) {	
 
 	    int ans = chooseUno() ;
@@ -398,6 +373,7 @@ public class ClassicUno{
 		    _players.get( n ).setUno( true ) ;
 		}
 		else if(n==0){
+			// if previous player has 1 card and did not call uno, 2 cards will be added to theirs
 		    if(_players.get( _players.size()-1 ).getHandSize()==1&&
 		       _players.get(_players.size()-1).getUno()==false){
 			_players.get(_players.size()-1).setHand( _deck.remove(0)) ;
@@ -417,6 +393,7 @@ public class ClassicUno{
 	    }
     }
 	
+	// checks if player has no cards left AFTER player plays a valid card. if so, player is removed and pushed into _winners
 	public boolean noCards( int n ) {
 	    if( _players.get( n ).getHandSize() == 0 ) {
 		_winners.push( _players.remove( n )) ;
@@ -426,492 +403,15 @@ public class ClassicUno{
 	    
 	    return false ;
 	}
-
-    public void checkAIHand(Player person,int n){
-   
-	for (int x= 0;x<person.getHandSize(); x++){
-	    	if(person.getCard(x).getSymbol().equals("+4")&&
-		   addFourCheck(person.getHand().get(x) , person , x)){
-		    System.out.println("STARTING TO SET COLOR");
-		    int c= (int)(Math.random()*4)+1;
-		    System.out.println("RANDOM:");
-		    System.out.println(c);
-		    if (c==1){
-			System.out.println("SHOULD BE RED");
-					    
-			person.getCard(x).changeColor("red");
-		    }
-		    else if(c==2){
-		    System.out.println("SHOULD BE BLUE");
-
-			person.getCard(x).changeColor("blue");
-		    }
-		    else if(c==3){
-			System.out.println("SHOULD BE YLOW");
-
-			person.getCard(x).changeColor("yellow");
-		    }
-		    else if(c==4){
-			System.out.println("SHOULD BE GRN");
-
-			person.getCard(x).changeColor("green");
-		    }
-		    else {
-			System.out.println("RANDOM IS MSED UP");
-			person.getCard(x).changeColor("ornge");
-		    }
-		    if(n==_players.size()-1){
-			drawFour(-1);
-		       	setColorAI(person.getHand().get(x));
-		    }
-		    else{
-			drawFour(n);
-			setColorAI(person.getHand().get(x));
-		    }
-		    placeCard( person, x ) ;
-		    //discardSize+=1;
-		    //  person.setTimes(0);
-	   
-		}
-	    if (person.getCard(x).match(_discard.peek())){
-		if(person.getCard(x).getSymbol().equals("0")||
-		   person.getCard(x).getSymbol().equals("1")||
-		   person.getCard(x).getSymbol().equals("2")||
-		   person.getCard(x).getSymbol().equals("3")||
-		   person.getCard(x).getSymbol().equals("4")||
-		   person.getCard(x).getSymbol().equals("5")||
-		   person.getCard(x).getSymbol().equals("6")||
-		   person.getCard(x).getSymbol().equals("7")||
-		   person.getCard(x).getSymbol().equals("8")||
-		   person.getCard(x).getSymbol().equals("9")
-		   ){
-		    placeCard(person, x);
-		    
-		}
-		skipAction(person, x,n);
-		addTwoAction(person,x,n);
-		reverseAction(person,x,n);
 	
-		//	addFourAction(person, x, n);
-		n+=1;
-			
-		return;//stop looping
-	    }
-	}
-    }
-     public void setColorAI(Card playedCard){
-	int x= (int)(Math.random()*4)+1;
-	if (x==1){
-	    playedCard.changeColor("red");
-	}
-	else if(x==2){
-	    playedCard.changeColor("blue");
-	}
-	else if(x==3){
-	    playedCard.changeColor("yellow");
-	}
-	else if(x==4){
-	    playedCard.changeColor("green");
-	}
-    }
-    
-    public void skipAction(Player person, int ind, int n){
-	if(skipTurn(person.getHand().get(ind) , person , ind)){
-	    if(n==_players.size()-1){
-		person.setTimes(0);
-		placeCard(person,ind);
-		//	n+=1;
-	    }
-	    else if(n==_players.size()-2){
-		person.setTimes(0);
-		placeCard(person,ind);
-		
-	    }
-	    else{
-		person.setTimes(0);
-		placeCard( person, ind ) ;
-	    }
-	}
-    }
-
-      //incorporating skip--tested
-
-    public void addTwoAction(Player person, int ind, int n){
-	//incorporating +2--tested
-	if(addTwoCheck(person.getHand().get(ind) , person , ind)){
-	    if(n==_players.size()-1){ drawTwo(-1);}
-	    else{ drawTwo(n);}
-	    placeCard( person, ind ) ;
-	}
-    }
-
-
-    public void reverseAction(Player person, int ind, int n ){
-	//incorporating reverse
-	if(reverseCheck(person.getHand().get(ind) , person , ind)){
-	    Collections.reverse(_players);
-	    n= _players.size()-1-n;
-	    person.setTimes(0);
-	    placeCard(person,ind);	
-	    //  discardSize+=1;
-	}
-    }
-    public void addFourAction(Player person, int ind, int n){
-	//incorporating +4
-	if(addFourCheck(person.getHand().get(ind) , person , ind)){
-	    if(n==_players.size()-1){
-		drawFour(-1);
-		person.getHand().get(ind).setColor();
-	    }
-	    else{
-		drawFour(n);
-		person.getHand().get(ind).setColor();
-	    }
-	    placeCard( person, ind ) ;
-	    //discardSize+=1;
-	    person.setTimes(0);
-	   
-	}
-    }
-    public void nearEnd(Player person, int ind, int n){
-	if (match(person.getHand().get(ind))){
-	    placeCard(person,ind);
-	    //discardSize+=1;
-	   
-	}	    
-    }
-
-    //AI method, checks the card just drawn
-    public void checkdrawnCard(Player person,int n){
-	 int sz= person.getHandSize();
-	if(person.getCard(sz-1).match(_discard.peek())){	
-	    //placeCard(person.getHand().get(person.getHandSize()-1));
-	    _discard.push(person.getHand().remove(person.getHandSize()-1));
-	    n+=1;
-	    System.out.println( "AI played " + _discard.peek() ) ;
-	}
-	else{
-	    n+=1;
-	    System.out.println( "AI has no playable cards" );
-	}
-    }
-    public void askPlayer(Player person,int n){
-	int toDo = startingTurns(person, n);
-	int ind ;
-	if(toDo == 1 && person.getTimes() < 1){//will only allow drawing once
-	    toDoDraw( person);
-	    person.setTimes( person.getTimes() + 1 ) ;
-		    
-	    int p = passOrPlay( n ) ;
-	    if(p==2){ // pass
-		person.setTimes(0);
-		n+=1;
-	    }
-	    else if (p==1){ // play
-		toDo = 5 ;
-	    }
-	}
-    }
-
-    /* public void takeTurnsAI(){
-	// int discardSize=1;
-	while(_players.size()!=1 && _deck.size()!=0){
-	    int n = 0 ;
-	    System.out.println("TakeTurns begun");
-	    while (n<_players.size()){
-		System.out.println("second loop");
-		    
-		System.out.println("going through AI stuff");
-		if( _players.get( n ).getName().equals( "AI" )){	
-		    Player AI=  _players.get(n);
-		    //check if cards rn match
-		    checkAIHand(AI,n);
-		    System.out.println("checked AI Hand");
-		    AI.setHand(_deck.remove(0));
-		    System.out.println("have to draw ^ drawing done");
-
-		    //check the latest card in the hand		   
-		    checkdrawnCard(AI,n);
-		    if( !( noCards( n ))) {
-			n+=1;
-		    }
-		}
-	    
-		else{
-		    Player person= _players.get(n);
-		    int toDo = startingTurns(person, n);
-		    int ind ;
-		    if(toDo == 1 && person.getTimes() < 1){//will only allow drawing once
-			toDoDraw( person);
-			person.setTimes( person.getTimes() + 1 ) ;
-			int p = passOrPlay( n ) ;
-			if(p==2){ // pass
-			    person.setTimes(0);
-			    n+=1; } // play
-			else if (p==1){toDo = 5 ; }
-		    }
-		    if(toDo==2 || toDo == 5 ){ // if player chose to play after drawing
-			System.out.println();
-			printSetUp(person);
-			ind= pickCard(n,person); 
-			afterDrawing( person, ind,  n);
-			// if the FIRST ever discard card is a wild black
-			// necessary bc there is no person to set its color
-			//incorporates wild
-			if( ind < person.getHand().size() && 
-				 person.getHand().get( ind ).getSymbol().equals( "wild" ) ) {
-			    placeCard( person, ind ) ;
-			    _discard.peek().setColor() ;
-			    person.setTimes(0);
-			    if( !(noCards( n ))) { 
-			    	//oneCard( n ) ;
-			    	n += 1 ;}
-			}
-
-			//incorporating skip--tested
-			else if(skipTurn(person.getHand().get(ind) , person , ind)){
-			    if(n==_players.size()-1){
-				person.setTimes(0);
-				placeCard(person,ind);
-				if( noCards( n )) {n = 0 ; }
-				else {
-				    // oneCard( n ) ;
-				    n = 1 ;}
-			    }
-			    else if(n==_players.size()-2){
-				person.setTimes(0);
-				placeCard(person,ind);
-				if( noCards( n )) {n = _players.size() - 1 ; }
-				else {
-				    //oneCard( n ) ;
-				    n=0;
-				}
-			    }
-			    else{
-				person.setTimes(0);
-				placeCard( person, ind ) ;
-				if( noCards( n )) {n += 1 ; }
-				else {
-				    //oneCard( n ) ; 
-				    n += 2 ;}
-			    }
-			}
-			//incorporating +2--tested
-			else if(addTwoCheck(person.getHand().get(ind) , person , ind)){
-			    if(n==_players.size()-1){ drawTwo(-1);}
-			    else{ drawTwo(n);}
-			    placeCard( person, ind ) ;
-			    person.setTimes(0);
-			
-			    if( !(noCards( n ))) {
-				//oneCard( n ) ;
-				n += 1 ;
-			    }
-			}
-			//incorporating reverse
-			else if(reverseCheck(person.getHand().get(ind) , person , ind)){
-			    Collections.reverse(_players);
-			    n= _players.size()-1-n;
-			    person.setTimes(0);
-			    placeCard(person,ind);	
-			    if( !(noCards( n ))) {
-				//oneCard( n ) ;
-				n += 1 ;
-			    }
-			}
-			//incorporating +4
-			else if(addFourCheck(person.getHand().get(ind) ,
-					     person , ind)){
-			    if(n==_players.size()-1){
-				drawFour(-1);
-				if( person.getAI() ){
-				    //				    person.getHand().get( ind ).setColorAI( person );
-				}
-				else{
-				    person.getHand().get(ind).setColor();
-				}
-			    }
-			    else{
-				drawFour(n);
-				if( person.getAI() ){
-				    person.getHand().get(ind).setColorAI( person );
-				}
-				else{
-				    person.getHand().get(ind).setColor();
-				}
-			    }
-			    placeCard( person, ind ) ;
-			    person.setTimes(0);
-			    if( !(noCards( n ))) {
-				//oneCard( n ) ;
-				n += 1 ;
-			    }
-			}
-			else if (wrongMove(person,ind)){
-			    System.out.println("That move doesn't work!" +
-					       "Try picking another card or " +
-					       "draw");
-			}
-			else if (match(person.getHand().get(ind))){
-			    placeCard(person,ind);
-			    person.setTimes(0);
-			    if( !(noCards( n ))) {
-				//oneCard( n ) ;
-				n += 1 ;
-			    }
-			}   
-		    }
-		}
-	    }
-	}
-    }
-    */
-     public void takeTurnsAI(){
-	//	int discardSize=1;
-	while(_players.size()!=1 && _deck.size()!=0){
-	    int n = 0 ;
-	    System.out.println("TakeTurns begun");
-	    while (n<_players.size()){
-		System.out.println("second loop");
-		    
-		System.out.println("going through AI stuff");
-		if( _players.get( n ).getName().equals( "AI" )){	
-		    Player AI=  _players.get(n);
-		    //check if cards rn match
-		    checkAIHand(AI,n);
-		    System.out.println("checked AI Hand");
-		    AI.setHand(_deck.remove(0));
-		    System.out.println("have to draw ^ drawing done");
-
-		    //check the latest card in the hand		   
-		    checkdrawnCard(AI,n);
-		    n+=1;
-		}
-	    
-		else{
-		    Player person= _players.get(n);
-		    int toDo = startingTurns(person, n);
-		    int ind ;
-		    if(toDo == 1 && person.getTimes() < 1){//will only allow drawing once
-			toDoDraw( person);
-			person.setTimes( person.getTimes() + 1 ) ;
-			int p = passOrPlay( n ) ;
-			if(p==2){ // pass
-			    person.setTimes(0);
-			    n+=1; } // play
-			else if (p==1){toDo = 5 ; }
-		    }
-		    if(toDo==2 || toDo == 5 ){ // if player chose to play after drawing
-			System.out.println();
-			printSetUp(person);
-			ind= pickCard(n,person); 
-			afterDrawing( person, ind,  n);
-			// if the FIRST ever discard card is a wild black
-			// necessary bc there is no person to set its color
-			//incorporates wild
-			if( ind < person.getHand().size() && 
-				 person.getHand().get( ind ).getSymbol().equals( "wild" ) ) {
-			    placeCard( person, ind ) ;
-			    _discard.peek().setColor() ;
-			    person.setTimes(0);
-			    if( !(noCards( n ))) { 
-			    	//oneCard( n ) ;
-			    	n += 1 ;}
-			}
-			//incorporating skip--tested
-			else if(skipTurn(person.getHand().get(ind) , person , ind)){
-			    if(n==_players.size()-1){
-				person.setTimes(0);
-				placeCard(person,ind);
-				if( noCards( n )) {n = 0 ; }
-				else {
-				    // oneCard( n ) ;
-				    n = 1 ;}
-			    }
-			    else if(n==_players.size()-2){
-				person.setTimes(0);
-				placeCard(person,ind);
-				if( noCards( n )) {n = _players.size() - 1 ; }
-				else {
-				    //oneCard( n ) ;
-				    n=0;
-				}
-			    }
-			    else{
-				person.setTimes(0);
-				placeCard( person, ind ) ;
-				if( noCards( n )) {n += 1 ; }
-				else {
-				    //oneCard( n ) ; 
-				    n += 2 ;}
-			    }
-			}
-			//incorporating +2--tested
-			else if(addTwoCheck(person.getHand().get(ind) , person , ind)){
-			    if(n==_players.size()-1){ drawTwo(-1);}
-			    else{ drawTwo(n);}
-			    placeCard( person, ind ) ;
-			    person.setTimes(0);
-			
-			    if( !(noCards( n ))) {
-				//oneCard( n ) ;
-				n += 1 ;
-			    }
-			}
-			//incorporating reverse
-			else if(reverseCheck(person.getHand().get(ind) , person , ind)){
-			    Collections.reverse(_players);
-			    n= _players.size()-1-n;
-			    person.setTimes(0);
-			    placeCard(person,ind);	
-			    if( !(noCards( n ))) {
-				//oneCard( n ) ;
-				n += 1 ;
-			    }
-			}
-			//incorporating +4
-			else if(addFourCheck(person.getHand().get(ind) , person , ind)){
-			    if(n==_players.size()-1){
-				drawFour(-1);
-				person.getHand().get(ind).setColor();
-			    }
-			    else{
-				drawFour(n);
-				person.getHand().get(ind).setColor();
-			    }
-			    placeCard( person, ind ) ;
-			    person.setTimes(0);
-			    if( !(noCards( n ))) {
-				//oneCard( n ) ;
-				n += 1 ;
-			    }
-			}
-			else if (wrongMove(person,ind)){
-			    System.out.println("That move doesn't work!" +
-					       "Try picking another card or draw");
-			}
-			else if (match(person.getHand().get(ind))){
-			    placeCard(person,ind);
-			    person.setTimes(0);
-			    if( !(noCards( n ))) {
-				//oneCard( n ) ;
-				n += 1 ;
-			    }
-			}   
-		    }
-		}
-	    }
-	}
-    }
-
-    
-
     public void afterDrawing(Player person, int ind, int n){
 
 	if(ind>=person.getHand().size()){
 	    System.out.println("that doesn't work");
 	}
     }
+	
+	// if the first ever card in the discard is a +4
     public boolean firstDiscard(int discardSize){
 	return discardSize==1 &&(_discard.peek().getSymbol().equals( "wild" )|| _discard.peek().getSymbol().equals("+4"));
     }
@@ -927,19 +427,23 @@ public class ClassicUno{
 	    int n = 0 ;
 	    while (n<_players.size()){
 		Player person = _players.get( n ) ;
-		//	if(person.getName().equals("AI") &&
-		// person.getAI()==true){  takeTurnsAI(n); }
+		// ask player if they want to 1: draw or 2: play
 		int toDo = startingTurns(person, n);
 		int ind ;
+		// draw is picked
 		if(toDo == 1 && person.getTimes() < 1){//will only allow drawing once
 		    toDoDraw( person);
+			// player has drawed 1 time
 		    person.setTimes( person.getTimes() + 1 ) ;
+			// choices for pass or play
 		    int p = passOrPlay( n ) ;
 		    if(p==2){ // pass
 			person.setTimes(0);
-			n+=1; } // play
+			n+=1; } // move onto next player 
+			// play
 		    else if (p==1){toDo = 5 ; }
 		}
+		// play is picked initially or after drawing
 		if(toDo==2 || toDo == 5 ){ // if player chose to play after drawing
 		    System.out.println();
 		    printSetUp(person);
@@ -958,18 +462,21 @@ public class ClassicUno{
 		    else if( ind < person.getHand().size() && 
 			     person.getHand().get( ind ).getSymbol().equals( "wild" ) ) {
 				placeCard( person, ind ) ;
+				// ask player for color choice
 				_discard.peek().setColor() ;
 				person.setTimes(0);
 				if( !(noCards( n ))) { 
+				// there must be >= 1 cards. ask if they want to call uno
 				oneCard( n ) ;
 				n += 1 ;}
 		    }
 		    //incorporating skip--tested
 		    else if(skipTurn(person.getHand().get(ind) , person , ind)){
-			if(n==_players.size()-1){
+			if(n==_players.size()-1){ // if last player...
 			    person.setTimes(0);
 			    placeCard(person,ind);
 			    discardSize+=1;
+				// if this player wins, it'll be removed so no need to *skip* b/c players will be shifted down 
 			    if( noCards( n )) {n = 0 ; }
 				else {
 					oneCard( n ) ;
@@ -1038,6 +545,7 @@ public class ClassicUno{
 			    n += 1 ;
 			}
 		    }
+			// doesn't match, out of range
 		    else if (wrongMove(person,ind)){
 			System.out.println("That move doesn't work!" +
 					   "Try picking another card or draw");

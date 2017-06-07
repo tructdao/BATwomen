@@ -288,6 +288,7 @@ Truc :: Tried to fix AI Game
 Bayan :: 
 Alison :: 
 	 - Finished updated flowchart
+	 - descriptive comments
 Truc ::
 Bayan, Alison, Truc ::
 	 - collaborative debugging (fixed problem where deck ran out in the middle of the loop)
